@@ -14,7 +14,7 @@ export function PageHero({ title, subtitle }: Props) {
           alt=""
           fill
           className="object-cover"
-          priority
+          priority={false}
         />
         <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/45 to-black/20" />
       </div>

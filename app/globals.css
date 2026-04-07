@@ -6,11 +6,20 @@
   --foreground: #0b0f14;
 
   /* Brand palette (from comps) */
-  --brand-teal-950: #073742;
-  --brand-teal-900: #0a4a58;
-  --brand-teal-800: #0d5f72;
-  --brand-gold-500: #f4b400;
-  --brand-gold-600: #e2a200;
+  --brand-teal-950: #0b0f14;
+  --brand-teal-900: #151b22;
+  --brand-teal-800: #232b36;
+  /* Reused by buttons as the primary CTA accent (orange in the mockups). */
+  --brand-gold-500: #f47a1f;
+  --brand-gold-600: #dd6511;
+
+  /* AVSS-like accent + dark surfaces */
+  --brand-ink-950: #07090c;
+  --brand-ink-900: #121212;
+  --brand-ink-800: #121826;
+  --brand-ink-700: #182033;
+  --brand-steel-400: #9aa4b2;
+  --brand-steel-300: #c1c9d4;
 
   /* UI */
   --surface: #f5f7f8;
@@ -44,6 +53,12 @@
   --color-brand-teal-800: var(--brand-teal-800);
   --color-brand-gold-500: var(--brand-gold-500);
   --color-brand-gold-600: var(--brand-gold-600);
+  --color-brand-ink-950: var(--brand-ink-950);
+  --color-brand-ink-900: var(--brand-ink-900);
+  --color-brand-ink-800: var(--brand-ink-800);
+  --color-brand-ink-700: var(--brand-ink-700);
+  --color-brand-steel-400: var(--brand-steel-400);
+  --color-brand-steel-300: var(--brand-steel-300);
 
   --shadow-soft: var(--shadow-soft);
   --shadow-card: var(--shadow-card);
@@ -55,12 +70,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #070b10;
-    --foreground: #e9eef5;
-    --surface: #0b121a;
-    --surface-2: #0f1822;
-    --muted: #a6b3c2;
-    --muted-2: #8f9cad;
+    --background: #07090c;
+    --foreground: #eef2f7;
+    --surface: #0d1117;
+    --surface-2: #121826;
+    --muted: #c1c9d4;
+    --muted-2: #9aa4b2;
     --border: rgba(226, 232, 240, 0.12);
     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.55);
     --shadow-card: 0 12px 28px rgba(0, 0, 0, 0.60);

@@ -1,97 +1,167 @@
 import Image from "next/image";
-import { BarChart3, MonitorPlay, Route } from "lucide-react";
+import { BellRing, ClipboardPenLine, Drill, ShieldCheck } from "lucide-react";
+import { homeUnsplash } from "../lib/homeImages";
 import { PrimaryButton } from "./PrimaryButton";
 
 export function Hero() {
-  
   return (
     <>
-    <section className="relative overflow-hidden min-h-[600px] z-0">
-      <div className="absolute inset-0">
-        <Image
-          src="/hero.png"
-          alt=""
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/ to-transparent" />
-      </div>
+      <section className="relative overflow-hidden bg-brand-ink-950">
+        <div className="absolute inset-0">
+          <Image
+            src={homeUnsplash.hero}
+            alt="Commercial security cameras and surveillance installation in a building interior"
+            fill
+            priority
+            className="object-cover opacity-95"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/55 to-black/10" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/70" />
+        </div>
 
-      <div className="container relative mx-auto px-6 pb-14 pt-14 md:pb-10 md:pt-28">
-        <div className="grid items-center gap-10 md:grid-cols-[800px_1fr]">
-          <div>
-            <h1 className="font-display text-balance text-[52px] font-semibold leading-[0.98] text-white md:text-[64px]">
-              MAKE YOUR BRAND MOBILE. <br />
-              DOMINATE THE STREETS.
+        {/* Decorative "camera" (simple SVG so we don't depend on new assets) */}
+        <div className="pointer-events-none absolute right-6 top-10 hidden md:block">
+          <svg
+            width="150"
+            height="110"
+            viewBox="0 0 150 110"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="opacity-85 drop-shadow-[0_10px_25px_rgba(0,0,0,0.55)]"
+            aria-hidden="true"
+          >
+            <path
+              d="M88 5c8 0 15 6 15 14v10h10c17 0 32 14 32 32 0 18-15 33-32 33H55C36 94 21 79 21 60c0-17 11-30 26-32 2-13 14-23 29-23h12Z"
+              fill="#f5f7fb"
+              fillOpacity="0.92"
+            />
+            <path
+              d="M102 30c0 6-5 11-11 11s-11-5-11-11 5-11 11-11 11 5 11 11Z"
+              fill="#0d1117"
+              fillOpacity="0.9"
+            />
+            <path
+              d="M95 30c0 2-2 4-4 4s-4-2-4-4 2-4 4-4 4 2 4 4Z"
+              fill="#f47a1f"
+            />
+          </svg>
+        </div>
+
+        <div className="container relative mx-auto px-6 pb-26 pt-12 md:pb-36 md:pt-20">
+          <div className="max-w-[760px]">
+            <h1 className="font-display text-balance text-[44px] font-extrabold leading-[0.95] text-white sm:text-[54px] md:text-[64px]">
+              PROTECTING BUSINESSES,
+              <br />
+              PROPERTIES &amp; PEOPLE
             </h1>
-            <p className="mt-5 max-w-[520px] text-[18px] leading-7 text-white/85">
-              Strategic mobile billboard and digital advertising solutions,
-              delivering your message directly to your target audience.{" "}
-              <span className="whitespace-nowrap">United States</span> wide.
+            <p className="mt-5 max-w-[560px] text-[16px] leading-7 text-white/80 sm:text-[18px]">
+              From advanced video surveillance to complete access control, we
+              design and install dependable security systems backed by ongoing
+              support.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <PrimaryButton href="/contact" className="h-12 px-8 text-[13px]">
-                CONSULT AN AD EXPERT
+              <PrimaryButton href="/contact" className="h-12 px-8 text-[12px]">
+                CONTACT US NOW
               </PrimaryButton>
               <PrimaryButton
-                href="/portfolio"
+                href="/services"
                 variant="outline"
-                className="h-12 px-8 text-[13px]"
+                className="h-12 px-8 text-[12px]"
               >
-                EXPLORE AD VEHICLES
+                VIEW SURVEILLANCE SYSTEMS
               </PrimaryButton>
             </div>
-          </div>
 
-        
+            <div className="mt-10 inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-black/35 px-5 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
+              <ShieldCheck className="h-7 w-7 text-brand-gold-500" />
+              <div className="text-left">
+                <div className="text-[22px] font-extrabold leading-none text-white">
+                  21+ Years Protecting
+                </div>
+                <div className="mt-1 text-[14px] font-semibold text-white/75">
+                  Businesses Daily
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-    <section className="pb-8 -mt-16 z-10 relative sm:-mt-20 md:-mt-24">
+      </section>
+
+      {/* Service tiles */}
+      <section className="-mt-20 relative z-10 pb-10 sm:-mt-24 md:-mt-28">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-7 md:mt-12 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {[
               {
-                title: "TARGETED ROUTES.",
-                body: "Optimize your ad reach with route planning tailored to specific demographics or events.",
-                icon: Route,
+                title: "CUSTOM SECURITY DESIGN",
+                subtitle: "Expert consultation & design",
+                icon: ClipboardPenLine,
+                image: homeUnsplash.serviceCards.designConsult,
+                imageAlt:
+                  "Team reviewing security plans and business documents during consultation",
+                bullets: ["Site walkthrough", "System layout", "Code-compliant plans"],
               },
               {
-                title: "DATA-DRIVEN IMPACT.",
-                body: "Real-time campaign tracking and performance metrics to measure ROI and effectiveness.",
-                icon: BarChart3,
+                title: "PROFESSIONAL INSTALLATION",
+                subtitle: "Precision installation services",
+                icon: Drill,
+                image: homeUnsplash.serviceCards.installation,
+                imageAlt:
+                  "Technician installing cabling and security hardware on site",
+                bullets: ["Clean wiring", "Hardware setup", "Testing & training"],
               },
               {
-                title: "HIGH-VISIBILITY DISPLAYS.",
-                body: "Large, ultra-bright LED screens ensure your ads are seen day or night, in any weather.",
-                icon: MonitorPlay,
+                title: "REMOTE MONITORING & ALERTS",
+                subtitle: "Instant motion alerts",
+                icon: BellRing,
+                image: homeUnsplash.serviceCards.monitoring,
+                imageAlt: "Dashboard and analytics screens for monitoring alerts",
+                bullets: ["Mobile access", "Event notifications", "Ongoing support"],
               },
             ].map((card) => {
               const Icon = card.icon;
               return (
-                <div
+                <article
                   key={card.title}
-                  className="flex items-start gap-5 rounded-[18px] bg-surface p-5 shadow-card ring-1 ring-black/5 dark:bg-surface sm:p-6"
+                  className="overflow-hidden rounded-[22px] bg-surface shadow-card ring-1 ring-black/10 dark:bg-surface"
                 >
-                  <div className="grid h-[60px] w-[80px] place-items-center rounded-[14px] bg-white ring-1 ring-black/5 dark:bg-white/90 sm:h-[68px] sm:w-[92px]">
-                    <Icon className="h-8 w-8 text-brand-teal-900 sm:h-10 sm:w-10" />
-                  </div>
-                  <div>
-                    <div className="text-[16px] font-extrabold tracking-tight text-black dark:text-foreground sm:text-[18px]">
-                      {card.title}
+                  <div className="relative h-[180px]">
+                    <Image
+                      src={card.image}
+                      alt={card.imageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+                    <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-2xl bg-black/55 ring-1 ring-white/20">
+                      <Icon className="h-6 w-6 text-brand-gold-500" />
                     </div>
-                    <p className="mt-2 text-[13px] leading-5 text-muted sm:text-[14px]">
-                      {card.body}
-                    </p>
                   </div>
-                </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-[16px] font-extrabold uppercase tracking-wide text-black dark:text-foreground">
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] font-semibold text-muted">
+                      {card.subtitle}
+                    </p>
+                    <ul className="mt-4 grid gap-2 text-[13px] font-medium text-black/80 dark:text-foreground/80">
+                      {card.bullets.map((b) => (
+                        <li key={b} className="flex items-center gap-2">
+                          <span className="h-1.5 w-1.5 rounded-full bg-brand-gold-500" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
               );
             })}
           </div>
         </div>
-    </section>
+      </section>
     </>
   );
 }

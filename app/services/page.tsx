@@ -1,174 +1,159 @@
 import Link from "next/link";
-import ServicesBookingSection from "../components/ServicesBookingSection";
-import { siteContact } from "../components/siteConfig";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { serviceCards, serviceSectionId } from "../lib/serviceCards";
 
-const proposalPoints = [
-  "Highly targeted route planning based on audience and goals",
-  "High-visibility, eye-level displays built for strong recall",
-  "Flexible flights for events, launches, and competitive targeting",
-];
-
-function ArrowRightIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M5 12h12" />
-      <path d="m13 6 6 6-6 6" />
-    </svg>
-  );
-}
-
-function PointIcon({ kind }: { kind: 0 | 1 | 2 }) {
-  const paths: Record<number, string[]> = {
-    0: ["M9 5h6v2H9z", "M7 9h10v10H7z", "M9 13h6"],
-    1: ["M9 7h6", "M10 7V5h4v2", "M7 9h10v10H7z"],
-    2: ["M7 7h10", "M8 11h8", "M9 15h6", "M7 20h10"],
-  };
-
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {paths[kind].map((d) => (
-        <path key={d} d={d} />
-      ))}
-    </svg>
-  );
-}
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Commercial security cameras, alarm systems, video monitoring, access control, low voltage, and mobile surveillance trailers in Southern California.",
+  alternates: { canonical: "/services" },
+};
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[#0b1118] text-[#eaf4f6]">
-      <section className="relative overflow-hidden bg-[#0f141a] px-4 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-16">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(244,180,0,0.14)_0%,rgba(0,0,0,0)_55%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(11,17,24,0.95),rgba(11,17,24,0.65),rgba(11,17,24,0.45))]" />
+    <main className="min-h-screen bg-brand-ink-950 text-white">
+      <section className="relative overflow-hidden bg-brand-ink-900 px-4 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-16">
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/75 to-brand-ink-950/45" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(244,122,31,0.16)_0%,rgba(0,0,0,0)_55%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
         <div className="container mx-auto">
           <div className="relative z-10 max-w-4xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#d3dbe0] shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:text-sm">
-              Online Appointments
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-steel-300 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:text-sm">
+              Security &amp; Surveillance
             </p>
-            <h1 className="font-display mt-5 text-4xl font-bold uppercase leading-[0.9] text-[#f6fbfc] drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-6xl lg:text-6xl">
-              Services
+            <h1 className="font-display mt-5 text-4xl font-bold uppercase leading-[0.9] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-6xl lg:text-6xl">
+              Safeguard Your
               <br />
-              And Campaign Consultations
+              Investments With PCI AVSS
             </h1>
-            <p className="mt-5 max-w-[720px] text-base leading-7 text-[#d3dbe0] sm:text-lg sm:leading-8">
-              Browse consultation options for campaign planning, route
-              targeting, event coverage, and multi-market proposals. Mobile
-              billboards are designed to deliver noticeable, moving messages in
-              high-traffic areas—so your brand can reach people where they live,
-              work, and play.
+            <p className="mt-5 max-w-[720px] text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+              Our team is committed to helping protect your home or business
+              with modern audio-video security solutions—no matter your
+              location. Explore our services and request a free site survey to
+              find the right system for your needs.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <div className="inline-flex items-center rounded-full border border-[#7f97a6] bg-[#9ec2cd]/12 px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-[#ddecf1]">
-                All Services
-              </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-[#d3dbe0] transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(244,122,31,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
               >
-                Proposals
+                Get a Free Site Survey
+              </Link>
+              <Link
+                href="/packages"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:px-8 sm:text-base"
+              >
+                View Monitoring Packages
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <ServicesBookingSection />
-
-      <section className="bg-gradient-to-b from-[#0b1118] to-[#070b10] px-4 py-10 sm:px-8 sm:py-14">
+      <section className="bg-brand-ink-800 px-4 py-10 sm:px-8 sm:py-14">
         <div className="container mx-auto">
-          <div className="grid gap-6 rounded-[24px] border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6 shadow-[0_18px_44px_rgba(0,0,0,0.35)] lg:grid-cols-12 lg:p-8">
-            <div className="lg:col-span-7">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9ec2cd]">
-                Proposal Support
-              </p>
-              <h2 className="font-display mt-3 text-3xl font-bold leading-[0.95] text-[#f0f7f8] sm:text-4xl lg:text-5xl">
-                Need a Detailed Scope or Proposal?
-              </h2>
-              <p className="mt-4 max-w-3xl text-base leading-7 text-[#c9d4da] sm:text-lg sm:leading-8">
-                We work with brands and teams to define practical campaign
-                priorities, align scope with budget, and plan the right routes
-                and timing for each market.
-              </p>
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="font-display text-3xl font-bold leading-[0.95] text-white sm:text-4xl lg:text-5xl">
+              Our Services
+            </h2>
+            <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
+              A complete set of tools—surveillance, monitoring, alarms, and
+              access—designed to work together.
+            </p>
+          </div>
 
-              <div className="mt-7 grid gap-3">
-                {proposalPoints.map((item, index) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/10 px-4 py-4"
-                  >
-                    <span className="mt-0.5 rounded-full bg-[#9ec2cd]/12 p-2 text-[#9ec2cd]">
-                      <PointIcon kind={(index as 0 | 1 | 2) ?? 0} />
-                    </span>
-                    <p className="text-base leading-7 text-[#d4dde2]">
-                      {item}
-                    </p>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {serviceCards.map((card) => (
+              <div
+                key={card.title}
+                id={serviceSectionId(card.title)}
+                className="scroll-mt-[calc(5rem+1px)] overflow-hidden rounded-2xl border border-white/10 bg-brand-ink-900/70 shadow-[0_18px_44px_rgba(0,0,0,0.30)] lg:scroll-mt-32"
+              >
+                <div className="relative h-[150px]">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/65 via-black/10 to-transparent" />
+                </div>
+
+                <div className="p-6">
+                  <div className="text-[13px] font-extrabold uppercase tracking-[0.18em] text-brand-gold-500">
+                    {card.title}
                   </div>
-                ))}
+                  <p className="mt-3 text-base leading-7 text-white/70">
+                    {card.body}
+                  </p>
+                  {card.href ? (
+                    <Link
+                      href={card.href}
+                      className="mt-5 inline-flex text-sm font-black uppercase tracking-[0.14em] text-white/80 transition hover:text-white"
+                    >
+                      Learn More →
+                    </Link>
+                  ) : null}
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#f4b400] bg-gradient-to-b from-[#f4b400] to-[#e2a200] px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(244,180,0,0.32)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
-                >
-                  Request Proposal
-                  <ArrowRightIcon />
-                </Link>
-                <a
-                  href={siteContact.phoneHref}
-                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-[#f6fbfc] shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:w-fit sm:px-8 sm:text-base"
-                >
-                  Call {siteContact.phone}
-                </a>
-              </div>
-            </div>
+      <section className="bg-linear-to-b from-brand-ink-950 to-black px-4 py-10 sm:px-8 sm:py-14">
+        <div className="container mx-auto grid gap-6 lg:grid-cols-12">
+          <div className="rounded-[24px] border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6 shadow-[0_18px_44px_rgba(0,0,0,0.35)] lg:col-span-7 lg:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-steel-300">
+              Smarter Business Security &amp; Access Control
+            </p>
+            <h2 className="font-display mt-3 text-3xl font-bold leading-[0.95] text-white sm:text-4xl lg:text-5xl">
+              Multiple locations. One view.
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
+              Scale and safeguard operations across locations with a single
+              dashboard for visibility, permissions, and monitoring.
+            </p>
 
-            <div className="rounded-3xl border border-white/10 bg-[#0b1118] p-5 shadow-inner lg:col-span-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9ec2cd]">
-                Appointment Notes
-              </p>
-              <div className="mt-4 space-y-4 text-base leading-7 text-[#cfd8dd]">
-                <p>
-                  Each option is designed to make scheduling simple and help
-                  start the conversation with the right level of detail.
-                </p>
-                <p>
-                  We&apos;ll confirm your market, dates, and objective—then share a
-                  recommended vehicle and route plan designed for visibility and
-                  frequency.
-                </p>
-                <p>
-                  For complex requests, we can coordinate proposal reviews and
-                  follow-up consultations through the contact team.
-                </p>
-                <p className="text-[#c9d4da]">
-                  Industry-reported studies often cite strong ad notice and
-                  recall for mobile billboards, with potential for tens of
-                  thousands of daily impressions per vehicle depending on route,
-                  traffic, and timing.
-                </p>
-              </div>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(244,122,31,0.28)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
+              >
+                Talk to a Specialist
+              </Link>
+              <Link
+                href="/area"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:w-fit sm:px-8 sm:text-base"
+              >
+                Areas We Serve
+              </Link>
             </div>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-brand-ink-950 p-6 shadow-inner lg:col-span-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-steel-300">
+              Smarter Home Security &amp; Automation
+            </p>
+            <h3 className="font-display mt-3 text-2xl font-extrabold leading-tight text-white">
+              Control your system from anywhere
+            </h3>
+            <p className="mt-4 text-base leading-7 text-white/70">
+              Combine high-resolution cameras, remote management, monitoring,
+              and automation so you can stay connected whether you&apos;re home or
+              traveling.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10"
+            >
+              Schedule a Walkthrough
+            </Link>
           </div>
         </div>
       </section>

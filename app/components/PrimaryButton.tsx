@@ -9,6 +9,7 @@ type Props = {
   | {
       as?: "link";
       href: string;
+      onClick?: () => void;
     }
   | {
       as: "button";
@@ -19,7 +20,7 @@ type Props = {
 
 function getClasses(variant: Props["variant"], className: string) {
   const base =
-    "inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+    "inline-flex h-11 cursor-pointer items-center justify-center rounded-full px-6 text-sm font-semibold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
   const styles =
     variant === "solid"
@@ -46,7 +47,7 @@ export function PrimaryButton({
   }
 
   return (
-    <Link href={props.href} className={classes}>
+    <Link href={props.href} className={classes} onClick={props.onClick}>
       {children}
     </Link>
   );

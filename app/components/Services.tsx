@@ -1,94 +1,90 @@
-import { CompassIcon, ShieldIcon, SparkleIcon } from "lucide-react";
 import Image from "next/image";
+import { BadgeCheck, Handshake, Medal, Users } from "lucide-react";
+import { homeUnsplash } from "../lib/homeImages";
 
 export function Services() {
-  const aboutCards = [
-    {
-      title: "What We Do",
-      body: "Ads in Motion delivers mobile billboard and digital display advertising—helping brands reach people on the streets, near venues, and across key city routes.",
-      icon: <CompassIcon />,
-    },
-    {
-      title: "Why We Do It",
-      body: "Strong campaigns need visibility where people actually are. Mobile advertising adds eye-level visibility, location targeting, and flexible scheduling that complements other media.",
-      icon: <SparkleIcon />,
-    },
-    {
-      title: "Why Choose Us",
-      body: "We combine route planning, scheduling, and creative guidance—so your message lands in the right places, at the right times, with consistent execution and clear communication.",
-      icon: <ShieldIcon />,
-    },
-  ];  
   return (
     <>
-    <section id="services" className="bg-white py-8 dark:bg-background">
-      <div className="container mx-auto grid items-center gap-10 px-4 sm:px-6 md:grid-cols-12">
-        <div
-          className="relative col-span-12 md:col-span-7 overflow-hidden rounded-[22px] bg-surface shadow-soft ring-1 ring-black/5"
-          /* Match the actual image aspect ratio (features.png is 1264x541). */
-          style={{ aspectRatio: "1264 / 541" }}
-        >
-          <Image
-            src="/features.png"
-            alt="Mobile advertising"
-            fill
-            sizes="(max-width: 767px) 100vw, (min-width: 768px) 50vw"
-            className="object-cover"
-          />
-        </div>
-
-        <div className="col-span-12 md:col-span-5">
-          <h2 className="font-display text-[22px] lg:text-[46px] font-bold leading-[0.98] text-brand-teal-900 dark:text-foreground">
-            PREMIUM MOBILE ADVERTISING <br />
-            SERVICES
-          </h2>
-          <ul className="mt-6 space-y-3 text-[22px] font-medium text-foreground">
-            {["City-Wide Campaigns", "Event-Specific Coverage", "Digital Integration"].map(
-              (item) => (
-                <li key={item} className="flex items-center gap-4">
-                  <span className="h-[10px] w-[10px] rounded-full bg-brand-teal-900" />
-                  <span>{item}</span>
-                </li>
-              ),
-            )}
-          </ul>
-        </div>
-      </div>
-    </section>
-    <section className="bg-[#111a22] px-4 py-14 sm:px-8">
-        <div className="container mx-auto w-full">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="font-display text-3xl font-bold leading-[0.95] text-[#f0f7f8] sm:text-4xl lg:text-5xl">
-              Built for Better Visibility
-            </h2>
-            <p className="mt-4 text-base leading-7 text-[#c9d4da] sm:text-lg sm:leading-8">
-              We help clients stand out in real-world environments with route
-              planning, strong creative, and consistent execution.
-            </p>
+      <section className="bg-white py-12 dark:bg-background">
+        <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-7">
+            <div className="relative overflow-hidden rounded-[24px] bg-surface shadow-soft ring-1 ring-black/10 dark:bg-surface">
+              <Image
+                src={homeUnsplash.teamCommitment}
+                alt="Security and technology professionals collaborating as a team"
+                width={1400}
+                height={800}
+                className="h-auto w-full object-cover"
+                priority={false}
+                sizes="(max-width: 1024px) 100vw, 58vw"
+              />
+              <div className="absolute left-6 top-6 rounded-xl bg-black/65 px-4 py-3 ring-1 ring-white/15">
+                <div className="text-[13px] font-extrabold uppercase tracking-[0.18em] text-brand-gold-500">
+                  2,000+
+                </div>
+                <div className="text-[20px] font-extrabold leading-tight text-white">
+                  Businesses
+                  <br />
+                  Secured
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {aboutCards.map((card) => (
-              <article
-                key={card.title}
-                className="rounded-2xl border border-white/10 bg-linear-to-br from-white/10 to-white/5 p-5 shadow-[0_16px_34px_rgba(0,0,0,0.35)]"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 text-[#9ec2cd]">{card.icon}</div>
+          <div className="lg:col-span-5">
+            <div className="font-display text-[34px] font-extrabold leading-[0.95] text-black dark:text-foreground">
+              TEAM COMMITMENT
+            </div>
+            <div className="mt-2 text-[18px] font-bold uppercase tracking-wide text-black/70 dark:text-foreground/75">
+              Client commitment:
+              <br />
+              Our service philosophy
+            </div>
+            <p className="mt-5 text-[15px] leading-7 text-muted">
+              Based out of Austin, our security professionals are dedicated to
+              quality installs, clear communication, and systems that are
+              configured for your space.
+            </p>
+
+            <div className="mt-7 grid gap-4">
+              {[
+                {
+                  title: "Excellence reputation",
+                  body: "Proven expertise in security solutions.",
+                  Icon: Medal,
+                },
+                {
+                  title: "Partnership focused",
+                  body: "We build relationships for long-term security.",
+                  Icon: Handshake,
+                },
+                {
+                  title: "Commitment guided",
+                  body: "Professional installation and management.",
+                  Icon: BadgeCheck,
+                },
+                {
+                  title: "Team of specialists",
+                  body: "Security design and support staff.",
+                  Icon: Users,
+                },
+              ].map(({ title, body, Icon }) => (
+                <div key={title} className="flex items-start gap-4">
+                  <div className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-gold-500/15 ring-1 ring-brand-gold-500/25">
+                    <Icon className="h-5 w-5 text-brand-gold-600" />
+                  </div>
                   <div>
-                    <h3 className="font-display text-2xl font-bold uppercase leading-tight text-[#f4fbfd]">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 text-base leading-7 text-[#c7d2d9]">
-                      {card.body}
-                    </p>
+                    <div className="text-[14px] font-extrabold uppercase tracking-[0.14em] text-black dark:text-foreground">
+                      {title}
+                    </div>
+                    <div className="mt-1 text-[14px] leading-6 text-muted">
+                      {body}
+                    </div>
                   </div>
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
           </div>
-
-       
         </div>
       </section>
     </>
