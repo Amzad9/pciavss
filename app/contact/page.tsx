@@ -1,7 +1,16 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 import { siteContact } from "../components/siteConfig";
-import type { Metadata } from "next";
+
+type ContactOption = {
+  title: string;
+  body: ReactNode;
+  value: string;
+  href: string;
+  icon: ReactNode;
+};
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-const contactOptions = [
+const contactOptions: ContactOption[] = [
   {
     title: "Call Or Text",
     body: "Speak directly with PCI AVSS about your security goals, property details, and scheduling.",
@@ -27,7 +36,7 @@ const contactOptions = [
   },
   {
     title: "Operations Support",
-    body: "Current clients can use operations support for changes, coordination, and ongoing communication.",
+    body: "Current clients: reach operations for system changes, scheduling, and coordination.",
     value: siteContact.emailOperations,
     href: `mailto:${siteContact.emailOperations}`,
     icon: <ShieldCheckIcon />,
@@ -96,9 +105,7 @@ export default function ContactPage() {
                 <h2 className="mt-4 text-2xl font-black uppercase leading-tight text-white">
                   {item.title}
                 </h2>
-                <p className="mt-3 text-base leading-7 text-white/70">
-                  {item.body}
-                </p>
+                <p className="mt-3 text-base leading-7 text-white/70">{item.body}</p>
                 <p className="mt-5 break-words whitespace-normal text-sm font-black uppercase tracking-[0.16em] text-brand-gold-500">
                   {item.value}
                 </p>

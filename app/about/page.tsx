@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { siteContact } from "../components/siteConfig";
+import { homeUnsplash } from "../lib/homeImages";
 
 export const metadata: Metadata = {
   title: "About",
@@ -83,11 +84,12 @@ export default function AboutPage() {
       <section className="relative bg-brand-ink-900 px-4 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-16">
         <div className="absolute inset-0">
           <Image
-            src="/abouts/banner.png"
-            alt=""
+            src={homeUnsplash.aboutBanner}
+            alt="Modern commercial high-rises representing long-term business security partnerships"
             fill
             priority
             className="object-cover opacity-95"
+            sizes="100vw"
           />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/70 to-transparent" />

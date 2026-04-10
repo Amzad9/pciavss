@@ -20,33 +20,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/70" />
         </div>
 
-        {/* Decorative "camera" (simple SVG so we don't depend on new assets) */}
-        <div className="pointer-events-none absolute right-6 top-10 hidden md:block">
-          <svg
-            width="150"
-            height="110"
-            viewBox="0 0 150 110"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="opacity-85 drop-shadow-[0_10px_25px_rgba(0,0,0,0.55)]"
-            aria-hidden="true"
-          >
-            <path
-              d="M88 5c8 0 15 6 15 14v10h10c17 0 32 14 32 32 0 18-15 33-32 33H55C36 94 21 79 21 60c0-17 11-30 26-32 2-13 14-23 29-23h12Z"
-              fill="#f5f7fb"
-              fillOpacity="0.92"
-            />
-            <path
-              d="M102 30c0 6-5 11-11 11s-11-5-11-11 5-11 11-11 11 5 11 11Z"
-              fill="#0d1117"
-              fillOpacity="0.9"
-            />
-            <path
-              d="M95 30c0 2-2 4-4 4s-4-2-4-4 2-4 4-4 4 2 4 4Z"
-              fill="#f47a1f"
-            />
-          </svg>
-        </div>
+      
 
         <div className="container relative mx-auto px-6 pb-26 pt-12 md:pb-36 md:pt-20">
           <div className="max-w-[760px]">
@@ -100,7 +74,7 @@ export function Hero() {
                 icon: ClipboardPenLine,
                 image: homeUnsplash.serviceCards.designConsult,
                 imageAlt:
-                  "Team reviewing security plans and business documents during consultation",
+                  "Professional security consultation and team collaboration in a modern office",
                 bullets: ["Site walkthrough", "System layout", "Code-compliant plans"],
               },
               {
@@ -109,7 +83,7 @@ export function Hero() {
                 icon: Drill,
                 image: homeUnsplash.serviceCards.installation,
                 imageAlt:
-                  "Technician installing cabling and security hardware on site",
+                  "Engineer performing precision technical work and system installation",
                 bullets: ["Clean wiring", "Hardware setup", "Testing & training"],
               },
               {
@@ -117,7 +91,8 @@ export function Hero() {
                 subtitle: "Instant motion alerts",
                 icon: BellRing,
                 image: homeUnsplash.serviceCards.monitoring,
-                imageAlt: "Dashboard and analytics screens for monitoring alerts",
+                imageAlt:
+                  "Professional reviewing monitoring data and analytics at a workstation",
                 bullets: ["Mobile access", "Event notifications", "Ongoing support"],
               },
             ].map((card) => {
