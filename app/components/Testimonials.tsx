@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
+import { homeUnsplash } from "../lib/homeImages";
 
 type Testimonial = {
   name: string;
   date: string;
   quote: string;
-  /** Path under `public/testimonials/`. Omit to show an initial letter instead. */
-  avatarSrc?: string;
 };
 
 const testimonials: Testimonial[] = [
@@ -17,21 +16,18 @@ const testimonials: Testimonial[] = [
     date: "2025-03-30",
     quote:
       "Tony was so patient answering my mother's questions. She contacted multiple people and this company was the one she felt most comfortable going with. She has some security cameras she needed installed and the whole process went very smoothly 10/10 would reccomend",
-    avatarSrc: "/testimonials/mjh.png",
   },
   {
     name: "Agustina Gomez (August)",
     date: "2022-06-04",
     quote:
       "did a quick and easy job. Didnt even take long to install. cleaned up after themselves did a splendid job overall. Very professional job.",
-    avatarSrc: "/testimonials/Agustina.png",
   },
   {
     name: "Jasmine Pacheco",
     date: "2022-11-30",
     quote:
       "Awesome work, fast and very reliable. Cameras are working just great. Will definitely recommend this business to other friends and family!!",
-    avatarSrc: "/testimonials/jasmine.png",
   },
 ];
 
@@ -94,47 +90,50 @@ export function Testimonials() {
         </div>
 
         <div className="mt-10 grid gap-10 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <article key={t.name} className="flex items-start gap-5">
-              <div className="shrink-0">
-                {t.avatarSrc ? (
-                  <Image
-                    src={t.avatarSrc}
-                    alt=""
-                    width={84}
-                    height={84}
-                    className="h-[84px] w-[84px] rounded-full object-cover ring-4 ring-white/10"
-                    sizes="84px"
-                  />
-                ) : (
-                  <div
-                    className="grid h-[84px] w-[84px] place-items-center rounded-full bg-brand-gold-500/20 ring-4 ring-white/10"
-                    aria-hidden="true"
-                  >
-                    <span className="font-display text-[28px] font-extrabold text-brand-gold-500">
-                      {testimonialInitial(t.name)}
+          {testimonials.map((t, index) => {
+            const portrait = homeUnsplash.testimonialPortraits[index];
+            return (
+              <article key={t.name} className="flex items-start gap-5">
+                <div className="shrink-0">
+                  {portrait ? (
+                    <Image
+                      src={portrait}
+                      alt=""
+                      width={84}
+                      height={84}
+                      className="h-[84px] w-[84px] rounded-full object-cover ring-4 ring-white/10"
+                      sizes="84px"
+                    />
+                  ) : (
+                    <div
+                      className="grid h-[84px] w-[84px] place-items-center rounded-full bg-brand-gold-500/20 ring-4 ring-white/10"
+                      aria-hidden="true"
+                    >
+                      <span className="font-display text-[28px] font-extrabold text-brand-gold-500">
+                        {testimonialInitial(t.name)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1 text-brand-gold-500">
+                    {Array.from({ length: 5 }).map((_, idx) => (
+                      <span key={idx} aria-hidden="true" className="text-[16px]">
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                  <TestimonialQuote quote={t.quote} />
+                  <div className="mt-2 text-[15px] font-semibold text-white">
+                    {t.name}
+                    <span className="ml-2 text-[13px] font-semibold text-white/55">
+                      {t.date}
                     </span>
                   </div>
-                )}
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1 text-brand-gold-500">
-                  {Array.from({ length: 5 }).map((_, idx) => (
-                    <span key={idx} aria-hidden="true" className="text-[16px]">
-                      ★
-                    </span>
-                  ))}
                 </div>
-                <TestimonialQuote quote={t.quote} />
-                <div className="mt-2 text-[15px] font-semibold text-white">
-                  {t.name}
-                  <span className="ml-2 text-[13px] font-semibold text-white/55">
-                    {t.date}
-                  </span>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
