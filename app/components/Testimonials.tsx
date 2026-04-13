@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
-import { homeUnsplash } from "../lib/homeImages";
 
 type Testimonial = {
   name: string;
   date: string;
   quote: string;
+  avatarSrc?: string;
 };
 
 const testimonials: Testimonial[] = [
@@ -16,18 +16,21 @@ const testimonials: Testimonial[] = [
     date: "2025-03-30",
     quote:
       "Tony was so patient answering my mother's questions. She contacted multiple people and this company was the one she felt most comfortable going with. She has some security cameras she needed installed and the whole process went very smoothly 10/10 would reccomend",
+    avatarSrc: "/testimonial/test2.webp",
   },
   {
     name: "Agustina Gomez (August)",
     date: "2022-06-04",
     quote:
       "did a quick and easy job. Didnt even take long to install. cleaned up after themselves did a splendid job overall. Very professional job.",
+    avatarSrc: "/testimonial/test1.webp",
   },
   {
     name: "Jasmine Pacheco",
     date: "2022-11-30",
     quote:
       "Awesome work, fast and very reliable. Cameras are working just great. Will definitely recommend this business to other friends and family!!",
+    avatarSrc: "/testimonial/test3.webp",
   },
 ];
 
@@ -90,8 +93,8 @@ export function Testimonials() {
         </div>
 
         <div className="mt-10 grid gap-10 md:grid-cols-3">
-          {testimonials.map((t, index) => {
-            const portrait = homeUnsplash.testimonialPortraits[index];
+          {testimonials.map((t) => {
+            const portrait = t.avatarSrc;
             return (
               <article key={t.name} className="flex items-start gap-5">
                 <div className="shrink-0">
