@@ -55,7 +55,7 @@ export default function ContactPage() {
       <section className="relative overflow-hidden bg-brand-ink-900 px-4 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-16">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/75 to-brand-ink-950/45" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(244,122,31,0.14)_0%,rgba(0,0,0,0)_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.14)_0%,rgba(0,0,0,0)_55%)]" />
 
         <div className="container mx-auto w-full">
           <div className="relative z-10 max-w-4xl">
@@ -75,7 +75,7 @@ export default function ContactPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href={siteContact.phoneHref}
-                className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(244,122,31,0.30)] transition hover:brightness-105 sm:w-auto sm:px-8 sm:text-base"
+                className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:w-auto sm:px-8 sm:text-base"
               >
                 Call {siteContact.phone}
               </a>
@@ -149,7 +149,7 @@ export default function ContactPage() {
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href={`mailto:${siteContact.emailShowroom}`}
-                  className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(244,122,31,0.28)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(220,38,38,0.28)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
                 >
                   Book Via Email
                 </a>
@@ -240,8 +240,8 @@ export default function ContactPage() {
 
             <div className="h-[320px] w-full sm:h-[380px] lg:h-[420px]">
               <iframe
-                title="PCI AVSS map"
-                src="https://www.google.com/maps?q=1034%20N%20Tustin%20Ave%20Anaheim%2C%20CA%2092807&z=15&output=embed"
+                title="AVSS map"
+                src="https://www.google.com/maps?q=1090%20N%20Tustin%20Anaheim%2C%20CA&z=15&output=embed"
                 className="h-full w-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -1,18 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  compress: true,
+  output: "export",
+
   images: {
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     remotePatterns: [
       {
         protocol: "https",
         hostname: "images.unsplash.com",
-        pathname: "/**",
       },
     ],
+    unoptimized: true,
   },
+
+  trailingSlash: true,
 };
 
 export default nextConfig;

@@ -16,7 +16,7 @@ export default function RequestQuotePage() {
       <section className="relative overflow-hidden bg-brand-ink-900 px-4 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/75 to-brand-ink-950/45" />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(244,122,31,0.14)_0%,rgba(0,0,0,0)_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.14)_0%,rgba(0,0,0,0)_55%)]" />
 
         <div className="container mx-auto">
           <div className="relative z-10 max-w-4xl">
@@ -80,8 +80,7 @@ export default function RequestQuotePage() {
                   Prefer browsing first?
                 </p>
                 <p className="mt-3 text-base leading-7 text-white/70">
-                  See available services and packages, then request a quote when
-                  ready.
+                  See available services, then request a quote when ready.
                 </p>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   <Link
@@ -89,12 +88,6 @@ export default function RequestQuotePage() {
                     className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10"
                   >
                     Services
-                  </Link>
-                  <Link
-                    href="/packages"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10"
-                  >
-                    Packages
                   </Link>
                 </div>
               </div>

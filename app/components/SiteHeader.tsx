@@ -12,8 +12,6 @@ const nav = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Packages", href: "/packages" },
-  { label: "Area", href: "/area" },
   { label: "Blogs", href: "/blog" },
   { label: "Gallery", href: "/portfolio" },
   { label: "Contact", href: "/contact" },

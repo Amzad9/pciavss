@@ -21,33 +21,20 @@ export const serviceCards: ServiceCard[] = [
     image: "/service/Security-Cameras.jpg",
   },
   {
-    title: "Visual Monitoring",
-    body: "Real-time oversight across properties with verification and response workflows.",
-    image: "/service/Visual-Monitoring.jpg",
-  },
-  {
     title: "Video Monitoring",
     body: "Remote or live video feeds with smart alerts and playback features.",
-    href: "/packages",
     image: "/service/Video-Monitoring.jpg",
   },
   {
-    title: "Mobile Security Trailer",
+    title: "Mobile Security Trailers",
     body: "Deployable surveillance units for construction sites, events, and remote areas.",
-    href: "#",
     image:
       "/service/imgi_3_b586a8_40fb2b8a168344d8abdd26b4ce669570mv2-rcvlhvzs4u2uh2zuclnbwqwqsgldydpmc7pzlsxkz2.jpg",
   },
   {
-    title: "Alarm Systems",
+    title: "Alarm System",
     body: "Smart alarms with wireless or hardwired options for 24/7 threat detection.",
     image: "/service/image-49.png",
-  },
-  {
-    title: "Intrusion Protection",
-    body: "Perimeter and interior detection to deter threats before damage happens.",
-    href: "#",
-    image: "/service/Intrusion-Protection.jpg",
   },
   {
     title: "Access Control",
@@ -55,8 +42,8 @@ export const serviceCards: ServiceCard[] = [
     image: "/service/Access-Control.jpg",
   },
   {
-    title: "Smart Home Control",
-    body: "Control your system from anywhere with automation and mobile access.",
+    title: "Commercial Audio",
+    body: "Audio solutions designed for business environments with clean wiring and setup.",
     image: "/service/image-50.png",
   },
 ];

@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 function getBaseUrl() {
   return process.env.NEXT_PUBLIC_SITE_URL ?? "https://pciavss.com";
 }
@@ -11,8 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${baseUrl}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/services`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${baseUrl}/packages`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${baseUrl}/area`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/portfolio`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

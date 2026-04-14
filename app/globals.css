@@ -9,9 +9,9 @@
   --brand-teal-950: #0b0f14;
   --brand-teal-900: #151b22;
   --brand-teal-800: #232b36;
-  /* Reused by buttons as the primary CTA accent (orange in the mockups). */
-  --brand-gold-500: #f47a1f;
-  --brand-gold-600: #dd6511;
+  /* Reused by buttons as the primary CTA accent (red). */
+  --brand-gold-500: #dc2626;
+  --brand-gold-600: #b91c1c;
 
   /* AVSS-like accent + dark surfaces */
   --brand-ink-950: #07090c;

@@ -2,8 +2,7 @@
 export const homeUnsplash = {
   aboutBanner:
     "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=85",
-  hero:
-    "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=2400&q=80",
+  hero: "/hero.png",
   serviceCards: {
     designConsult:
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=85",

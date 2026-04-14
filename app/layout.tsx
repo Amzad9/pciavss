@@ -45,15 +45,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              name: "PCI AVSS",
+              name: "AVSS",
               url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pciavss.com",
               telephone: "+1-800-299-5964",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "1034 N. Tustin Ave",
+                streetAddress: "1090 N Tustin",
                 addressLocality: "Anaheim",
                 addressRegion: "CA",
-                postalCode: "92807",
                 addressCountry: "US",
               },
               areaServed: "Southern California",

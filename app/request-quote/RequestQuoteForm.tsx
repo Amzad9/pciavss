@@ -153,11 +153,9 @@ export function RequestQuoteForm() {
             {[
               "Security Cameras",
               "Video Monitoring",
-              "Visual Monitoring",
-              "Alarm / Intrusion",
+              "Mobile Security Trailers",
+              "Alarm System",
               "Access Control",
-              "Mobile Surveillance Trailer",
-              "Networking / Low Voltage",
               "Commercial Audio",
             ].map((item) => (
               <option key={item} value={item} className="bg-brand-ink-950 text-white">
@@ -201,7 +199,7 @@ export function RequestQuoteForm() {
         <button
           type="submit"
           disabled={!canSubmit}
-          className="inline-flex h-12 cursor-pointer items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-8 text-[12px] font-black uppercase tracking-[0.16em] text-black shadow-[0_0_16px_rgba(244,122,31,0.30)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex h-12 cursor-pointer items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-8 text-[12px] font-black uppercase tracking-[0.16em] text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Request Quote
         </button>

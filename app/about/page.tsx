@@ -129,7 +129,7 @@ export default function AboutPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Link
                 href="/contact"
-                className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(244,122,31,0.30)] transition hover:brightness-105 sm:w-auto sm:px-8 sm:text-base"
+                className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:w-auto sm:px-8 sm:text-base"
               >
                 Request Quote
               </Link>
@@ -196,7 +196,7 @@ export default function AboutPage() {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/contact"
-                  className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(244,122,31,0.28)] transition hover:brightness-105 sm:w-fit"
+                  className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(220,38,38,0.28)] transition hover:brightness-105 sm:w-fit"
                 >
                   Get a Free Site Survey
                 </Link>
@@ -313,7 +313,7 @@ export default function AboutPage() {
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contact"
-                  className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(244,122,31,0.28)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
+                  className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(220,38,38,0.28)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
                 >
                   Contact Us
                 </Link>
@@ -327,14 +327,14 @@ export default function AboutPage() {
             </div>
 
             <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-brand-ink-950 p-5 shadow-inner lg:col-span-5">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(244,122,31,0.20)_0%,rgba(0,0,0,0)_60%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(220,38,38,0.20)_0%,rgba(0,0,0,0)_60%)]" />
               <div className="relative">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-gold-500">
                   Office
                 </p>
-                <p className="mt-2 text-lg font-black text-white">PCI AVSS</p>
+                <p className="mt-2 text-lg font-black text-white">AVSS</p>
                 <p className="mt-2 text-base leading-7 text-white/70">
-                  1034 N. Tustin Ave, Anaheim, CA 92807
+                  1090 N Tustin, Anaheim, CA
                 </p>
                 <p className="mt-4 text-base leading-7 text-white/70">
                   (800) 299-5964

@@ -6,7 +6,7 @@ import { serviceCards, serviceSectionId } from "../lib/serviceCards";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Commercial security cameras, alarm systems, video monitoring, access control, low voltage, and mobile surveillance trailers in Southern California.",
+    "Commercial security cameras, video monitoring, mobile security trailers, alarm systems, access control, and commercial audio in Southern California.",
   alternates: { canonical: "/services" },
 };
 
@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden bg-brand-ink-900 px-4 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-16">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/75 to-brand-ink-950/45" />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(244,122,31,0.16)_0%,rgba(0,0,0,0)_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.16)_0%,rgba(0,0,0,0)_55%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
         <div className="container mx-auto">
@@ -39,15 +39,15 @@ export default function ServicesPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(244,122,31,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
+                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
               >
                 Get a Free Site Survey
               </Link>
               <Link
-                href="/packages"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:px-8 sm:text-base"
               >
-                View Monitoring Packages
+                Talk to a Specialist
               </Link>
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function ServicesPage() {
               Our Services
             </h2>
             <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-              A complete set of tools—surveillance, monitoring, alarms, and
-              access—designed to work together.
+              Security cameras, monitoring, trailers, alarms, access control,
+              and commercial audio designed to work together.
             </p>
           </div>
 
@@ -123,30 +123,29 @@ export default function ServicesPage() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(244,122,31,0.28)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
+                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(220,38,38,0.28)] transition hover:brightness-105 sm:w-fit sm:px-8 sm:text-base"
               >
                 Talk to a Specialist
               </Link>
               <Link
-                href="/area"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:w-fit sm:px-8 sm:text-base"
               >
-                Areas We Serve
+                Serving Orange, Los Angeles & Riverside
               </Link>
             </div>
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-brand-ink-950 p-6 shadow-inner lg:col-span-5">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-steel-300">
-              Smarter Home Security &amp; Automation
+              Commercial Audio &amp; Support
             </p>
             <h3 className="font-display mt-3 text-2xl font-extrabold leading-tight text-white">
-              Control your system from anywhere
+              Clear communication for your property
             </h3>
             <p className="mt-4 text-base leading-7 text-white/70">
-              Combine high-resolution cameras, remote management, monitoring,
-              and automation so you can stay connected whether you&apos;re home or
-              traveling.
+              Pair your security system with dependable on-site and remote support,
+              including audio integration and practical day-to-day operations guidance.
             </p>
             <Link
               href="/contact"

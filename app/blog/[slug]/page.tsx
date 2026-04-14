@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }: Props) {
       <section className="relative overflow-hidden bg-brand-ink-900 px-4 pb-10 pt-10 sm:px-8 sm:pb-12 sm:pt-16">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/75 to-brand-ink-950/45" />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(244,122,31,0.14)_0%,rgba(0,0,0,0)_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.14)_0%,rgba(0,0,0,0)_55%)]" />
 
         <div className="container mx-auto">
           <div className="relative z-10 max-w-4xl">
@@ -119,15 +119,15 @@ export default async function BlogPostPage({ params }: Props) {
               </p>
               <Link
                 href="/contact"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(244,122,31,0.28)] transition hover:brightness-105"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(220,38,38,0.28)] transition hover:brightness-105"
               >
                 Request Quote
               </Link>
               <Link
-                href="/packages"
+                href="/services"
                 className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10"
               >
-                View Packages
+                View Services
               </Link>
             </div>
           </aside>

@@ -17,7 +17,7 @@ export function SiteFooter() {
 
       {/* Subtle vignette / sheen */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_40%,rgba(244,122,31,0.14)_0%,rgba(0,0,0,0)_52%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_40%,rgba(220,38,38,0.14)_0%,rgba(0,0,0,0)_52%)]"
         aria-hidden="true"
       />
       <div
@@ -56,8 +56,6 @@ export function SiteFooter() {
               { label: "Home", href: "/" },
               { label: "About Us", href: "/about" },
               { label: "Services", href: "/services" },
-              { label: "Packages", href: "/packages" },
-              { label: "Area", href: "/area" },
               { label: "Blogs", href: "/blog" },
               { label: "Gallery", href: "/portfolio" },
               { label: "Contact", href: "/contact" },
