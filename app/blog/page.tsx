@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "PCI AVSS blog: security cameras, monitoring, alarms, intrusion protection, and mobile surveillance trailers.",
+    "AVSS blog: security cameras, monitoring, alarms, intrusion protection, and mobile surveillance trailers.",
   alternates: { canonical: "/blog" },
 };
 
@@ -20,14 +20,14 @@ export default function BlogIndexPage() {
         <div className="container mx-auto">
           <div className="relative z-10 max-w-4xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-steel-300 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:text-sm">
-              PCI AVSS Blog
+              AVSS Blog
             </p>
             <h1 className="font-display mt-5 text-5xl font-bold uppercase leading-[0.9] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-6xl">
               Security Tips,
               <br />
               Systems &amp; Best Practices
             </h1>
-            <p className="mt-5 max-w-[48rem] text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-3xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
               Read articles on surveillance, monitoring, intrusion protection,
               and mobile security deployments.
             </p>

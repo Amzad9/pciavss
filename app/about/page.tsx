@@ -8,7 +8,7 @@ import { homeUnsplash } from "../lib/homeImages";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about PCI AVSS—trusted since 2003 for security cameras, alarms, access control, and mobile monitoring solutions.",
+    "Learn about AVSS—trusted since 2003 for security cameras, alarms, access control, and mobile monitoring solutions.",
   alternates: { canonical: "/about" },
 };
 
@@ -106,8 +106,8 @@ export default function AboutPage() {
               <br />
               Your Safety Starts Here
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
-              For more than two decades, PCI Audio Video Security Solutions has
+            <p className="mt-5 max-w  -2xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+              For more than two decades, AVSS has
               helped organizations strengthen safety with advanced systems and
               professional installations. From HD surveillance to mobile
               trailers and access control, we provide technology that works
@@ -306,7 +306,7 @@ export default function AboutPage() {
                 Better yet, Call or Message Us
               </h2>
               <p className="mt-4 text-base leading-7 text-white/70 sm:text-lg sm:leading-8">
-                Contact PCI AVSS to discuss your property, priorities, and next
+                Contact AVSS to discuss your property, priorities, and next
                 steps.
               </p>
 

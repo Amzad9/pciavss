@@ -1,7 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { serviceCards, serviceSectionId } from "../lib/serviceCards";
+import {
+  serviceCards,
+  servicePagePath,
+  serviceSectionId,
+} from "../lib/serviceCards";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -17,7 +21,7 @@ export default function ServicesPage() {
         <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/75 to-brand-ink-950/45" />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.16)_0%,rgba(0,0,0,0)_55%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
 
         <div className="container mx-auto">
           <div className="relative z-10 max-w-4xl">
@@ -27,7 +31,7 @@ export default function ServicesPage() {
             <h1 className="font-display mt-5 text-4xl font-bold uppercase leading-[0.9] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-6xl lg:text-6xl">
               Safeguard Your
               <br />
-              Investments With PCI AVSS
+              Investments With AVSS
             </h1>
             <p className="mt-5 max-w-[720px] text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
               Our team is committed to helping protect your home or business
@@ -91,14 +95,12 @@ export default function ServicesPage() {
                   <p className="mt-3 text-base leading-7 text-white/70">
                     {card.body}
                   </p>
-                  {card.href ? (
-                    <Link
-                      href={card.href}
-                      className="mt-5 inline-flex text-sm font-black uppercase tracking-[0.14em] text-white/80 transition hover:text-white"
-                    >
-                      Learn More →
-                    </Link>
-                  ) : null}
+                  <Link
+                    href={servicePagePath(card.title)}
+                    className="mt-5 inline-flex text-sm font-black uppercase tracking-[0.14em] text-white/80 transition hover:text-white"
+                  >
+                    Learn More →
+                  </Link>
                 </div>
               </div>
             ))}

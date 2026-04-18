@@ -79,7 +79,7 @@ export function SiteFooter() {
             {serviceCards.map((item) => (
               <Link
                 key={item.title}
-                href={`/services#${serviceSectionId(item.title)}`}
+                href={`/services/${serviceSectionId(item.title)}`}
                 className="hover:text-white"
               >
                 {item.title}

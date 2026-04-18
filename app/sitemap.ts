@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { serviceCards, serviceSectionId } from "./lib/serviceCards";
 
 export const dynamic = "force-static";
 
@@ -13,6 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${baseUrl}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/services`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    ...serviceCards.map((c) => ({
+      url: `${baseUrl}/services/${serviceSectionId(c.title)}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
     { url: `${baseUrl}/portfolio`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
