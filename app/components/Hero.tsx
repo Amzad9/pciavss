@@ -6,63 +6,69 @@ import { PrimaryButton } from "./PrimaryButton";
 export function Hero() {
   return (
     <>
-      <section className="relative overflow-hidden bg-brand-ink-950">
-        <div className="absolute inset-0">
-          <Image
-            src={homeUnsplash.hero}
-            alt="Commercial security cameras and surveillance installation in a building interior"
-            fill
-            priority
-            className="object-cover opacity-95"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/55 to-black/10" />
-          <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/70" />
-        </div>
+     <section className="relative bg-white">
+  <div className="container mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-[900px]">
 
-      
+      {/* Heading */}
+      <h1 className="text-[38px] sm:text-[48px] md:text-[56px] font-extrabold leading-tight text-[#111111]">
+        Security Camera & Access Control Installation in Orange County
+      </h1>
 
-        <div className="container relative mx-auto px-6 pb-26 pt-12 md:pb-36 md:pt-20">
-          <div className="max-w-[760px]">
-            <h1 className="font-display text-balance text-[44px] font-extrabold leading-[0.95] text-white sm:text-[54px] md:text-[64px]">
-              PROTECTING BUSINESSES,
-              <br />
-              PROPERTIES &amp; PEOPLE
-            </h1>
-            <p className="mt-5 max-w-[560px] text-[16px] leading-7 text-white/80 sm:text-[18px]">
-              From advanced video surveillance to complete access control, we
-              design and install dependable security systems backed by ongoing
-              support.
-            </p>
+      {/* Description */}
+      <p className="mt-5 max-w-[700px] text-[16px] sm:text-[18px] leading-7 text-[#4B5563]">
+        Protect your business with professional surveillance systems installed fast—so you can monitor everything and stop problems before they happen.
+      </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <PrimaryButton href="/contact" className="h-12 px-8 text-[12px]">
-                CONTACT US NOW
-              </PrimaryButton>
-              <PrimaryButton
-                href="/services"
-                variant="outline"
-                className="h-12 px-8 text-[12px]"
-              >
-                VIEW SURVEILLANCE SYSTEMS
-              </PrimaryButton>
-            </div>
+      {/* Bullet Points */}
+      <ul className="mt-6 space-y-3">
+        {[
+          "Same-week installations available",
+          "Remote access from your phone",
+          "Built for warehouses, offices & job sites",
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-2 text-[16px] sm:text-[18px] text-[#374151]">
+            <svg
+              className="w-5 h-5 mt-1 text-[#DC2626]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
 
-            <div className="mt-10 inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-black/35 px-5 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.45)]">
-              <ShieldCheck className="h-7 w-7 text-brand-gold-500" />
-              <div className="text-left">
-                <div className="text-[22px] font-extrabold leading-none text-white">
-                  21+ Years Protecting
-                </div>
-                <div className="mt-1 text-[14px] font-semibold text-white/75">
-                  Businesses Daily
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* CTA Buttons */}
+      <div className="mt-8 flex flex-wrap gap-4">
+        {/* Primary */}
+        <a
+          href="/contact"
+          className="h-12 px-8 flex items-center justify-center text-sm font-semibold rounded-lg bg-[#DC2626] text-white hover:bg-[#B91C1C] transition"
+        >
+          Get Free Quote
+        </a>
 
+        {/* Secondary */}
+        <a
+          href="tel:18002995964"
+          className="h-12 px-8 flex items-center justify-center text-sm font-semibold rounded-lg border border-[#111111] text-[#111111]"
+        >
+          Call or Text (800) 299-5964
+        </a>
+      </div>
+
+      {/* Pricing Line */}
+      <p className="mt-6 text-[14px] text-[#6B7280]">
+        Camera systems starting at $1,299 • Mobile security trailers from $50/day
+      </p>
+
+    </div>
+  </div>
+</section>
       {/* Service tiles */}
       <section className="-mt-20 relative z-10 pb-10 sm:-mt-24 md:-mt-28">
         <div className="container mx-auto px-4 sm:px-6">
