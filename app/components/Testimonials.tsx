@@ -87,7 +87,7 @@ export function Testimonials() {
         <div className="flex items-center justify-center">
           <div className="h-[4px] w-12 rounded bg-brand-gold-500" aria-hidden="true" />
           <h3 className="mx-4 font-display text-center text-[30px] font-extrabold uppercase tracking-[0.14em] text-brand-gold-500 sm:text-[36px] md:text-[40px]">
-            CLIENT SUCCESS STORIES
+            what our clients say
           </h3>
           <div className="h-[4px] w-12 rounded bg-brand-gold-500" aria-hidden="true" />
         </div>

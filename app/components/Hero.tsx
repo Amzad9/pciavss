@@ -70,36 +70,36 @@ export function Hero() {
   </div>
 </section>
       {/* Service tiles */}
-      <section className="-mt-20 relative z-10 pb-10 sm:-mt-24 md:-mt-28">
+      <section className="-mt-20 relative z-10 pb-10 sm:-mt-24 md:-mt-16">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid gap-6 md:grid-cols-3">
             {[
               {
                 title: "CUSTOM SECURITY DESIGN",
-                subtitle: "Expert consultation & design",
+                subtitle: "Plan the right system before you install",
                 icon: ClipboardPenLine,
                 image: homeUnsplash.serviceCards.designConsult,
                 imageAlt:
-                  "Professional security consultation and team collaboration in a modern office",
-                bullets: ["Site walkthrough", "System layout", "Code-compliant plans"],
+                  "We access your property and design a system that gives you full coverage from day one.",
+                bullets: ["On-site walkthrough", "Custom system layout", "Code-compliant planning"],
               },
               {
                 title: "PROFESSIONAL INSTALLATION",
-                subtitle: "Precision installation services",
+                subtitle: "Clean, Reliable installation Done Right",
                 icon: Drill,
                 image: homeUnsplash.serviceCards.installation,
                 imageAlt:
-                  "Engineer performing precision technical work and system installation",
-                bullets: ["Clean wiring", "Hardware setup", "Testing & training"],
+                  "Our team handles everythings from wiring to setup system works perfectly.",
+                bullets: ["Organized, clean wiring", "Full hardware installation", "Testing and user training"],
               },
               {
                 title: "REMOTE MONITORING & ALERTS",
-                subtitle: "Instant motion alerts",
+                subtitle: "Stay Connected to Your Property 24/7",
                 icon: BellRing,
                 image: homeUnsplash.serviceCards.monitoring,
                 imageAlt:
-                  "Professional reviewing monitoring data and analytics at a workstation",
-                bullets: ["Mobile access", "Event notifications", "Ongoing support"],
+                  "Monitor activity in real time and get alerts when something happens.",
+                bullets: ["Instant motion alerts", "Mobile & remote access", "Ongoing support available"],
               },
             ].map((card) => {
               const Icon = card.icon;

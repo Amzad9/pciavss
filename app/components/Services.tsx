@@ -32,44 +32,44 @@ export function Services() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="font-display text-[34px] font-extrabold leading-[0.95] text-black dark:text-foreground">
-              TEAM COMMITMENT
-            </div>
-            <div className="mt-2 text-[18px] font-bold uppercase tracking-wide text-black/70 dark:text-foreground/75">
-              Client commitment:
-              <br />
-              Our service philosophy
-            </div>
-            <p className="mt-5 text-[15px] leading-7 text-muted">
+            <h2 className="font-display text-[34px] font-extrabold leading-[0.95] text-black dark:text-foreground">
+            Team Commitment Section Replace entire section with
+              </h2>
+              <h3 className="font-display text-[24px] font-extrabold leading-[0.95] text-black dark:text-foreground">
+              Why Businesses Choose AVSS
+              </h3>
+              
+           
+            {/* <p className="mt-5 text-[15px] leading-7 text-muted">
               Based out of Austin, our security professionals are dedicated to
               quality installs, clear communication, and systems that are
               configured for your space.
-            </p>
+            </p> */}
 
             <div className="mt-7 grid gap-4">
               {[
                 {
-                  title: "Excellence reputation",
-                  body: "Proven expertise in security solutions.",
+                  title: "Proven experience securing commercial properties",
+                  body: "",
                   Icon: Medal,
                 },
                 {
-                  title: "Partnership focused",
-                  body: "We build relationships for long-term security.",
+                  title: "Fast, reliable installations",
+                  body: "",
                   Icon: Handshake,
                 },
                 {
-                  title: "Commitment guided",
-                  body: "Professional installation and management.",
+                  title: "Clear communication from start to finish",
+                  body: "",
                   Icon: BadgeCheck,
                 },
                 {
-                  title: "Team of specialists",
-                  body: "Security design and support staff.",
+                  title: "Long-term support & system maintenance",
+                  body: "",
                   Icon: Users,
                 },
               ].map(({ title, body, Icon }) => (
-                <div key={title} className="flex items-start gap-4">
+                <div key={title} className="flex items-center gap-4">
                   <div className="grid h-11 w-11 place-items-center rounded-2xl bg-brand-gold-500/15 ring-1 ring-brand-gold-500/25">
                     <Icon className="h-5 w-5 text-brand-gold-600" />
                   </div>
@@ -77,9 +77,7 @@ export function Services() {
                     <div className="text-[14px] font-extrabold uppercase tracking-[0.14em] text-black dark:text-foreground">
                       {title}
                     </div>
-                    <div className="mt-1 text-[14px] leading-6 text-muted">
-                      {body}
-                    </div>
+                   
                   </div>
                 </div>
               ))}
