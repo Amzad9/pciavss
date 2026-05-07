@@ -5,7 +5,7 @@ import { homeUnsplash } from "../lib/homeImages";
 export function Services() {
   return (
     <>
-      <section className="bg-white py-12 dark:bg-background">
+      {/* <section className="bg-white py-12 dark:bg-background">
         <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">
             <div className="relative overflow-hidden rounded-[24px] bg-surface shadow-soft ring-1 ring-black/10 dark:bg-surface">
@@ -40,11 +40,7 @@ export function Services() {
               </h3>
               
            
-            {/* <p className="mt-5 text-[15px] leading-7 text-muted">
-              Based out of Austin, our security professionals are dedicated to
-              quality installs, clear communication, and systems that are
-              configured for your space.
-            </p> */}
+           
 
             <div className="mt-7 grid gap-4">
               {[
@@ -84,7 +80,7 @@ export function Services() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

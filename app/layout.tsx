@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import { PreFooterCta } from "./components/PreFooterCta";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -61,6 +62,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <PreFooterCta />
         <SiteFooter />
       </body>
     </html>
