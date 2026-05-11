@@ -5,7 +5,7 @@ export const homeUnsplash = {
   hero: "/hero.png",
   serviceCards: {
     designConsult:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=85",
+      "/service/design.png",
     installation:
       "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85",
     monitoring:
