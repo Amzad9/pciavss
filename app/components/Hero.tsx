@@ -1,22 +1,34 @@
 import Image from "next/image";
-import { BellRing, ClipboardPenLine, Drill, ShieldCheck } from "lucide-react";
+import { BellRing, ClipboardPenLine, Drill } from "lucide-react";
 import { homeUnsplash } from "../lib/homeImages";
-import { PrimaryButton } from "./PrimaryButton";
+import { Services } from "./Services";
 
 export function Hero() {
   return (
     <>
-     <section className="relative bg-white">
-  <div className="container mx-auto px-6 py-16 md:py-24">
-    <div className="max-w-[900px]">
+      <section className="relative overflow-hidden bg-white">
+        <div className="absolute inset-0">
+          <Image
+            src="/hero.png"
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-black/99 via-black/60 transparent" />
+        </div>
+
+        <div className="container relative mx-auto px-6 py-16 md:pt-24 md:pb-12">
+          <div className="max-w-[900px]">
 
       {/* Heading */}
-      <h1 className="text-[38px] sm:text-[48px] md:text-[56px] font-extrabold leading-tight text-[#111111]">
+      <h1 className="text-[38px] sm:text-[48px] md:text-[56px] font-extrabold leading-tight text-white">
         Security Camera & Access Control Installation in Orange County
       </h1>
 
       {/* Description */}
-      <p className="mt-5 max-w-[700px] text-[16px] sm:text-[18px] leading-7 text-[#4B5563]">
+      <p className="mt-5 max-w-[700px] text-[16px] sm:text-[18px] leading-7 text-white">
         Protect your business with professional surveillance systems installed fast—so you can monitor everything and stop problems before they happen.
       </p>
 
@@ -27,7 +39,7 @@ export function Hero() {
           "Remote access from your phone",
           "Built for warehouses, offices & job sites",
         ].map((item, i) => (
-          <li key={i} className="flex items-start gap-2 text-[16px] sm:text-[18px] text-[#374151]">
+          <li key={i} className="flex items-start gap-2 text-[16px] sm:text-[18px] text-white">
             <svg
               className="w-5 h-5 mt-1 text-[#DC2626]"
               fill="none"
@@ -55,22 +67,23 @@ export function Hero() {
         {/* Secondary */}
         <a
           href="tel:18002995964"
-          className="h-12 px-8 flex items-center justify-center text-sm font-semibold rounded-lg border border-[#111111] text-[#111111]"
+          className="h-12 px-8 flex items-center justify-center text-sm font-semibold rounded-lg border border-gray-400 text-white"
         >
           Call or Text (800) 299-5964
         </a>
       </div>
 
       {/* Pricing Line */}
-      <p className="mt-6 text-[14px] text-[#6B7280]">
+      <p className="mt-6 text-[14px] text-white">
         Camera systems starting at $1,299 • Mobile security trailers from $50/day
       </p>
 
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
+      <Services />
       {/* Service tiles */}
-      <section className="-mt-20 relative z-10 pb-10 sm:-mt-24 md:-mt-16">
+      <section className="relative z-10 pt-5 pb-10">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid gap-6 md:grid-cols-3">
             {[
