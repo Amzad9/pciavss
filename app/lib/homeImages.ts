@@ -7,9 +7,9 @@ export const homeUnsplash = {
     designConsult:
       "/service/design.png",
     installation:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85",
+      "/camera installation.jpg",
     monitoring:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=85",
+      "/REMOTE.png",
   },
   teamCommitment:
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80",
