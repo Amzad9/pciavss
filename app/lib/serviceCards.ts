@@ -197,4 +197,67 @@ export const serviceCards: ServiceCard[] = [
       },
     ],
   },
+  {
+    title: "Structured Wiring & Prewire",
+    body: "Future-proof cabling and prewire planning for new builds, remodels, and tenant improvements.",
+    image: "/service/design.png",
+    sections: [
+      {
+        heading: "Built for growth",
+        paragraphs: [
+          "Structured wiring helps you add cameras, access control, Wi‑Fi, and alarms later without opening walls again.",
+          "We coordinate pathways, racks, and cable schedules so your infrastructure stays organized and serviceable.",
+        ],
+      },
+      {
+        heading: "Clean, labeled installs",
+        paragraphs: [
+          "Consistent labeling and documentation make troubleshooting faster and reduce downtime.",
+          "We follow practical best practices for bend radius, service loops, and protected routing in commercial environments.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Remote Monitoring",
+    body: "Stay connected with real-time visibility, alerts, and remote system access from anywhere.",
+    image: "/service/Visual-Monitoring.jpg",
+    sections: [
+      {
+        heading: "Real-time alerts",
+        paragraphs: [
+          "Receive motion and event notifications that help you respond quickly without constantly watching feeds.",
+          "We tune alert zones and schedules to reduce noise and highlight what matters after hours.",
+        ],
+      },
+      {
+        heading: "Secure access for teams",
+        paragraphs: [
+          "Role-based permissions keep staff access appropriate and auditable across locations.",
+          "We help you set up devices and user accounts so remote access works reliably day to day.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Preventive Maintenance",
+    body: "Scheduled service plans to keep cameras, recording, and access control running reliably.",
+    image: "/REMOTE.png",
+    sections: [
+      {
+        heading: "Keep performance consistent",
+        paragraphs: [
+          "Maintenance reduces blind spots caused by dirty lenses, shifted cameras, and storage issues.",
+          "We validate recording, remote access, and door hardware so you can trust the system when you need it.",
+        ],
+      },
+      {
+        heading: "Service plans that fit",
+        paragraphs: [
+          "Monthly, bi-monthly, and quarterly plans are available depending on your environment and usage.",
+          "Troubleshooting support helps resolve issues quickly and avoid extended downtime.",
+        ],
+      },
+    ],
+  },
 ];

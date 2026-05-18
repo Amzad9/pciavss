@@ -11,11 +11,20 @@ import { siteContact } from "./siteConfig";
 const nav = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
   { label: "Blogs", href: "/blog" },
   { label: "Gallery", href: "/portfolio" },
   { label: "Contact", href: "/contact" },
 ];
+
+const servicesNav = [
+  { label: "Camera Systems", href: "/services/security-cameras" },
+  { label: "Access Control", href: "/services/access-control" },
+  { label: "Mobile Security Trailers", href: "/services/mobile-security-trailers" },
+  { label: "Alarm Systems", href: "/services/alarm-system" },
+  { label: "Structured Wiring & Prewire", href: "/services/structured-wiring-prewire" },
+  { label: "Remote Monitoring", href: "/services/remote-monitoring" },
+  { label: "Preventive Maintenance", href: "/services/preventive-maintenance" },
+] as const;
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -128,21 +137,54 @@ export function SiteHeader() {
                   : pathname.startsWith(item.href);
 
               return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`relative px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${
-                  isActive ? "text-brand-gold-600 dark:text-brand-gold-500" : ""
-                }`}
-              >
-                  <span
-                    className={
-                      item.label === "Custom Design" ? "normal-case" : ""
-                    }
+                <>
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`relative px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${
+                      isActive
+                        ? "text-brand-gold-600 dark:text-brand-gold-500"
+                        : ""
+                    }`}
                   >
-                    {item.label}
-                  </span>
-                </Link>
+                    <span
+                      className={
+                        item.label === "Custom Design" ? "normal-case" : ""
+                      }
+                    >
+                      {item.label}
+                    </span>
+                  </Link>
+
+                  {item.label === "About Us" ? (
+                    <div key="services-dropdown" className="group relative">
+                      <Link
+                        href="/services"
+                        className={`relative inline-flex items-center gap-1 px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${
+                          pathname.startsWith("/services")
+                            ? "text-brand-gold-600 dark:text-brand-gold-500"
+                            : ""
+                        }`}
+                      >
+                        <span>Services</span>
+                        <span className="-translate-y-px text-[12px]">
+                          ▼
+                        </span>
+                      </Link>
+                      <div className="invisible absolute left-0 top-full z-50  w-[300px] rounded-2xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 dark:border-white/10 dark:bg-brand-ink-950">
+                        {servicesNav.map((serviceItem) => (
+                          <Link
+                            key={serviceItem.href}
+                            href={serviceItem.href}
+                            className="block rounded-xl px-3 py-2 text-[12px] font-extrabold uppercase tracking-[0.12em] text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
+                          >
+                            {serviceItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </>
               );
             })}
           </nav>
@@ -229,18 +271,49 @@ export function SiteHeader() {
                   : pathname.startsWith(item.href);
 
               return (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${
-                    isActive
-                      ? "bg-brand-gold-500 text-black"
-                      : "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
-                  }`}
-                >
-                  <span>{item.label}</span>
-                </Link>
+                <>
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${
+                      isActive
+                        ? "bg-brand-gold-500 text-black"
+                        : "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+
+                  {item.label === "About Us" ? (
+                    <div key="services-mobile" className="mb-2">
+                      <Link
+                        href="/services"
+                        onClick={closeMenu}
+                        className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${
+                          pathname.startsWith("/services")
+                            ? "bg-brand-gold-500 text-black"
+                            : "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
+                        }`}
+                      >
+                        <span>Services</span>
+                        <span className="text-xs">▼</span>
+                      </Link>
+                      <div className="mt-1 grid gap-1 pl-2">
+                        {servicesNav.map((serviceItem) => (
+                          <Link
+                            key={serviceItem.href}
+                            href={serviceItem.href}
+                            onClick={closeMenu}
+                            className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold tracking-[0.08em] text-black/85 hover:bg-black/5 dark:text-white/90 dark:hover:bg-white/10"
+                          >
+                            <span>{serviceItem.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </>
               );
             })}
           </nav>
