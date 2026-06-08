@@ -41,9 +41,10 @@ export function SiteFooter() {
             />
           </Link>
           <p className="mt-4 text-[14px] leading-6 text-white/70">
-            Design, install, and support for surveillance, alarms, access
+            {/* Design, install, and support for surveillance, alarms, access
             control, and monitoring—protecting homes and businesses with
-            dependable AV security.
+            dependable AV security. */}
+            Serving Orange County & Southern California
           </p>
         </div>
 

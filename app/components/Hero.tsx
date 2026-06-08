@@ -93,7 +93,7 @@ export function Hero() {
                 icon: ClipboardPenLine,
                 image: homeUnsplash.serviceCards.designConsult,
                 imageAlt:
-                  "We access your property and design a system that gives you full coverage from day one.",
+                  "We design custom security systems tailored to your property and operational needs.",
                 bullets: ["On-site walkthrough", "Custom system layout", "Code-compliant planning"],
               },
               {

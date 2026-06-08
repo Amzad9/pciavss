@@ -21,7 +21,7 @@ const servicesNav = [
   { label: "Access Control", href: "/services/access-control" },
   { label: "Mobile Security Trailers", href: "/services/mobile-security-trailers" },
   { label: "Alarm Systems", href: "/services/alarm-system" },
-  { label: "Structured Wiring & Prewire", href: "/services/structured-wiring-prewire" },
+  { label: "Structured Wiring & Prewire", href: "/services/structured-wiring-and-prewire" },
   { label: "Remote Monitoring", href: "/services/remote-monitoring" },
   { label: "Preventive Maintenance", href: "/services/preventive-maintenance" },
 ] as const;
