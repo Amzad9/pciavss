@@ -44,7 +44,7 @@ const darkCharcoal = "#1A1A1A";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-center text-2xl font-extrabold uppercase tracking-wide sm:text-3xl" style={{ color: darkCharcoal }}>
+    <h2 className="text-center text-2xl font-extrabold uppercase tracking-wide sm:text-3xl mt-8" style={{ color: darkCharcoal }}>
       {children}
     </h2>
   );
@@ -120,7 +120,7 @@ const processSteps = [
     icon: Handshake,
     title: "Training & Support",
     description:
-      "We show your team how to use the system and access footage remotely.",
+      "We show your team how to use the system.",
   },
 ];
 
@@ -148,7 +148,7 @@ const projectPhotos = [
   { src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", alt: "NVR setup in server room", category: "NVR Setup" },
   { src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop", alt: "Professional conduit work", category: "Conduit Work" },
   { src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80", alt: "Warehouse security installation", category: "Warehouse" },
-  { src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=450&fit=crop", alt: "Nighttime camera footage", category: "Night Vision" },
+  { src: "https://images.unsplash.com/photo-1481597262637-0545b18186ea?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Nighttime camera footage", category: "Night Vision" },
   { src: "/REMOTE.png", alt: "Mobile app remote access interface", category: "Mobile App" },
 ];
 
@@ -158,7 +158,7 @@ export function SecurityCamerasPage() {
       {/* Hero Section */}
       <section className="relative flex min-h-[500px] items-center justify-center overflow-hidden">
         <Image
-          src="/70439 (1).jpg"
+          src="https://images.unsplash.com/photo-1656057497463-37e68d6ff329?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Commercial security camera installation"
           fill
           priority
@@ -200,7 +200,7 @@ export function SecurityCamerasPage() {
             {features.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex flex-col items-center gap-4 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+                className="flex flex-col items-center gap-4 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md hover:bg-gray-100"
               >
                 <Icon
                   className="h-8 w-8 shrink-0"
@@ -224,7 +224,7 @@ export function SecurityCamerasPage() {
             {cameraTypes.map((camera) => (
               <div
                 key={camera.title}
-                className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+                className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-xl"
               >
                 <div className="relative flex h-48 items-center justify-center  p-6">
                   <Image
@@ -253,29 +253,29 @@ export function SecurityCamerasPage() {
           <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
             Commercial camera systems tailored to your industry needs
           </p>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {idealFor.map((item) => (
-              <div key={item.label} className="flex flex-col items-center bg-gray-100 rounded-xl p-8 text-center shadow-md transition-transform hover:scale-105">
-                <item.icon className="h-12 w-12" style={{ color: primaryRed }} strokeWidth={1.5} />
-                <p className="mt-4 text-base font-extrabold" style={{ color: darkCharcoal }}>{item.label}</p>
-              </div>
-            ))}
-          </div>
+          <div className="mt-12 flex flex-wrap justify-center gap-5">
+  {idealFor.map((item) => (
+    <div key={item.label} className="flex flex-col items-center justify-center bg-gray-100 rounded-xl p-8 text-center shadow-md transition-transform hover:scale-105 w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(25%-1.25rem)]">
+      <item.icon className="h-12 w-12" style={{ color: primaryRed }} strokeWidth={1.5} />
+      <p className="mt-4 text-base font-extrabold" style={{ color: darkCharcoal }}>{item.label}</p>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
         {/* Why Businesses Choose AVSS Strip */}
       <section className="px-4 py-16 bg-gray-50 sm:px-8">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-7xl">
           <SectionHeading>Why Businesses Choose AVSS</SectionHeading>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {whyChoose.map((item) => (
-              <div key={item.text} className="flex items-center gap-3 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
-                <item.icon className="h-6 w-6 shrink-0" style={{ color: primaryRed }} strokeWidth={1.75} />
-                <span className="font-semibold" style={{ color: darkCharcoal }}>{item.text}</span>
-              </div>
-            ))}
-          </div>
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+  {whyChoose.map((item) => (
+    <div key={item.text} className="flex items-center justify-center gap-3 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] hover:shadow-xl">
+      <item.icon className="h-6 w-6 shrink-0" style={{ color: primaryRed }} strokeWidth={1.75} />
+      <span className="font-semibold" style={{ color: darkCharcoal }}>{item.text}</span>
+    </div>
+  ))}
+</div>
         </div>
       </section>
       {/* Real Project Photos Gallery */}
@@ -285,25 +285,25 @@ export function SecurityCamerasPage() {
           <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
             See the quality of our commercial camera system installations across Southern California
           </p>
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {projectPhotos.map((photo, idx) => (
-              <div key={idx} className="group relative overflow-hidden rounded-xl bg-white shadow-md">
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
-                  <p className="text-xs font-medium text-white">{photo.category}</p>
-                  <p className="text-sm text-white/90">{photo.alt}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <div className="mt-12 flex flex-wrap justify-center gap-6">
+  {projectPhotos.map((photo, idx) => (
+    <div key={idx} className="group relative overflow-hidden rounded-xl bg-white shadow-md w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)]">
+      <div className="relative aspect-4/3">
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-3">
+        <p className="text-lg font-medium text-white">{photo.category}</p>
+        <p className="text-sm text-white/90">{photo.alt}</p>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
@@ -348,14 +348,14 @@ export function SecurityCamerasPage() {
     <div className="absolute inset-0 bg-black/70" /> {/* Dark overlay for text readability */}
   </div>
   
-  <div className="relative z-10 container mx-auto px-6 text-left">
+  <div className="relative z-10 container mx-auto px-6 text-center">
     <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
       Request a Commercial Security Assessment
     </h2>
-    <p className="mt-4 max-w-2xl text-lg text-gray-200">
+    <p className="mt-4 mx-auto max-w-2xl text-lg text-gray-200">
       We'll evaluate your property, recommend coverage areas, and provide a customized camera system proposal.
     </p>
-    <div className="mt-8 flex flex-col items-center justify-start gap-4 sm:flex-row">
+    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
       <Link
         href="/contact"
         className="inline-flex items-center justify-center rounded-md px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 sm:text-lg"
