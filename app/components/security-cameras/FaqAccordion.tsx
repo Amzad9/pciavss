@@ -39,7 +39,7 @@ export function FaqAccordion() {
       <div className="container mx-auto max-w-3xl">
        
 
-        <div className="mt-10 divide-y divide-neutral-300 border-t border-neutral-300">
+        <div className="mt-20 mb-15 divide-y divide-neutral-300 border-t border-neutral-300">
           {faqs.map((item, index) => {
             const isOpen = openIndex === index;
             return (

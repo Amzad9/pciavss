@@ -37,7 +37,7 @@ import {
   MonitorPlay,
 } from "lucide-react";
 import { FaqAccordion } from "./FaqAccordion";
-
+import PTZ from './../../assets/images/a97948ae-0a66-4904-af14-a9407920577c.png'
 // Brand colors
 const primaryRed = "#C1121F";
 const darkCharcoal = "#1A1A1A";
@@ -77,24 +77,24 @@ function Sun(props: any) {
 
 const cameraTypes = [
   {
-    title: "Turret Cameras",
+    title: "Panoramic Turret Cameras",
     description: "Ideal for offices, hallways, and warehouses.",
-    image: "/service/camera1.jpg",
+    image: "/images/c967342d-c3e9-4f35-b059-248dde5bba8b.png",
   },
   {
     title: "Bullet Cameras",
     description: "Great for perimeter protection and parking lots.",
-    image: "/service/camera2.webp",
+    image: "/images/a97948ae-0a66-4904-af14-a9407920577c.png",
   },
   {
-    title: "PTZ Cameras",
+    title: "Vandal Dome",
     description: "Pan, tilt, and zoom for large commercial properties.",
-    image: "/service/camera3.webp",
+    image: "/images/image (5).png",
   },
   {
-    title: "License Plate Cameras",
+    title: "PTZ",
     description: "Capture vehicle activity at entrances and exits.",
-    image: "/service/camera4.webp",
+    image: "/images/image (3).png",
   },
 ];
 
@@ -143,33 +143,32 @@ const idealFor = [
 ];
 
 const projectPhotos = [
-  { src: "/70439 (1).jpg", alt: "Security camera closeup installation", category: "Camera Closeup" },
-  { src: "/camera installation.jpg", alt: "Rack installation with organized wiring", category: "Rack Installation" },
-  { src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", alt: "NVR setup in server room", category: "NVR Setup" },
-  { src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=450&fit=crop", alt: "Professional conduit work", category: "Conduit Work" },
-  { src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80", alt: "Warehouse security installation", category: "Warehouse" },
-  { src: "https://images.unsplash.com/photo-1481597262637-0545b18186ea?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Nighttime camera footage", category: "Night Vision" },
-  { src: "/REMOTE.png", alt: "Mobile app remote access interface", category: "Mobile App" },
+  { src: "/images/IMG_1597.jpeg", alt: "Security camera closeup installation", category: "Camera Closeup" },
+  { src: "/images/IMG_6951.jpeg", alt: "Rack installation with organized wiring", category: "Rack Installation" },
+  { src: "/images/IMG_7032.jpeg", alt: "NVR setup in server room", category: "NVR Setup" },
+  { src: "/images/IMG_7342.jpeg", alt: "Professional conduit work", category: "Conduit Work" },
+  { src: "/images/IMG_8136.jpeg", alt: "Warehouse security installation", category: "Warehouse" },
+  { src: "/images/IMG_8160.jpeg", alt: "Nighttime camera footage", category: "Night Vision" },
 ];
 
 export function SecurityCamerasPage() {
   return (
     <main className="bg-white" style={{ color: darkCharcoal }}>
       {/* Hero Section */}
-      <section className="relative flex min-h-[500px] items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1656057497463-37e68d6ff329?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      <section className="relative flex min-h-[500px] items-center justify-center overflow-hidden bg-[url('/security_camera.jpg')] bg-cover">
+        {/* <Image
+          src="/security_camera.jpg"
           alt="Commercial security camera installation"
           fill
           priority
           className="object-cover"
           sizes="100vw"
-        />
+        /> */}
         <div className="absolute inset-0 bg-black/60" />
         
         <div className="container relative z-10 mx-auto px-6 py-20 text-center">
           <h1 className="mx-auto max-w-4xl text-3xl font-extrabold uppercase leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            Commercial Camera Systems
+            Commercial Security Camera Systems
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90 sm:text-xl">
             Professional surveillance solutions for businesses across Southern California
@@ -297,10 +296,10 @@ export function SecurityCamerasPage() {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-3">
+      {/* <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-3">
         <p className="text-lg font-medium text-white">{photo.category}</p>
         <p className="text-sm text-white/90">{photo.alt}</p>
-      </div>
+      </div> */}
     </div>
   ))}
 </div>
@@ -401,7 +400,7 @@ export function SecurityCamerasPage() {
             </div>
             <div className="flex items-center gap-2">
               <Award className="h-5 w-5" style={{ color: primaryRed }} />
-              <span className="font-medium">15+ Years Experience</span>
+              <span className="font-medium">20+ Years Experience</span>
             </div>
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-5 w-5" style={{ color: primaryRed }} />
@@ -415,6 +414,27 @@ export function SecurityCamerasPage() {
           <p className="mt-4 text-center text-sm text-gray-600">
             Trusted by businesses across Orange County for reliable commercial surveillance systems.
           </p>
+        </div>
+      </section>
+      {/* Maintenance & Support Section */}
+      <section className="bg-neutral-50 px-4 py-16 sm:px-8">
+        <div className="container mx-auto max-w-4xl">
+          <SectionHeading>Ongoing Maintenance &amp; Support</SectionHeading>
+          <p className="mt-4 text-center text-gray-600">
+            Keep your system performing at its best with regular service and responsive support.
+          </p>
+          <div className="mt-10 grid gap-6 rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm sm:grid-cols-2">
+            <div className="space-y-4">
+              <RedBulletItem>Camera Cleaning</RedBulletItem>
+              <RedBulletItem>Recording System Health Checks</RedBulletItem>
+              <RedBulletItem>Remote Access Testing</RedBulletItem>
+            </div>
+            <div className="space-y-4">
+              <RedBulletItem>Firmware Updates</RedBulletItem>
+              <RedBulletItem>Troubleshooting Support</RedBulletItem>
+              <RedBulletItem>Monthly, bi-monthly, and quarterly service plans available.</RedBulletItem>
+            </div>
+          </div>
         </div>
       </section>
       {/* FAQ Section for SEO */}
