@@ -1,64 +1,225 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import {
-  Bell,
-  Car,
-  Cloud,
+  Building,
+  Camera,
+  CheckCircle,
   Clock,
-  Moon,
-  Search,
-  ShieldCheck,
-  Smartphone,
-  Sun,
-  Timer,
-  Video,
-  Wrench,
+  Cloud,
+  Cable,
+  Factory,
   FileText,
   Handshake,
+  HardHat,
+  Home,
+  MonitorPlay,
+  ParkingSquare,
+  Search,
+  ShieldCheck,
+  ShoppingCart,
+  Truck,
+  Users,
+  Warehouse,
+  Wrench,
 } from "lucide-react";
 import { FaqAccordion } from "./FaqAccordion";
-
-const maroon = "#7c1a1a";
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
+import Strikes from './../../assets/access-control/strikes.png'
+import Reader from './../../assets/access-control/reader.png'
+import Maglocks from './../../assets/access-control/maglocks.png'
+import Banner from './../../assets/access-control/banner.png'
+import Mobile from './../../assets/access-control/mobile.png'
+import Specialized from './../../assets/access-control/specialized-readre.png'
+import HighTrafic from './../../assets/access-control/high-trafic.png'
+import Magnetic from './../../assets/access-control/magnetic-lock.png'
+import Code from './../../assets/access-control/code.png'
+import Banner2 from './../../assets/access-control/banner2.png'
+const accent = "#7c1a1a";
+function SectionHeading({ children }: { children: ReactNode }) {
   return (
-    <h2 className="text-center text-2xl font-extrabold uppercase tracking-wide text-black sm:text-3xl">
+    <h2 className="font-display text-center text-2xl font-extrabold uppercase leading-tight tracking-wide text-black sm:text-3xl lg:text-4xl">
       {children}
     </h2>
   );
 }
 
-const features = [
-  { icon: Video, label: "4K Ultra HD Video" },
-  { icon: Moon, label: "Color Night Vision" },
-  { icon: Smartphone, label: "Remote Mobile Access" },
-  { icon: Bell, label: "Motion Detection Alerts" },
-  { icon: Clock, label: "24/7 Recording Options" },
-  { icon: Sun, label: "Weather-Resistant Cameras" },
-  { icon: Car, label: "AI Human & Vehicle Detection" },
-  { icon: Cloud, label: "Cloud & Local Storage Options" },
+function SectionIntro({ children }: { children: ReactNode }) {
+  return (
+    <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-black/70 sm:text-base">
+      {children}
+    </p>
+  );
+}
+
+function CardShell({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`rounded-2xl border border-neutral-300 bg-gray-100 hover:shadow-[0_1px_0_rgba(255,255,255,0.6),0_20px_36px_rgba(0,0,0,0.04)] ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function AccessLineIcon({
+  variant,
+}: {
+  variant: "reader" | "strike" | "maglock" | "mobile";
+}) {
+  const stroke = accent;
+  const common = {
+    fill: "none",
+    stroke,
+    strokeWidth: 3.2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+
+  if (variant === "reader") {
+    return (
+      <svg viewBox="0 0 160 120" className="h-24 w-24 sm:h-28 sm:w-28" aria-hidden>
+        <rect x="56" y="14" width="48" height="88" rx="10" {...common} />
+        <rect x="66" y="24" width="28" height="26" rx="4" {...common} />
+        <circle cx="70" cy="62" r="4" {...common} />
+        <circle cx="82" cy="62" r="4" {...common} />
+        <circle cx="94" cy="62" r="4" {...common} />
+        <circle cx="70" cy="76" r="4" {...common} />
+        <circle cx="82" cy="76" r="4" {...common} />
+        <circle cx="94" cy="76" r="4" {...common} />
+        <path d="M40 102h80" {...common} />
+      </svg>
+    );
+  }
+
+  if (variant === "strike") {
+    return (
+      <svg viewBox="0 0 160 120" className="h-24 w-24 sm:h-28 sm:w-28" aria-hidden>
+        <rect x="34" y="30" width="92" height="60" rx="6" {...common} />
+        <rect x="48" y="40" width="64" height="40" rx="4" {...common} />
+        <path d="M118 34 142 22v76l-24-12" {...common} />
+        <path d="M12 60h22" {...common} />
+        <path d="M128 60h20" {...common} />
+      </svg>
+    );
+  }
+
+  if (variant === "maglock") {
+    return (
+      <svg viewBox="0 0 160 120" className="h-24 w-24 sm:h-28 sm:w-28" aria-hidden>
+        <rect x="26" y="34" width="108" height="28" rx="6" {...common} />
+        <rect x="44" y="68" width="72" height="14" rx="4" {...common} />
+        <path d="M80 34v-14" {...common} />
+        <path d="M70 80h20" {...common} />
+        <path d="M30 48h12M118 48h12" {...common} />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 160 120" className="h-24 w-24 sm:h-28 sm:w-28" aria-hidden>
+      <rect x="58" y="10" width="44" height="100" rx="10" {...common} />
+      <rect x="66" y="22" width="28" height="50" rx="4" {...common} />
+      <circle cx="80" cy="88" r="5" {...common} />
+      <path d="M40 102h80" {...common} />
+      <path d="M48 18h8M104 18h8" {...common} />
+    </svg>
+  );
+}
+
+const featureCards = [
+  {
+    icon: FileText,
+    title: "Replace Rekeying with Policy",
+    body: "Cards, jobs, mobile credentials, and PIN readers reduce physical key spread.",
+  },
+  {
+    icon: Search,
+    title: "Audit Trails",
+    body: "See who entered which door and when.",
+  },
+  {
+    icon: Users,
+    title: "Role-Based Onboarding",
+    body: "Templates speed onboarding for similar door lists.",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud-Managed Permissions",
+    body: "Manage access remotely from anywhere.",
+  },
+  {
+    icon: Clock,
+    title: "Remote Lockouts & Schedules",
+    body: "Remote lockouts, holiday schedules, and visitor passes.",
+  },
+  {
+    icon: Handshake,
+    title: "HR & Facilities Support",
+    body: "Help teams respond quickly without site visits.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Directory Integration",
+    body: "Integration-minded platforms can align with directory services.",
+  },
+  {
+    icon: Wrench,
+    title: "Hardware Selection",
+    body: "Readers, strikes, and maglocks suited to various openings.",
+  },
 ];
 
-const cameraTypes = [
+const hardwareCards = [
   {
-    title: "Turret Camera",
-    description: "Ideal for offices, hallways, and warehouses",
-    image: "/service/Security-Cameras.jpg",
+    title: "Readers",
+    body: "Proximity, smart, and PIN readers for controlled entry points.",
+    icon: Reader,
   },
   {
-    title: "Bullet Camera",
-    description: "Great for perimeter protection and parking lots",
-    image: "/service/security.png",
+    title: "Strikes",
+    body: "Electric strikes that release cleanly for everyday access.",
+    icon: Strikes,
   },
   {
-    title: "PTZ Camera",
-    description: "Pan, tilt, and zoom for large commercial properties",
-    image: "/service/Video-Monitoring.jpg",
+    title: "Maglocks",
+    body: "Magnetic locks for glass storefronts and specialty openings.",
+    icon: Maglocks,
   },
   {
-    title: "License Plate Camera",
-    description: "Capture vehicle activity at entrances and exits",
-    image: "/service/Visual-Monitoring.jpg",
+    title: "Mobile App",
+    body: "App-based control for readers, strikes, and maglocks.",
+    icon: Mobile,
+  },
+];
+
+const specificHardware = [
+  {
+    title: "Specialized Readers",
+    body: "We match credential type and mounting style to the opening.",
+    image: Specialized
+  },
+  {
+    title: "High-Traffic Strikes",
+    body: "Durable hardware built for busy entrances and exits.",
+    image: HighTrafic
+
+  },
+  {
+    title: "Magnetic Locks",
+    body: "Strong holding power for glass doors and retrofit installs.",
+    image: Magnetic
+
+  },
+  {
+    title: "Code-Conscious Installs",
+    body: "We keep life-safety, egress, and compliance front and center.",
+    image: Code
   },
 ];
 
@@ -66,180 +227,239 @@ const processSteps = [
   {
     icon: Search,
     title: "Site Walkthrough",
-    description:
-      "We evaluate your property for security system placement. Our projects are handled by experienced residential and commercial security technicians.",
+    body: "Property layout and security goals evaluation.",
   },
   {
     icon: FileText,
     title: "System Design",
-    description:
-      "We recommend equipment placement, recording, and viewing options tailored to your needs.",
+    body: "Door groups, credential types, and access schedules.",
+  },
+  {
+    icon: Wrench,
+    title: "Hardware Selection",
+    body: "Readers, strikes, and maglocks matched to each opening.",
+  },
+  {
+    icon: Cable,
+    title: "Wiring Paths & Code Compliance Check",
+    body: "We verify routing, power, and code-sensitive details before install.",
   },
   {
     icon: Wrench,
     title: "Professional Installation",
-    description: "Clean wiring, professional mounting, and complete console setup.",
+    body: "Clean wiring, mounting, and complete setup.",
   },
   {
     icon: Handshake,
     title: "Training & Support",
-    description:
-      "We show you how to use the system and provide technical assistance to ensure better performance and security.",
+    body: "We show your team how to use the system and manage permissions.",
   },
 ];
 
 const whyChoose = [
-  "Professional Commercial Installation",
-  "Clean Organized Wiring",
-  "Fast Turnaround Times",
-  "Remote Viewing Setup Included",
-  "Ongoing Support & Maintenance",
+  {
+    title: "Professional Installation",
+    body: "Pre-screened for reliability, mounting, and complete setup.",
+  },
+  {
+    title: "Clean Wiring",
+    body: "Door hardware, power, and control wiring kept tidy and serviceable.",
+  },
+  {
+    title: "Battery-Backed Egress",
+    body: "Battery-supported options keep life-safety expectations in view.",
+  },
+  {
+    title: "Remote Management",
+    body: "Update permissions, schedules, and lockouts without a site visit.",
+  },
+  {
+    title: "Training Support",
+    body: "We show your team how to use the system.",
+  },
+  {
+    title: "Code-Conscious Installs",
+    body: "We align each install with the opening and the building’s rules.",
+  },
 ];
 
 const idealFor = [
-  { label: "Warehouses", icon: "warehouse" },
-  { label: "Office Buildings", icon: "office" },
-  { label: "Construction Sites", icon: "construction" },
-  { label: "Manufacturing Facilities", icon: "factory" },
-  { label: "Retail Stores", icon: "retail" },
-  { label: "Parking Lots", icon: "parking" },
-  { label: "Apartment Properties", icon: "apartment" },
+  { label: "Warehouses", icon: Warehouse },
+  { label: "Office Buildings", icon: Building },
+  { label: "Construction Sites", icon: HardHat },
+  { label: "Manufacturing Facilities", icon: Factory },
+  { label: "Retail Stores", icon: ShoppingCart },
+  { label: "Parking Lots", icon: ParkingSquare },
+  { label: "Apartment Properties", icon: Home },
 ];
 
-const galleryImages = [
-  { src: "/camera installation.jpg", alt: "Security camera mounted on brick wall" },
-  {
-    src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
-    alt: "Warehouse aisle surveillance coverage",
-  },
-  { src: "/REMOTE.png", alt: "Monitoring station with live camera feeds" },
-  { src: "/70439 (1).jpg", alt: "Professional cabling and installation" },
-  {
-    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-    alt: "Night vision parking lot coverage",
-  },
-  { src: "/service/security.png", alt: "Mobile app remote camera access" },
+const relatedServices = [
+  { label: "Security Cameras", icon: Camera, href: "/services/security-cameras" },
+  { label: "Video Monitoring", icon: MonitorPlay, href: "/services/video-monitoring" },
+  { label: "Mobile Security Trailers", icon: Truck, href: "/services/mobile-security-trailers" },
+  { label: "Alarm System", icon: ShieldCheck, href: "/services/alarm-system" },
 ];
 
-function IdealIcon({ type }: { type: string }) {
-  const props = {
-    className: "h-10 w-10",
-    style: { color: maroon },
-    strokeWidth: 1.5,
-    "aria-hidden": true as const,
-  };
+function SectionCard({
+  title,
+  body,
+  icon: Icon,
+}: {
+  title: string;
+  body: string;
+  icon: typeof CheckCircle;
+}) {
+  return (
+    <CardShell className="p-5 ">
+      <div className="flex items-start gap-3">
+        <span
+          className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full text-white"
+          style={{ backgroundColor: accent }}
+          aria-hidden
+        >
+          <Icon className="h-4 w-4" strokeWidth={2.5} />
+        </span>
+        <div>
+          <h3 className="text-lg font-extrabold uppercase leading-tight text-black sm:text-xl">
+            {title}
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-black/75 sm:text-[15px]">
+            {body}
+          </p>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
 
-  switch (type) {
-    case "warehouse":
-      return (
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" {...props}>
-          <path d="M6 22 24 10l18 12v16H6V22Z" />
-          <path d="M18 38V26h12v12" />
-          <path d="M14 26h4M30 26h4" />
-        </svg>
-      );
-    case "office":
-      return (
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" {...props}>
-          <rect x="14" y="8" width="20" height="32" rx="1" />
-          <path d="M20 14h2M26 14h2M20 20h2M26 20h2M20 26h2M26 26h2M20 32h2M26 32h2" />
-        </svg>
-      );
-    case "construction":
-      return (
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" {...props}>
-          <path d="M8 38h32" />
-          <path d="m16 38 8-20 8 20" />
-          <path d="M24 18V8l6 6" />
-          <rect x="30" y="28" width="8" height="6" />
-        </svg>
-      );
-    case "factory":
-      return (
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" {...props}>
-          <path d="M8 38V18l12-8v28" />
-          <path d="M20 38V14l12-6v30" />
-          <path d="M32 38V20l8-4v22" />
-          <path d="M14 10v4M18 12v4M34 16v4M38 18v4" />
-        </svg>
-      );
-    case "retail":
-      return (
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" {...props}>
-          <path d="M10 18 14 8h20l4 10" />
-          <rect x="8" y="18" width="32" height="20" rx="1" />
-          <path d="M20 38V26h8v12" />
-        </svg>
-      );
-    case "parking":
-      return (
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" {...props}>
-          <path d="M10 38V18h12l6 6h10v14" />
-          <path d="M10 18h12v6" />
-          <circle cx="18" cy="34" r="2" />
-          <circle cx="34" cy="34" r="2" />
-        </svg>
-      );
-    default:
-      return (
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" {...props}>
-          <rect x="10" y="16" width="14" height="22" />
-          <rect x="24" y="10" width="14" height="28" />
-          <path d="M14 22h2M14 28h2M28 18h2M28 24h2M28 30h2" />
-        </svg>
-      );
-  }
+function FeatureCard({
+  icon: Icon,
+  title,
+  body,
+}: {
+  icon: typeof FileText;
+  title: string;
+  body: string;
+}) {
+  return (
+    <CardShell className="flex min-h-[190px] flex-col items-center justify-start px-5 py-6 text-center">
+      <Icon className="h-10 w-10 shrink-0" style={{ color: accent }} strokeWidth={1.8} />
+      <h3 className="mt-4 text-lg font-extrabold uppercase leading-tight text-black">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm leading-6 text-black/75">
+        {body}
+      </p>
+    </CardShell>
+  );
+}
+
+function IdealTile({
+  icon: Icon,
+  label,
+}: {
+  icon: typeof Building;
+  label: string;
+}) {
+  return (
+    <CardShell className="flex flex-col items-center justify-center px-4 py-6 text-center">
+      <Icon className="h-11 w-11" style={{ color: accent }} strokeWidth={1.8} />
+      <p className="mt-4 text-base font-extrabold leading-tight text-black">
+        {label}
+      </p>
+    </CardShell>
+  );
+}
+
+function RelatedTile({
+  icon: Icon,
+  label,
+  href,
+  active = false,
+}: {
+  icon: typeof Camera;
+  label: string;
+  href: string;
+  active?: boolean;
+}) {
+  const content = (
+    <CardShell
+      className={`flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition ${
+        active ? "bg-neutral-100" : "hover:bg-neutral-100"
+      }`}
+    >
+      <Icon className="h-10 w-10" style={{ color: accent }} strokeWidth={1.8} />
+      <p className="mt-3 text-base font-extrabold leading-tight text-black">
+        {label}
+      </p>
+    </CardShell>
+  );
+
+  return active ? content : <Link href={href}>{content}</Link>;
 }
 
 export function AccessControlPage() {
   return (
     <main className="bg-white text-black">
       {/* Hero */}
-      <section className="relative flex min-h-[420px] items-center justify-center overflow-hidden sm:min-h-[480px]">
+      <section className="relative flex min-h-[470px] items-center overflow-hidden bg-black">
         <Image
-          src="/70439 (1).jpg"
-          alt=""
+          src={Banner}
+          alt="Commercial access control installation"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-center opacity-85"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[rgba(10,20,30,0.65)]" />
-        <div className="absolute right-4 top-4 hidden w-48 sm:block md:right-8 md:top-8 md:w-56 lg:w-64">
-          <Image
-            src="https://images.unsplash.com/photo-1557597774-9d273605dfa8?auto=format&fit=crop&w=600&q=80"
-            alt=""
-            width={256}
-            height={256}
-            className="h-auto w-full object-contain drop-shadow-lg"
-          />
-        </div>
+        {/* <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.78)_0%,rgba(8,8,8,0.58)_52%,rgba(8,8,8,0.35)_100%)]" /> */}
 
-        <div className="container relative z-10 mx-auto px-6 py-16 text-center">
-          <h1 className="mx-auto max-w-4xl text-2xl font-extrabold uppercase leading-tight text-white sm:text-3xl md:text-4xl lg:text-[42px]">
-          AVSS COMMERCIAL ACCESS
-CONTROL SYSTEMS:
-SECURING ENTRY IN SOUTHERN CALIFORNIA
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-white sm:text-lg">
-          Keyless entry with cloud-managed permissiens and app-based control.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 mx-3 inline-flex items-center justify-center rounded-md bg-linear-to-t from-[#8B1A1A] to-[#B22222] px-8 py-3.5 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition hover:brightness-110 sm:text-base"
-          >
-            Get a Free Site Survey
-          </Link>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center justify-center rounded-md bg-linear-to-t from-[#8B1A1A] to-[#B22222] px-8 py-3.5 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition hover:brightness-110 sm:text-base"
-          >
-            Taik to a Specialist
-          </Link>
+        <div className="container relative z-10 mx-auto px-6 py-20 sm:px-8">
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/80 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:text-sm">
+              Commercial access control systems
+            </p>
+            <h1 className="font-display mt-5 max-w-2xl text-4xl font-bold uppercase leading-[0.92] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-5xl lg:text-6xl">
+              Secure entry with keyless control and clear audit trails.
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+              Manage doors, permissions, schedules, and user access from one
+              clean system built for commercial properties.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/request-quote"
+                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
+              >
+                Request Quote
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:px-8 sm:text-base"
+              >
+                Talk to a Specialist
+              </Link>
+            </div>
+
+            <div className="mt-8 grid gap-3 text-sm text-white/85 sm:grid-cols-3">
+              <div className="inline-flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-brand-gold-500" />
+                Access logs and permissions
+              </div>
+              <div className="inline-flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-brand-gold-500" />
+                Readers, strikes, and maglocks
+              </div>
+              <div className="inline-flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-brand-gold-500" />
+                Commercial installation support
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Trust banner */}
+      {/* Trust strip */}
       <section className="border-b border-neutral-200 bg-white py-8">
         <div className="container mx-auto grid grid-cols-2 gap-6 px-6 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
           <div className="flex flex-col items-center text-center">
@@ -258,7 +478,7 @@ SECURING ENTRY IN SOUTHERN CALIFORNIA
 
           <div className="flex flex-col items-center text-center">
             <span className="text-3xl text-[#F5B301]" aria-hidden>
-              ★
+              ★★★★★
             </span>
             <p className="mt-2 text-sm font-extrabold text-black">
               4.9 ★★★★★ 4.99
@@ -266,25 +486,21 @@ SECURING ENTRY IN SOUTHERN CALIFORNIA
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <Wrench className="h-8 w-8" style={{ color: maroon }} aria-hidden />
+            <Wrench className="h-8 w-8" style={{ color: accent }} aria-hidden />
             <p className="mt-2 text-sm font-extrabold text-black">
               15 Years of Experience
             </p>
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <ShieldCheck
-              className="h-8 w-8"
-              style={{ color: maroon }}
-              aria-hidden
-            />
+            <ShieldCheck className="h-8 w-8" style={{ color: accent }} aria-hidden />
             <p className="mt-2 text-sm font-extrabold text-black">
               Licensed &amp; Insured
             </p>
           </div>
 
           <div className="col-span-2 flex flex-col items-center text-center sm:col-span-1">
-            <Timer className="h-8 w-8" style={{ color: maroon }} aria-hidden />
+            <Clock className="h-8 w-8" style={{ color: accent }} aria-hidden />
             <p className="mt-2 text-sm font-extrabold text-black">
               Fast Response Times
             </p>
@@ -292,188 +508,127 @@ SECURING ENTRY IN SOUTHERN CALIFORNIA
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="bg-white px-4 py-10 sm:px-8">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryImages.map((img, index) => (
-              <div
-                key={`${img.alt}-${index}`}
-                className="relative aspect-[4/3] overflow-hidden rounded-2xl"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Features */}
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
+      <section className="px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Commercial Camera System Features</SectionHeading>
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">
-            {features.map(({ icon: Icon, label }) => (
-              <article
-                key={label}
-                className="flex flex-col items-center justify-center rounded-lg border border-neutral-400 bg-white px-4 py-8 text-center"
-              >
-                <Icon
-                  className="h-10 w-10"
-                  style={{ color: maroon }}
-                  strokeWidth={1.5}
-                  aria-hidden
-                />
-                <p
-                  className="mt-4 text-sm font-extrabold sm:text-base"
-                  style={{ color: maroon }}
-                >
-                  {label}
-                </p>
-              </article>
+          <SectionHeading>Commercial Access Control Features</SectionHeading>
+          <SectionIntro>
+            The same page structure and typography as our security-camera
+            layouts, tuned for access control.
+          </SectionIntro>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {featureCards.map((card) => (
+              <FeatureCard key={card.title} icon={card.icon} title={card.title} body={card.body} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Camera types */}
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
+      {/* Hardware we install */}
+      <section className="bg-neutral-50 px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Camera Types We Install</SectionHeading>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {cameraTypes.map((camera) => (
-              <article
-                key={camera.title}
-                className="overflow-hidden rounded-xl border border-neutral-300"
-              >
-                <div className="relative flex h-44 items-center justify-center bg-[#F5F5F5]">
-                  <Image
-                    src={camera.image}
-                    alt={camera.title}
-                    fill
-                    className="object-contain p-6"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                  />
+          <SectionHeading>Access Control Hardware We Install</SectionHeading>
+          <SectionIntro>
+            Door hardware and mobile credentials selected for the opening, the
+            traffic pattern, and the code requirements.
+          </SectionIntro>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {hardwareCards.map((card) => (
+              <CardShell key={card.title} className="overflow-hidden">
+                <div className="flex h-52 items-center justify-center bg-[#f5f5f5]">
+                  <Image src={card.icon} alt="" objectFit="cover" className="h-full w-fill" />
                 </div>
-                <div className="border-t border-neutral-200 bg-white p-5">
-                  <h3 className="text-base font-extrabold text-black">
-                    {camera.title}
+                <div className="border-t border-neutral-200 px-5 py-5 text-center">
+                  <h3 className="text-lg font-extrabold uppercase leading-tight text-black">
+                    {card.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-black/80">
-                    {camera.description}
-                  </p>
+                  <p className="mt-2 text-sm leading-6 text-black/75">{card.body}</p>
                 </div>
-              </article>
+              </CardShell>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Specific hardware */}
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Specific Hardware For Your Doors</SectionHeading>
+          <SectionIntro>
+            We tailor the door-side hardware to the real conditions at each
+            opening instead of forcing a one-size-fits-all approach.
+          </SectionIntro>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {specificHardware.map((item, index) => (
+              <CardShell key={item.title} className="flex flex-col items-center px-0 py-0 text-center">
+                <div className="flex h-52 w-full items-center justify-center rounded-xl bg-neutral-100">
+                  <Image src={item.image} width={200} height={200} alt="" className="w-full h-full" />
+                </div>
+                <h3 className="mt-5 text-lg font-extrabold uppercase leading-tight text-black">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-black/75">{item.body}</p>
+              </CardShell>
             ))}
           </div>
         </div>
       </section>
 
       {/* Installation process */}
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
+      <section className="bg-white px-4 py-16 sm:px-8">
         <div className="container mx-auto">
           <SectionHeading>Our Installation Process</SectionHeading>
-          <div className="relative mt-12">
-            <div
-              className="absolute left-[12.5%] right-[12.5%] top-8 hidden h-px lg:block"
-              style={{ backgroundColor: maroon }}
-              aria-hidden
-            />
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-              {processSteps.map(({ icon: Icon, title, description }) => (
-                <div key={title} className="relative text-center">
-                  <div
-                    className="relative z-10 mx-auto grid h-16 w-16 place-items-center rounded-full border-2 bg-white"
-                    style={{ borderColor: maroon }}
-                  >
-                    <Icon
-                      className="h-7 w-7"
-                      style={{ color: maroon }}
-                      strokeWidth={1.75}
-                      aria-hidden
-                    />
+
+          <div className="mt-12">
+            <div className="grid gap-10 lg:grid-cols-3">
+              {processSteps.map((step, index) => (
+                <div key={step.title} className="relative text-center">
+                  <div className="mx-auto bg-white flex h-16 w-16 relative z-10 items-center justify-center rounded-full border-2 border-[#7c1a1a] ">
+                    <step.icon className="h-8 w-8 " style={{ color: accent }} strokeWidth={1.8} />
                   </div>
-                  <h3 className="mt-5 text-base font-extrabold text-black">
-                    {title}
+                 
+                  <h3 className="mt-5 text-lg font-extrabold uppercase leading-tight text-black">
+                    {step.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-black/80">
-                    {description}
+                  <p className="mx-auto mt-3 max-w-xs text-sm leading-6 text-black/75">
+                    {step.body}
                   </p>
                 </div>
               ))}
             </div>
+
+          
           </div>
         </div>
       </section>
 
-      {/* Why choose AVSS */}
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
-        <div className="container mx-auto max-w-4xl">
+      {/* Why choose */}
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
           <SectionHeading>Why Businesses Choose AVSS</SectionHeading>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {whyChoose.map((item) => (
-              <div
-                key={item}
-                className="flex items-start gap-3 rounded-lg border border-neutral-200 bg-[#F2F2F2] p-5"
-              >
-                <span
-                  className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-bold text-white"
-                  style={{ backgroundColor: maroon }}
-                  aria-hidden
-                >
-                  ✓
-                </span>
-                <p className="text-sm font-extrabold text-black sm:text-base">
-                  {item}
-                </p>
-              </div>
+              <SectionCard key={item.title} title={item.title} body={item.body} icon={CheckCircle} />
             ))}
-          </div>
-          <div className="mt-12 text-center">
-            <p className="text-lg font-extrabold text-black sm:text-xl">
-              Ready to Secure Your Business?
-            </p>
-            <p className="mt-2 text-base font-extrabold text-black sm:text-lg">
-              Request a Commercial Security Assessment.
-            </p>
           </div>
         </div>
       </section>
 
       {/* Ideal for */}
-      <section className="bg-white px-4 py-12 sm:px-8 sm:py-16">
+      <section className="bg-white px-4 py-16 sm:px-8">
         <div className="container mx-auto">
           <SectionHeading>Ideal For</SectionHeading>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {idealFor.slice(0, 4).map((item) => (
-              <article
-                key={item.label}
-                className="flex flex-col items-center rounded-xl bg-[#F2F2F2] px-4 py-8 text-center"
-              >
-                <IdealIcon type={item.icon} />
-                <p className="mt-4 text-sm font-extrabold leading-snug text-black sm:text-base">
-                  {item.label}
-                </p>
-              </article>
+              <IdealTile key={item.label} icon={item.icon} label={item.label} />
             ))}
           </div>
-          <div className="mx-auto mt-4 grid max-w-3xl gap-4 sm:grid-cols-3">
+          <div className="mx-auto mt-4 grid max-w-4xl gap-4 sm:grid-cols-3">
             {idealFor.slice(4).map((item) => (
-              <article
-                key={item.label}
-                className="flex flex-col items-center rounded-xl bg-[#F2F2F2] px-4 py-8 text-center"
-              >
-                <IdealIcon type={item.icon} />
-                <p className="mt-4 text-sm font-extrabold leading-snug text-black sm:text-base">
-                  {item.label}
-                </p>
-              </article>
+              <IdealTile key={item.label} icon={item.icon} label={item.label} />
             ))}
           </div>
         </div>
@@ -481,33 +636,73 @@ SECURING ENTRY IN SOUTHERN CALIFORNIA
 
       <FaqAccordion />
 
+      {/* Related services */}
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Related Services</SectionHeading>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {relatedServices.map((item) => (
+              <RelatedTile
+                key={item.label}
+                icon={item.icon}
+                label={item.label}
+                href={item.href}
+              />
+            ))}
+            <Link href="/services" className="sm:col-span-2 lg:col-span-1">
+              <CardShell className="flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
+                <span className="text-4xl leading-none text-[#7c1a1a]" aria-hidden>
+                  •••
+                </span>
+                <p className="mt-3 text-base font-extrabold leading-tight text-black">
+                  View all services
+                </p>
+              </CardShell>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
-      <section className="relative overflow-hidden bg-[#1a1d23]">
+      <section className="relative overflow-hidden bg-[#111827]">
         <div className="container mx-auto grid lg:grid-cols-2">
           <div className="flex flex-col justify-center px-6 py-14 sm:px-10 lg:py-16">
-            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-              Ready to Secure Your Business?
+            <h2 className="font-display text-3xl font-bold uppercase leading-[0.95] text-white sm:text-4xl lg:text-5xl">
+              Get Protected Today
             </h2>
             <p className="mt-4 max-w-lg text-base leading-7 text-white/75">
-              We&apos;ll evaluate your property, recommend coverage areas, and
-              provide a customized camera system proposal.
+              Don&apos;t wait until something happens—secure your business now
+              with a clean, code-conscious access control system.
             </p>
             <Link
-              href="/contact"
-              className="mt-8 inline-flex w-fit items-center justify-center rounded-lg bg-linear-to-t from-[#8B1A1A] to-[#B22222] px-8 py-3.5 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition hover:brightness-110 sm:text-base"
+              href="/request-quote"
+              className="mt-8 inline-flex w-fit items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-8 py-3.5 text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:text-base"
             >
-              Request a Commercial Security Assessment
+              Request Quote
             </Link>
+            <div className="mt-6 flex flex-col gap-3 text-sm font-semibold text-white/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
+              <span className="inline-flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-brand-gold-500" />
+                Get a Free Quote
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-brand-gold-500" />
+                Call or Text (800) 299-5964
+              </span>
+            </div>
+            <p className="mt-3 text-sm text-white/70">
+              Serving Orange County &amp; Southern California
+            </p>
           </div>
           <div className="relative min-h-[280px] lg:min-h-[360px]">
             <Image
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80"
-              alt="Security consultant reviewing a commercial camera system proposal"
+              src={Banner2}
+              alt="Commercial property with access control and camera coverage"
               fill
-              className="object-cover object-center"
+              className="object-cover object-right"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-linear-to-r from-[#1a1d23] via-[#1a1d23]/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-r from-[#111827] via-[#111827]/40 to-transparent" />
           </div>
         </div>
       </section>
