@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import {
@@ -34,6 +34,10 @@ import HighTrafic from './../../assets/access-control/high-trafic.png'
 import Magnetic from './../../assets/access-control/magnetic-lock.png'
 import Code from './../../assets/access-control/code.png'
 import Banner2 from './../../assets/access-control/banner2.png'
+import UnifiAccess from './../../assets/access-control/image (20).png'
+import UnifiGate from './../../assets/access-control/image (21).png'
+import BrivoCommercial from './../../assets/access-control/image (22).png'
+import LinearCommercial from './../../assets/access-control/image (23).png'
 const accent = "#7c1a1a";
 function SectionHeading({ children }: { children: ReactNode }) {
   return (
@@ -177,12 +181,12 @@ const featureCards = [
 
 const hardwareCards = [
   {
-    title: "Readers",
+    title: "RFID card reade",
     body: "Proximity, smart, and PIN readers for controlled entry points.",
     icon: Reader,
   },
   {
-    title: "Strikes",
+    title: "Electric Strikes",
     body: "Electric strikes that release cleanly for everyday access.",
     icon: Strikes,
   },
@@ -192,7 +196,7 @@ const hardwareCards = [
     icon: Maglocks,
   },
   {
-    title: "Mobile App",
+    title: "Mobile Credentials",
     body: "App-based control for readers, strikes, and maglocks.",
     icon: Mobile,
   },
@@ -200,26 +204,45 @@ const hardwareCards = [
 
 const specificHardware = [
   {
-    title: "Specialized Readers",
+    title: "Keypad reader",
     body: "We match credential type and mounting style to the opening.",
     image: Specialized
   },
   {
-    title: "High-Traffic Strikes",
+    title: "Electric Strikes",
     body: "Durable hardware built for busy entrances and exits.",
     image: HighTrafic
 
   },
   {
-    title: "Magnetic Locks",
+    title: "Magnetic",
     body: "Strong holding power for glass doors and retrofit installs.",
     image: Magnetic
 
   },
   {
-    title: "Code-Conscious Installs",
+    title: "Card Readers",
     body: "We keep life-safety, egress, and compliance front and center.",
     image: Code
+  },
+];
+
+const accessControlSystems = [
+  {
+    title: "Unifi Access Control",
+    image: UnifiAccess,
+  },
+  {
+    title: "Unifi Gate Access",
+    image: UnifiGate,
+  },
+  {
+    title: "Brivo Commercial Access Control",
+    image: BrivoCommercial,
+  },
+  {
+    title: "Linear Commercial Access Control Bundle",
+    image: LinearCommercial,
   },
 ];
 
@@ -398,6 +421,32 @@ function RelatedTile({
   return active ? content : <Link href={href}>{content}</Link>;
 }
 
+function SystemTile({
+  title,
+  image,
+}: {
+  title: string;
+  image: StaticImageData;
+}) {
+  return (
+    <CardShell className="overflow-hidden">
+      <div className="flex h-56 items-center justify-center bg-white p-5">
+        <Image
+          src={image}
+          alt={title}
+          className="h-full w-full object-contain"
+          sizes="(max-width: 1024px) 50vw, 25vw"
+        />
+      </div>
+      <div className="border-t border-neutral-200 px-5 py-4 text-center">
+        <h3 className="text-base font-extrabold uppercase leading-tight text-black sm:text-lg">
+          {title}
+        </h3>
+      </div>
+    </CardShell>
+  );
+}
+
 export function AccessControlPage() {
   return (
     <main className="bg-white text-black">
@@ -419,11 +468,10 @@ export function AccessControlPage() {
               Commercial access control systems
             </p>
             <h1 className="font-display mt-5 max-w-2xl text-4xl font-bold uppercase leading-[0.92] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-5xl lg:text-6xl">
-              Secure entry with keyless control and clear audit trails.
+            Commercial Access Control Installation in Orange County
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
-              Manage doors, permissions, schedules, and user access from one
-              clean system built for commercial properties.
+            Secure your business with professionally installed keyless entry, card access, mobile credentials, and cloud-managed access control systems.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -528,10 +576,10 @@ export function AccessControlPage() {
       {/* Hardware we install */}
       <section className="bg-neutral-50 px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Access Control Hardware We Install</SectionHeading>
+          <SectionHeading>Professional Access Control Hardware for Every Door
+          </SectionHeading>
           <SectionIntro>
-            Door hardware and mobile credentials selected for the opening, the
-            traffic pattern, and the code requirements.
+          We install commercial-grade readers, electric strikes, magnetic locks, controllers, and mobile credentials designed for offices, warehouses, retail spaces, apartment communities, and industrial facilities.
           </SectionIntro>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -552,17 +600,32 @@ export function AccessControlPage() {
         </div>
       </section>
 
-      {/* Specific hardware */}
+      {/* Access control systems */}
       <section className="bg-white px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Specific Hardware For Your Doors</SectionHeading>
+          <SectionHeading>Access Control Systems We Work With</SectionHeading>
           <SectionIntro>
-            We tailor the door-side hardware to the real conditions at each
-            opening instead of forcing a one-size-fits-all approach.
+            We install and support the commercial platforms that fit your site, security goals, and budget.
           </SectionIntro>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {specificHardware.map((item, index) => (
+            {accessControlSystems.map((item) => (
+              <SystemTile key={item.title} title={item.title} image={item.image} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Specific hardware */}
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Every Opening Requires the Right Hardware</SectionHeading>
+          <SectionIntro>
+          Every door is different. We evaluate your existing doors, traffic flow, fire code requirements, and security objectives before selecting the appropriate hardware.
+          </SectionIntro>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {specificHardware.map((item) => (
               <CardShell key={item.title} className="flex flex-col items-center px-0 py-0 text-center">
                 <div className="flex h-52 w-full items-center justify-center rounded-xl bg-neutral-100">
                   <Image src={item.image} width={200} height={200} alt="" className="w-full h-full" />
@@ -584,7 +647,7 @@ export function AccessControlPage() {
 
           <div className="mt-12">
             <div className="grid gap-10 lg:grid-cols-3">
-              {processSteps.map((step, index) => (
+              {processSteps.map((step) => (
                 <div key={step.title} className="relative text-center">
                   <div className="mx-auto bg-white flex h-16 w-16 relative z-10 items-center justify-center rounded-full border-2 border-[#7c1a1a] ">
                     <step.icon className="h-8 w-8 " style={{ color: accent }} strokeWidth={1.8} />
