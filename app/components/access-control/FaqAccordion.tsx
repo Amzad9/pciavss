@@ -10,24 +10,44 @@ type FaqItem = {
 
 const faqs: FaqItem[] = [
   {
-    question: "Can I view access logs from my phone?",
+    question: "Can employees unlock doors with their phones?",
     answer:
       "Yes, remote mobile access is included in most systems. We can set up secure apps so you can view activity, manage users, and review events from iOS and Android devices.",
   },
   {
-    question: "How long are access logs stored?",
+    question: "Do access control systems work during power outages?",
     answer:
       "Retention depends on the controller, storage, and audit settings. We recommend a setup that fits your review needs and internal policies.",
   },
   {
-    question: "Do you provide battery-backed systems?",
+    question: "Can I manage users remotely?",
     answer:
       "Yes, we install battery-backed and fail-safe or fail-secure options depending on the door and life-safety requirements.",
   },
   {
-    question: "Do you provide ongoing support?",
+    question: "Can access control integrate with security cameras?",
     answer:
       "Yes, preventive maintenance and head-end support are available. We help keep permissions, firmware, and door hardware in good shape.",
+  },
+  {
+    question: "Do you install access control for multiple buildings?",
+    answer:
+      "Yes, we provide ongoing support to ensure your system is always operational and compliant.",
+  },
+  {
+    question: "Can the system generate audit reports?",
+    answer:
+      "Yes, we provide ongoing support to ensure your system is always operational and compliant.",
+  },
+  {
+    question: "What happens if internet service goes down?",
+    answer:
+      "Yes, we provide ongoing support to ensure your system is always operational and compliant.",
+  },
+  {
+    question: "Can I use key fobs and mobile credentials together?",
+    answer:
+      "Yes, we provide ongoing support to ensure your system is always operational and compliant.",
   },
 ];
 

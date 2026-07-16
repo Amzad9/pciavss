@@ -18,24 +18,25 @@ import {
   Search,
   ShieldCheck,
   ShoppingCart,
+  ExternalLink,
   Truck,
   Users,
   Warehouse,
   Wrench,
 } from "lucide-react";
 import { FaqAccordion } from "./FaqAccordion";
-import Strikes from './../../assets/access-control/strikes.png'
-import Reader from './../../assets/access-control/reader.png'
-import Maglocks from './../../assets/access-control/maglocks.png'
+import Strikes from './../../assets/access-control/image (26).png'
+import Reader from './../../assets/access-control/image (27).png'
+import Maglocks from './../../assets/access-control/image (28).png'
 import Banner from './../../assets/access-control/banner.png'
-import Mobile from './../../assets/access-control/mobile.png'
-import Specialized from './../../assets/access-control/specialized-readre.png'
-import HighTrafic from './../../assets/access-control/high-trafic.png'
-import Magnetic from './../../assets/access-control/magnetic-lock.png'
-import Code from './../../assets/access-control/code.png'
+import Mobile from './../../assets/access-control/image (29).png'
+import Specialized from './../../assets/access-control/image (30).png'
+import HighTrafic from './../../assets/access-control/image (31).png'
+import Magnetic from './../../assets/access-control/image (32).png'
+import Code from './../../assets/access-control/image (33).png'
 import Banner2 from './../../assets/access-control/banner2.png'
 import UnifiAccess from './../../assets/access-control/image (20).png'
-import UnifiGate from './../../assets/access-control/image (21).png'
+import UnifiGate from './../../assets/access-control/image (25).png'
 import BrivoCommercial from './../../assets/access-control/image (22).png'
 import LinearCommercial from './../../assets/access-control/image (23).png'
 const accent = "#7c1a1a";
@@ -186,17 +187,17 @@ const hardwareCards = [
     icon: Reader,
   },
   {
-    title: "Electric Strikes",
-    body: "Electric strikes that release cleanly for everyday access.",
+    title: "Unifi Gate Access",
+    body: "Unifi Gate Access that release cleanly for everyday access.",
     icon: Strikes,
   },
   {
-    title: "Maglocks",
+    title: "Schlage Wireless Locks",
     body: "Magnetic locks for glass storefronts and specialty openings.",
     icon: Maglocks,
   },
   {
-    title: "Mobile Credentials",
+    title: "Alarm.Com Integrated Systems",
     body: "App-based control for readers, strikes, and maglocks.",
     icon: Mobile,
   },
@@ -204,7 +205,7 @@ const hardwareCards = [
 
 const specificHardware = [
   {
-    title: "Keypad reader",
+    title: "HID Card Reader & Credentials",
     body: "We match credential type and mounting style to the opening.",
     image: Specialized
   },
@@ -215,13 +216,13 @@ const specificHardware = [
 
   },
   {
-    title: "Magnetic",
+    title: "Magnetic Door Locks",
     body: "Strong holding power for glass doors and retrofit installs.",
     image: Magnetic
 
   },
   {
-    title: "Card Readers",
+    title: "Door Release & Exit Devices",
     body: "We keep life-safety, egress, and compliance front and center.",
     image: Code
   },
@@ -233,7 +234,7 @@ const accessControlSystems = [
     image: UnifiAccess,
   },
   {
-    title: "Unifi Gate Access",
+    title: "Alarm.Com Access Control",
     image: UnifiGate,
   },
   {
@@ -244,6 +245,18 @@ const accessControlSystems = [
     title: "Linear Commercial Access Control Bundle",
     image: LinearCommercial,
   },
+];
+
+const trustedAccessControlBrands = [
+  { name: "Brivo" },
+  { name: "Alarm.com", href: "https://alarm.com/" },
+  { name: "UniFi Access" },
+  { name: "HID" },
+  { name: "Linear" },
+  { name: "Altronix" },
+  { name: "Seco-Larm" },
+  { name: "Schlage" },
+  { name: "ASSA ABLOY" },
 ];
 
 const processSteps = [
@@ -585,8 +598,8 @@ export function AccessControlPage() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {hardwareCards.map((card) => (
               <CardShell key={card.title} className="overflow-hidden">
-                <div className="flex h-52 items-center justify-center bg-[#f5f5f5]">
-                  <Image src={card.icon} alt="" objectFit="cover" className="h-full w-fill" />
+                <div className="flex h-64 items-center justify-center bg-[#f5f5f5]">
+                  <Image src={card.icon} alt="" objectFit="contain" className="h-auto w-fill" />
                 </div>
                 <div className="border-t border-neutral-200 px-5 py-5 text-center">
                   <h3 className="text-lg font-extrabold uppercase leading-tight text-black">
@@ -722,6 +735,58 @@ export function AccessControlPage() {
                 </p>
               </CardShell>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted brands */}
+      <section className="bg-neutral-50 px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Trusted Access Control Brands</SectionHeading>
+          <SectionIntro>
+            We work with the commercial brands teams specify most often for dependable entry control, readers, controllers, and locks.
+          </SectionIntro>
+
+          <div className="mt-12 flex flex-wrap gap-4">
+            {trustedAccessControlBrands.map((brand, index) => {
+              const isLast = index === trustedAccessControlBrands.length - 1;
+              const tile = (
+                <CardShell className="flex min-h-[108px] flex-col justify-center px-5 py-5 transition hover:bg-white">
+                  <div className="flex items-center justify-center gap-3 text-center">
+                    <h3 className="text-center text-lg font-extrabold leading-tight text-black sm:text-xl">
+                      {brand.name}
+                    </h3>
+                    {brand.href ? (
+                      <ExternalLink className="h-4 w-4 shrink-0 text-black/40" aria-hidden />
+                    ) : null}
+                  </div>
+                </CardShell>
+              );
+
+              return brand.href ? (
+                <a
+                  key={brand.name}
+                  href={brand.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={`Visit ${brand.name}`}
+                  className={`w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)] ${
+                    isLast ? "xl:mx-auto" : ""
+                  }`}
+                >
+                  {tile}
+                </a>
+              ) : (
+                <div
+                  key={brand.name}
+                  className={`w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)] ${
+                    isLast ? "xl:mx-auto" : ""
+                  }`}
+                >
+                  {tile}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

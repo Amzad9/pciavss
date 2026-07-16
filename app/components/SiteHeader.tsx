@@ -118,7 +118,7 @@ export function SiteHeader() {
             className="flex items-center dark:rounded-lg dark:bg-white dark:px-2 dark:py-1 dark:shadow-sm dark:ring-1 dark:ring-white/15"
           >
             <Image
-              src="/logo_AVSS.png"
+              src="/logo.png"
               alt="AVSS audio-video security solutions logo"
               width={3180}
               height={1344}
