@@ -137,9 +137,8 @@ export function SiteHeader() {
                   : pathname.startsWith(item.href);
 
               return (
-                <>
+                <div key={item.label} className="contents">
                   <Link
-                    key={item.label}
                     href={item.href}
                     className={`relative px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${
                       isActive
@@ -157,7 +156,7 @@ export function SiteHeader() {
                   </Link>
 
                   {item.label === "About Us" ? (
-                    <div key="services-dropdown" className="group relative">
+                    <div className="group relative">
                       <Link
                         href="/services"
                         className={`relative inline-flex items-center gap-1 px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${
@@ -184,7 +183,7 @@ export function SiteHeader() {
                       </div>
                     </div>
                   ) : null}
-                </>
+                </div>
               );
             })}
           </nav>
@@ -271,9 +270,8 @@ export function SiteHeader() {
                   : pathname.startsWith(item.href);
 
               return (
-                <>
+                <div key={item.label}>
                   <Link
-                    key={item.label}
                     href={item.href}
                     onClick={closeMenu}
                     className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${
@@ -286,7 +284,7 @@ export function SiteHeader() {
                   </Link>
 
                   {item.label === "About Us" ? (
-                    <div key="services-mobile" className="mb-2">
+                    <div className="mb-2">
                       <Link
                         href="/services"
                         onClick={closeMenu}
@@ -313,7 +311,7 @@ export function SiteHeader() {
                       </div>
                     </div>
                   ) : null}
-                </>
+                </div>
               );
             })}
           </nav>

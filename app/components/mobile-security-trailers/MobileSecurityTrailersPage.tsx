@@ -1,0 +1,753 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import {
+  Building,
+  Camera,
+  CheckCircle,
+  Clock,
+  Cloud,
+  FileText,
+  Factory,
+  Handshake,
+  HardHat,
+  Home,
+  MonitorPlay,
+  ParkingSquare,
+  Search,
+  ShieldCheck,
+  ShoppingCart,
+  Truck,
+  Users,
+  Wrench,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
+import { FaqAccordion } from "./FaqAccordion";
+import MobileTrailer from "./../../assets/mobile/Mobiletrailer.png";
+import Trailer from "./../../assets/mobile/trailer down.png";
+import Solar from "./../../assets/mobile/Solar.png";
+import Battery from "./../../assets/mobile/Battery.png";
+
+import SolarAssisted from "./../../assets/mobile/clean_Solar-Assisted.png";
+import Generator from "./../../assets/mobile/clean_Generator.png";
+import Celluler from "./../../assets/mobile/clean_Cellular.png";
+import Deterrence from "./../../assets/mobile/clean_Deterrence.png";
+import Banner from "./../../assets/mobile/banner.png";
+
+const accent = "#7c1a1a";
+const trailerHeroImage =
+  "/service/imgi_3_b586a8_40fb2b8a168344d8abdd26b4ce669570mv2-rcvlhvzs4u2uh2zuclnbwqwqsgldydpmc7pzlsxkz2.jpg";
+
+function SectionHeading({ children }: { children: ReactNode }) {
+  return (
+    <h2 className="font-display text-center text-2xl font-extrabold uppercase leading-tight tracking-wide text-black sm:text-3xl lg:text-4xl">
+      {children}
+    </h2>
+  );
+}
+
+function SectionIntro({ children }: { children: ReactNode }) {
+  return (
+    <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-black/70 sm:text-base">
+      {children}
+    </p>
+  );
+}
+
+function CardShell({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`rounded-2xl border border-neutral-300 bg-gray-100 hover:shadow-[0_1px_0_rgba(255,255,255,0.6),0_20px_36px_rgba(0,0,0,0.04)] ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+const featureCards = [
+  {
+    icon: Camera,
+    title: "Elevated Positions",
+    body: "Get superior visibility with high masts. ",
+  },
+  {
+    icon: MonitorPlay,
+    title: "Visible Deterrence",
+    body: "Mast lighting and clear signage.",
+  },
+  {
+    icon: Cloud,
+    title: "Flexible Power",
+    body: "Solar, generator, and battery options.",
+  },
+  {
+    icon: Zap,
+    title: "Low Profile Options",
+    body: "Adaptable deployment for local context.",
+  },
+  {
+    icon: Truck,
+    title: "Cellular Backhaul",
+    body: "Reach feeds over cellular networks.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Remote Viewing",
+    body: "Access live feeds from anywhere.",
+  },
+  {
+    icon: Clock,
+    title: "Temporary Sites",
+    body: "Rapid coverage where wiring isn't practical.",
+  },
+  {
+    icon: Users,
+    title: "Moveable Units",
+    body: "Coordination between construction jobsites.",
+  },
+];
+
+const trailerUseCases = [
+  {
+    title: "Construction Sites",
+    body: "Protect tools, materials, and partially completed work as the project evolves.",
+    icon: HardHat,
+  },
+  {
+    title: "Event Areas",
+    body: "Add mobile coverage around entrances, equipment zones, and parking areas.",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Laydown Yards",
+    body: "Deter break-ins, after-hours loitering, and theft in open lots and overflow areas.",
+    icon: ParkingSquare,
+  },
+  {
+    title: "Parking Lots",
+    body: "Cover vacant land, yards, and locations where fixed infrastructure is limited.",
+    icon: Home,
+  },
+  {
+    title: "Temporary Storage",
+    body: "Track activity around fleet storage, containers, and high-value materials.",
+    icon: Factory,
+  },
+  {
+    title: "Festivals",
+    body: "Add temporary visibility during renovations, tenant improvements, or transitions.",
+    icon: Building,
+  },
+  {
+    title: "Remote Sites",
+    body: "Add temporary visibility during renovations, tenant improvements, or transitions.",
+    icon: Building,
+  },
+];
+
+const trailerConfigurations = [
+  {
+    title: "Mobile Trailer (Mast Up)",
+    body: "Best for off-grid sites where battery backup and solar charging are the priority.",
+    image: MobileTrailer,
+  },
+  {
+    title: "Trailer (Mast Down)",
+    body: "Combines solar, battery, and shore power so the trailer can adapt to changing conditions.",
+    image: Trailer,
+  },
+  {
+    title: "Solar Panel Close-up",
+    body: "Configured for response workflows, alerts, and live verification when events occur.",
+    image: Solar,
+  },
+  {
+    title: "Battery Rack",
+    body: "A practical option when you need coverage fast during a project or transition.",
+    image: Battery,
+  },
+];
+const hardwareConfigurations = [
+  {
+    title: "Solar-Assisted Power setup",
+    body: "Best for off-grid sites where battery backup and solar charging are the priority.",
+    image: SolarAssisted,
+  },
+  {
+    title: "Generator Bypass panel",
+    body: "Combines solar, battery, and shore power so the trailer can adapt to changing conditions.",
+    image: Generator,
+  },
+  {
+    title: "Cellular Modem/Router",
+    body: "Configured for response workflows, alerts, and live verification when events occur.",
+    image: Celluler,
+  },
+  {
+    title: "Visible Deterrence kit (Mast Light, Sign)",
+    body: "A practical option when you need coverage fast during a project or transition.",
+    image: Deterrence,
+  },
+];
+
+const deploymentSteps = [
+  {
+    icon: Search,
+    title: "Site Walkthrough",
+    body: "We review access points, risk areas, and where a trailer will do the most good.",
+  },
+  {
+    icon: FileText,
+    title: "System Design",
+    body: "We plan camera coverage, power, connectivity, and notification workflow.",
+  },
+  {
+    icon: Wrench,
+    title: "Rapid Depleyment",
+    body: "We configure the unit for your site and verify everything is working before handoff.",
+  },
+  {
+    icon: Handshake,
+    title: "Training & Coordination",
+    body: "We stay involved as your site changes and the trailer needs to move or adapt.",
+  },
+];
+
+const whyChoose = [
+  {
+    title: "Professional Deployment",
+    body: "A good fit when a site needs protection before permanent infrastructure is ready.",
+  },
+  {
+    title: "Neat Cable anagement",
+    body: "Solar, battery, and shore-power options help match the realities of each location.",
+  },
+  {
+    title: "Rapid Turnaround Times",
+    body: "We handle the practical setup details so the trailer is ready for real-world use.",
+  },
+  {
+    title: "Ongoing Rental Support",
+    body: "Trailers can be configured for alerting, review, and live response workflows.",
+  },
+  {
+    title: "Cellular & Power Expertise",
+    body: "Use the same system for a few weeks or keep it deployed longer as needs evolve.",
+  },
+];
+
+
+  const serviceCards = [
+    {
+      id: 1,
+      title: "Equipment Assessment",
+      description: "State-of-the-art security equipment tailored to your site",
+      image: Solar,
+      icon: "🔧"
+    },
+    {
+      id: 2,
+      title: "Site Survey",
+      description: "Comprehensive evaluation of your temporary location",
+      image: MobileTrailer,
+      icon: "📋"
+    },
+    {
+      id: 3,
+      title: "Placement Strategy",
+      description: "Optimal positioning for maximum security coverage",
+      image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=400&h=300&fit=crop",
+      icon: "📍"
+    },
+    {
+      id: 4,
+      title: "Mentoring Program",
+      description: "Expert guidance and ongoing support for your team",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop",
+      icon: "🎯"
+    }
+  ];
+
+const relatedServices = [
+  { label: "Security Cameras", icon: Camera, href: "/services/security-cameras" },
+  { label: "Video Monitoring", icon: MonitorPlay, href: "/services/video-monitoring" },
+  { label: "Access Control", icon: ShieldCheck, href: "/services/access-control" },
+  { label: "Alarm System", icon: ShieldCheck, href: "/services/alarm-system" },
+];
+
+function FeatureCard({
+  icon: Icon,
+  title,
+  body,
+}: {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+}) {
+  return (
+    <CardShell className="flex min-h-[190px] flex-col items-center justify-start px-5 py-6 text-center">
+      <Icon className="h-10 w-10 shrink-0" style={{ color: accent }} strokeWidth={1.8} />
+      <h3 className="mt-4 text-lg font-extrabold uppercase leading-tight text-black">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm leading-6 text-black/75">{body}</p>
+    </CardShell>
+  );
+}
+
+function UseCaseCard({
+  icon: Icon,
+  title,
+  body,
+  className
+}: {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+  className?: string
+}) {
+  return (
+    <CardShell className={`${className ?? ""} flex min-h-[190px] flex-col items-center justify-start px-5 py-6 text-center`}>
+      <Icon className="h-10 w-10 shrink-0" style={{ color: accent }} strokeWidth={1.8} />
+      <h3 className="mt-4 text-lg font-extrabold uppercase leading-tight text-black">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm leading-6 text-black/75">{body}</p>
+    </CardShell>
+  );
+}
+
+function SystemTile({
+  title,
+  body,
+  image,
+}: {
+  title: string;
+  body: string;
+  image: string;
+}) {
+  return (
+    <CardShell className="overflow-hidden">
+      <div className="flex w-full h-56 items-center justify-center">
+        <Image
+          src={image}
+          alt={title}
+          width={400}
+          height={400}
+          className="h-full w-full object-cover"
+          sizes="(max-width: 1024px) 50vw, 25vw"
+        />
+      </div>
+      <div className="border-t border-neutral-200 px-5 py-4 text-center">
+        <h3 className="text-base font-extrabold uppercase leading-tight text-black sm:text-lg">
+          {title}
+        </h3>
+        <p className="mt-2 text-sm leading-6 text-black/75">{body}</p>
+      </div>
+    </CardShell>
+  );
+}
+
+function RelatedTile({
+  icon: Icon,
+  label,
+  href,
+}: {
+  icon: LucideIcon;
+  label: string;
+  href: string;
+}) {
+  return (
+    <Link href={href}>
+      <CardShell className="flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
+        <Icon className="h-10 w-10" style={{ color: accent }} strokeWidth={1.8} />
+        <p className="mt-3 text-base font-extrabold leading-tight text-black">
+          {label}
+        </p>
+      </CardShell>
+    </Link>
+  );
+}
+
+export function MobileSecurityTrailersPage() {
+  return (
+    <main className="bg-white text-black">
+      <section className="relative flex min-h-[500px] items-center overflow-hidden bg-black">
+        <Image
+          src={Banner}
+          alt="Mobile security trailer deployment"
+          fill
+          priority
+          className="object-cover object-center opacity-85"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/58" />
+
+        <div className="container relative z-10 mx-auto px-6 py-20 sm:px-8">
+          <div className="max-w-3xl">
+            
+            <h1 className="font-display mt-5 max-w-2xl text-4xl font-bold uppercase leading-[0.92] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-5xl lg:text-6xl">
+            AVSS SERVICE: MOBILE SECURITY TRAILERS
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+            Deployable surveillance units for construction sites, events, and remote
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/request-quote"
+                className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
+              >
+                Request Quote
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:px-8 sm:text-base"
+              >
+                Talk to a Specialist
+              </Link>
+            </div>
+
+           
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-neutral-200 bg-white py-8">
+        <div className="container mx-auto grid grid-cols-2 gap-6 px-6 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
+          <div className="flex flex-col items-center text-center">
+            <span className="text-2xl font-bold tracking-tight">
+              <span className="text-[#4285F4]">G</span>
+              <span className="text-[#EA4335]">o</span>
+              <span className="text-[#FBBC05]">o</span>
+              <span className="text-[#4285F4]">g</span>
+              <span className="text-[#34A853]">l</span>
+              <span className="text-[#EA4335]">e</span>
+            </span>
+            <p className="mt-2 text-sm font-extrabold text-black">
+              Serving Southern California
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center text-center">
+            <span className="text-3xl text-[#F5B301]" aria-hidden>
+              ★★★★★
+            </span>
+            <p className="mt-2 text-sm font-extrabold text-black">
+              4.9 ★★★★★ 4.99
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center text-center">
+            <Truck className="h-8 w-8" style={{ color: accent }} aria-hidden />
+            <p className="mt-2 text-sm font-extrabold text-black">
+              Mobile deployment support
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center text-center">
+            <ShieldCheck className="h-8 w-8" style={{ color: accent }} aria-hidden />
+            <p className="mt-2 text-sm font-extrabold text-black">
+              Licensed &amp; Insured
+            </p>
+          </div>
+
+          <div className="col-span-2 flex flex-col items-center text-center sm:col-span-1">
+            <Clock className="h-8 w-8" style={{ color: accent }} aria-hidden />
+            <p className="mt-2 text-sm font-extrabold text-black">
+              Fast Response Times
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>RAPID COVERAGE & DEPLOYMENT</SectionHeading>
+          <SectionIntro>
+            Built for temporary, remote, and fast-moving security needs where permanent infrastructure is not practical.
+          </SectionIntro>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {featureCards.map((card) => (
+              <FeatureCard
+                key={card.title}
+                icon={card.icon}
+                title={card.title}
+                body={card.body}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-neutral-50 px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          {/* <SectionHeading>Trailer Configurations We Install</SectionHeading>
+          <SectionIntro>
+            We configure each trailer for the jobsite, power profile, and response workflow the project actually needs.
+          </SectionIntro> */}
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {trailerConfigurations.map((item) => (
+              <SystemTile
+                key={item.title}
+                title={item.title}
+                body={item.body}
+                image={item.image}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>SPECIFIC MOBILE HARDWARE & FEATURES</SectionHeading>
+          <SectionIntro>&nbsp;
+          </SectionIntro>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {hardwareConfigurations.map((item) => (
+              <SystemTile
+                key={item.title}
+                title={item.title}
+                body={item.body}
+                image={item.image}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Every Site Requires the Right Setup</SectionHeading>
+          <SectionIntro>
+            We evaluate the site, coverage goals, and operating constraints before selecting the trailer setup.
+          </SectionIntro>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "Camera Coverage",
+                body: "We position cameras to watch access points, equipment, and high-risk perimeter areas.",
+              },
+              {
+                title: "Power Planning",
+                body: "Solar, battery, and shore-power configurations are chosen around the site’s realities.",
+              },
+              {
+                title: "Connectivity",
+                body: "Cellular backhaul and failover planning keep the trailer reachable even when IT is limited.",
+              },
+              {
+                title: "Alert Response",
+                body: "Visible deterrence, live monitoring, and audio options can be tuned to the workflow.",
+              },
+            ].map((item) => (
+              <CardShell key={item.title} className="flex min-h-[190px] flex-col items-center justify-start px-5 py-6 text-center">
+                <Truck className="h-10 w-10 shrink-0" style={{ color: accent }} strokeWidth={1.8} />
+                <h3 className="mt-4 text-lg font-extrabold uppercase leading-tight text-black">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-black/75">{item.body}</p>
+              </CardShell>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>What We Configure On Every Trailer</SectionHeading>
+          <SectionIntro>
+            We plan the trailer around your access points, power constraints, and how your team needs to respond to events.
+          </SectionIntro>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            <CardShell className="p-6">
+              <h3 className="text-lg font-extrabold uppercase tracking-wide text-black">
+                Camera Coverage
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-black/75">
+                We position cameras to cover entrances, materials, equipment, and the areas most likely to need review.
+              </p>
+            </CardShell>
+            <CardShell className="p-6">
+              <h3 className="text-lg font-extrabold uppercase tracking-wide text-black">
+                Power &amp; Backhaul
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-black/75">
+                Solar-assisted, battery-backed, and shore-power options can be combined with cellular connectivity as needed.
+              </p>
+            </CardShell>
+            <CardShell className="p-6">
+              <h3 className="text-lg font-extrabold uppercase tracking-wide text-black">
+                Alerts &amp; Response
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-black/75">
+                We can configure visible deterrence, live monitoring, and audio options so the trailer is ready to act, not just record.
+              </p>
+            </CardShell>
+          </div>
+        </div>
+      </section> */}
+
+      <section className="bg-gray-100 px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Our Deployment Process</SectionHeading>
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-4">
+            {deploymentSteps.map((step) => (
+              <div key={step.title} className="relative text-center">
+                <div className="mx-auto relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#7c1a1a] bg-white">
+                  <step.icon className="h-8 w-8" style={{ color: accent }} strokeWidth={1.8} />
+                </div>
+                <h3 className="mt-5 text-lg font-extrabold uppercase leading-tight text-black">
+                  {step.title}
+                </h3>
+                <p className="mx-auto mt-3 max-w-xs text-sm leading-6 text-black/75">
+                  {step.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-16 sm:px-8">
+  <div className="container mx-auto">
+    <SectionHeading>WHY BUSINESSES CHOOSE AVSS TRAILERS</SectionHeading>
+    <div className="mt-12 flex flex-wrap gap-4 justify-center">
+      {whyChoose.map((item) => (
+        <CardShell key={item.title} className="p-5 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.5rem)] max-w-sm">
+          <div className="flex items-start gap-3">
+            <span
+              className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full text-white"
+              style={{ backgroundColor: accent }}
+              aria-hidden
+            >
+              <CheckCircle className="h-4 w-4" strokeWidth={2.5} />
+            </span>
+            <div>
+              <h3 className="text-lg font-extrabold uppercase leading-tight text-black sm:text-xl">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-black/75 sm:text-[15px]">
+                {item.body}
+              </p>
+            </div>
+          </div>
+        </CardShell>
+      ))}
+    </div>
+  </div>
+</section>
+      <section className="bg-[#0A3D4F] w-full py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#F4B942]/5 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-t from-[#F4B942]/5 to-transparent"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left Column - Text Content */}
+          <div className="space-y-6 lg:sticky lg:top-20">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Ready to Secure Your{" "}
+              <span className="text-[#F4B942]">temporary Business Site?</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-white/90 font-medium">
+              Request a Mobile Trailer Site Survey Assessment.
+            </p>
+            
+            <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-xl">
+              Request a walkthrough and we'll recommend equipment, placement, 
+              and mentoring options aligned with your goals.
+            </p>
+            
+            <button className="mt-4 bg-[#F4B942] hover:bg-[#E5A832] text-[#0A3D4F] font-semibold text-lg px-10 py-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-[#F4B942]/30 transform hover:scale-105">
+              Request Quote
+            </button>
+          </div>
+
+          {/* Right Column - 4 Image Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+            {serviceCards.map((card) => (
+              <div 
+                key={card.id}
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-[#F4B942]/40 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-[#F4B942]/10"
+              >
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image 
+                    src={card.image} 
+                    alt={card.title}
+                    fill
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                 
+                </div>
+
+               
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+      <section className="bg-gray-100 px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Ideal For</SectionHeading>
+          <SectionIntro>
+            Mobile trailer systems fit locations where protection needs to move, scale, or start quickly.
+          </SectionIntro>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {trailerUseCases.slice(0, 4).map((item) => (
+              <UseCaseCard className="bg-white"  key={item.title} icon={item.icon} title={item.title} body={item.body} />
+            ))}
+          </div>
+          <div className="mx-auto mt-4 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {trailerUseCases.slice(4).map((item) => (
+              <UseCaseCard className="bg-white" key={item.title} icon={item.icon} title={item.title} body={item.body} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <FaqAccordion />
+
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Related Services</SectionHeading>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {relatedServices.map((item) => (
+              <RelatedTile
+                key={item.label}
+                icon={item.icon}
+                label={item.label}
+                href={item.href}
+              />
+            ))}
+            <Link href="/services" className="sm:col-span-2 lg:col-span-1">
+              <CardShell className="flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
+                <span className="text-4xl leading-none text-[#7c1a1a]" aria-hidden>
+                  •••
+                </span>
+                <p className="mt-3 text-base font-extrabold leading-tight text-black">
+                  View all services
+                </p>
+              </CardShell>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
