@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { StaticImageData } from 'next/image';
+
 import {
   Building,
   Camera,
@@ -32,8 +34,8 @@ import Battery from "./../../assets/mobile/Battery.png";
 import SolarAssisted from "./../../assets/mobile/clean_Solar-Assisted.png";
 import Generator from "./../../assets/mobile/clean_Generator.png";
 import Celluler from "./../../assets/mobile/clean_Cellular.png";
-import Deterrence from "./../../assets/mobile/clean_Deterrence.png";
-import Banner from "./../../assets/mobile/banner.png";
+import Deterrence from "./../../assets/mobile/visible.png";
+import Banner from "./../../assets/mobile/mobile-banner.png";
 
 const accent = "#7c1a1a";
 const trailerHeroImage =
@@ -215,31 +217,35 @@ const deploymentSteps = [
   },
   {
     icon: Handshake,
-    title: "Training & Coordination",
-    body: "We stay involved as your site changes and the trailer needs to move or adapt.",
+    title: "Deployment & Handover",
+    body: "We position, test, and verify the trailer before reviewing system operation and remote access with your team.",
   },
 ];
 
 const whyChoose = [
   {
-    title: "Professional Deployment",
-    body: "A good fit when a site needs protection before permanent infrastructure is ready.",
+    title: "Flexible Rental Options",
+    body: "Choose the rental duration that fits your project needs—from daily to long-term.",
   },
   {
-    title: "Neat Cable anagement",
-    body: "Solar, battery, and shore-power options help match the realities of each location.",
+    title: "Daily Rentals",
+    body: "Perfect for short-term events, pop-up sites, or immediate temporary needs.",
   },
   {
-    title: "Rapid Turnaround Times",
-    body: "We handle the practical setup details so the trailer is ready for real-world use.",
+    title: "Weekly Rentals",
+    body: "Ideal for projects lasting a week or more, offering cost-effective short-term coverage.",
   },
   {
-    title: "Ongoing Rental Support",
-    body: "Trailers can be configured for alerting, review, and live response workflows.",
+    title: "Monthly Rentals",
+    body: "Great for extended projects, seasonal needs, or ongoing site monitoring.",
   },
   {
-    title: "Cellular & Power Expertise",
-    body: "Use the same system for a few weeks or keep it deployed longer as needs evolve.",
+    title: "Long-Term Projects",
+    body: "Flexible solutions for multi-month or year-long deployments with dedicated support.",
+  },
+  {
+    title: "Purchase Options Available",
+    body: "For permanent installations, we offer straightforward purchase options with full ownership.",
   },
 ];
 
@@ -292,7 +298,7 @@ function FeatureCard({
   body: string;
 }) {
   return (
-    <CardShell className="flex min-h-[190px] flex-col items-center justify-start px-5 py-6 text-center">
+    <CardShell className="flex min-h-47.5 flex-col items-center justify-start px-5 py-6 text-center">
       <Icon className="h-10 w-10 shrink-0" style={{ color: accent }} strokeWidth={1.8} />
       <h3 className="mt-4 text-lg font-extrabold uppercase leading-tight text-black">
         {title}
@@ -314,7 +320,7 @@ function UseCaseCard({
   className?: string
 }) {
   return (
-    <CardShell className={`${className ?? ""} flex min-h-[190px] flex-col items-center justify-start px-5 py-6 text-center`}>
+    <CardShell className={`${className ?? ""} flex min-h-47.5 flex-col items-center justify-start px-5 py-6 text-center`}>
       <Icon className="h-10 w-10 shrink-0" style={{ color: accent }} strokeWidth={1.8} />
       <h3 className="mt-4 text-lg font-extrabold uppercase leading-tight text-black">
         {title}
@@ -331,7 +337,7 @@ function SystemTile({
 }: {
   title: string;
   body: string;
-  image: string;
+  image: string | StaticImageData;
 }) {
   return (
     <CardShell className="overflow-hidden">
@@ -366,7 +372,7 @@ function RelatedTile({
 }) {
   return (
     <Link href={href}>
-      <CardShell className="flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
+      <CardShell className="flex min-h-31.5 flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
         <Icon className="h-10 w-10" style={{ color: accent }} strokeWidth={1.8} />
         <p className="mt-3 text-base font-extrabold leading-tight text-black">
           {label}
@@ -649,10 +655,10 @@ export function MobileSecurityTrailersPage() {
     </div>
   </div>
 </section>
-      <section className="bg-[#0A3D4F] w-full py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#F4B942]/5 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-t from-[#F4B942]/5 to-transparent"></div>
+      <section className="bg-brand-ink-900 w-full py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
+      {/* Background decorative elements — matches site footer vignette */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_40%,rgba(220,38,38,0.12)_0%,rgba(0,0,0,0)_52%)]"></div>
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/40 via-transparent to-black/40"></div>
       
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -672,7 +678,7 @@ export function MobileSecurityTrailersPage() {
               and mentoring options aligned with your goals.
             </p>
             
-            <button className="mt-4 bg-[#F4B942] hover:bg-[#E5A832] text-[#0A3D4F] font-semibold text-lg px-10 py-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-[#F4B942]/30 transform hover:scale-105">
+            <button className="mt-4 bg-[#F4B942] hover:bg-[#E5A832] text-black font-semibold text-lg px-10 py-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-[#F4B942]/30 transform hover:scale-105">
               Request Quote
             </button>
           </div>
@@ -682,7 +688,7 @@ export function MobileSecurityTrailersPage() {
             {serviceCards.map((card) => (
               <div 
                 key={card.id}
-                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-[#F4B942]/40 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-[#F4B942]/10"
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden hover:border-[#F4B942]/40 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40"
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">

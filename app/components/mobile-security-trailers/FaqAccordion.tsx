@@ -29,6 +29,36 @@ const faqs: FaqItem[] = [
     answer:
       "Yes. Trailer systems can be paired with live remote monitoring, alert workflows, and two-way audio responses where needed.",
   },
+  {
+    question: "How quickly can a trailer be deployed?",
+    answer:
+      "Deployment timelines vary based on site conditions and equipment needs, but most trailers can be on-site and operational within a few days of completing the site survey.",
+  },
+  {
+    question: "Is internet included?",
+    answer:
+      "Yes. We offer integrated cellular connectivity options so trailers can operate independently without relying on on-site internet infrastructure.",
+  },
+  {
+    question: "Do trailers require external power?",
+    answer:
+      "Not necessarily. Trailers can run on internal battery banks with solar recharging, but we also offer shore-power connections when external power is available for extended runtime.",
+  },
+  {
+    question: "Can trailers be monitored 24/7?",
+    answer:
+      "Absolutely. Our systems support continuous remote monitoring with real-time alerts, live video feeds, and two-way communication capabilities.",
+  },
+  {
+    question: "Can trailers be moved between job sites?",
+    answer:
+      "Yes. Trailers are built for mobility and can be relocated as project needs evolve, with our team handling the logistics and setup at each new location.",
+  },
+  {
+    question: "Are trailers available for long-term rental?",
+    answer:
+      "Yes. We offer flexible long-term rental agreements for projects lasting months or even years, with ongoing support and maintenance included.",
+  },
 ];
 
 export function FaqAccordion() {

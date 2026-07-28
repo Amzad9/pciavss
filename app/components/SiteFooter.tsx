@@ -7,7 +7,7 @@ import { siteContact } from "./siteConfig";
 export function SiteFooter() {
   return (
     <footer
-      className="relative overflow-hidden bg-brand-ink-900 py-12 text-white"
+      className="relative overflow-hidden bg-gray-950 py-12 text-white"
     >
       {/* Top accent line like the mockup */}
       <div
@@ -16,14 +16,14 @@ export function SiteFooter() {
       />
 
       {/* Subtle vignette / sheen */}
-      <div
+      {/* <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_40%,rgba(220,38,38,0.14)_0%,rgba(0,0,0,0)_52%)]"
         aria-hidden="true"
-      />
-      <div
+      /> */}
+      {/* <div
         className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/45 via-transparent to-black/45"
         aria-hidden="true"
-      />
+      /> */}
 
       <div className="container mx-auto grid items-start gap-10 px-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         <div className="max-w-xs">
