@@ -1,17 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import { blogPosts } from "./posts";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "AVSS blog: security cameras, monitoring, alarms, intrusion protection, and mobile surveillance trailers.",
-  alternates: { canonical: "/blog" },
-};
+import { useState } from "react";
+import Script from "next/script";
 
 export default function BlogIndexPage() {
+  const [isCopied, setIsCopied] = useState(false);
+  const [isActivated, setIsActivated] = useState(false);
+
+  const handleCopyCode = () => {
+    const code = `<div id="soro-blog"></div>\n<script src="https://app.trysoro.com/api/embed/dfc91141-09d8-44a0-8ae5-16f662866f5f?theme=dark" defer></script>`;
+    navigator.clipboard.writeText(code);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  const handleActivate = () => {
+    setIsActivated(true);
+  };
+
   return (
-    <main className="min-h-screen bg-brand-ink-950 text-white">
+    <main className=" bg-brand-ink-950 text-white">
+      {/* Hero Section */}
       <section className="relative overflow-hidden bg-brand-ink-900 px-4 pb-12 pt-10 sm:px-8 sm:pb-16 sm:pt-16">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-brand-ink-950 via-brand-ink-950/75 to-brand-ink-950/45" />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black via-black/25 to-transparent" />
@@ -35,6 +46,7 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
+      {/* Blog Posts Grid */}
       <section className="bg-brand-ink-800 px-4 py-10 sm:px-8 sm:py-14">
         <div className="container mx-auto">
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -73,6 +85,14 @@ export default function BlogIndexPage() {
             ))}
           </div>
         </div>
+      </section>
+      <section className="py-8">
+      <div id="soro-blog"></div>
+
+<Script
+  src="https://app.trysoro.com/api/embed/dfc91141-09d8-44a0-8ae5-16f662866f5f?theme=dark"
+  strategy="afterInteractive"
+/>
       </section>
     </main>
   );

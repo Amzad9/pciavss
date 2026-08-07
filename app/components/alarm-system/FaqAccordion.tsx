@@ -1,106 +1,90 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-type FaqItem = {
-  question: string;
-  answer: string;
-};
-
-const faqs: FaqItem[] = [
+// Move this to your data file or keep it here
+const faqs = [
   {
-    question: "What types of alarm systems do you install?",
-    answer:
-      "We install a wide range of alarm systems including intrusion detection, motion sensors, door and window sensors, glass-break detectors, and integrated smart home alarm panels for both residential and commercial properties.",
+    question: "Can I control my alarm system from my phone?",
+    answer: "Yes, our systems come with a mobile app that allows you to arm, disarm, and monitor your system from anywhere. You'll receive real-time notifications and can manage multiple locations from a single dashboard."
   },
   {
-    question: "Do your alarm systems include 24/7 monitoring?",
-    answer:
-      "Yes. We offer professional 24/7 central station monitoring that dispatches emergency services immediately when an alarm is triggered, ensuring a rapid response at any hour.",
+    question: "Do you install both wired and wireless alarm systems?",
+    answer: "Absolutely! We offer both wired, wireless, and hybrid solutions. Our team will assess your property and recommend the best option based on your specific needs, building structure, and budget."
   },
   {
-    question: "Can the alarm system be integrated with my existing cameras?",
-    answer:
-      "Absolutely. Our alarm systems can be integrated with your existing CCTV or IP camera setup, providing a unified security solution with coordinated alerts and live video verification.",
+    question: "Can my alarm system integrate with cameras and access control?",
+    answer: "Yes, our alarm systems seamlessly integrate with IP cameras, access control systems, and other security devices. This creates a comprehensive security ecosystem that can be managed from a single platform."
   },
   {
-    question: "Are your systems compatible with smart home platforms?",
-    answer:
-      "Yes. We support integration with popular smart home ecosystems so you can arm, disarm, and receive notifications directly from your smartphone or voice assistant.",
+    question: "Do you offer 24/7 monitoring?",
+    answer: "Yes, we partner with UL-listed central monitoring stations that provide 24/7/365 monitoring. When an alarm is triggered, our monitoring partners immediately verify the alert and dispatch the appropriate authorities to your location."
   },
   {
-    question: "How long does installation take?",
-    answer:
-      "Most residential installations are completed within a single day. Larger commercial projects may require additional time depending on the number of zones and the complexity of the system design.",
+    question: "What happens if the internet goes down?",
+    answer: "Our systems are designed with failover options. They utilize cellular backup and battery backups to ensure your system remains operational and connected even during internet outages or power failures."
   },
   {
-    question: "What happens if the power goes out?",
-    answer:
-      "All our alarm panels include battery backup to ensure continuous protection during power outages. Cellular communicators also keep the system connected even if the internet or phone line goes down.",
+    question: "Can you take over my existing alarm system?",
+    answer: "Yes, in most cases we can take over and upgrade your existing alarm system. Our technicians will evaluate your current equipment and determine the best approach to integrate it with our monitoring and support services."
   },
   {
-    question: "Can I add sensors or expand the system later?",
-    answer:
-      "Yes. Our systems are designed to be scalable. You can add sensors, keypads, and additional zones at any time as your security needs grow.",
-  },
-  {
-    question: "Do you offer maintenance and service contracts?",
-    answer:
-      "Yes. We offer ongoing service and maintenance plans to keep your alarm system in peak condition, including annual inspections, battery replacements, and priority response for service calls.",
-  },
-  {
-    question: "Is professional monitoring required?",
-    answer:
-      "Professional monitoring is optional but strongly recommended. Self-monitoring is also available through our mobile app if you prefer to manage alerts yourself.",
-  },
-  {
-    question: "Are your alarm systems permit-compliant?",
-    answer:
-      "Yes. We ensure all installations meet local jurisdiction requirements and can assist with the permit application process where required.",
-  },
+    question: "Can different employees have their own codes?",
+    answer: "Yes, our systems support multiple user codes with customizable permissions. You can give each employee their own unique code, set access schedules, and easily add or remove users as needed."
+  }
 ];
 
-export function FaqAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+export function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
-    <section className="bg-white px-4 py-16 sm:px-8">
-      <div className="container mx-auto max-w-3xl">
-        <h2 className="font-display text-center text-2xl font-extrabold uppercase tracking-wide text-black sm:text-3xl lg:text-4xl">
-          FAQ
-        </h2>
+    <div className="rounded-xl border border-gray-200 bg-white p-6 sm:p-8 lg:p-10 shadow-sm">
+      <h3 className="text-center text-2xl sm:text-3xl font-black uppercase">
+        FREQUENTLY ASKED QUESTIONS
+      </h3>
+      <div className="mx-auto mt-3 sm:mt-4 h-1 w-12 sm:w-16 rounded bg-red-600"></div>
 
-        <div className="mt-10 divide-y divide-neutral-300 border-y border-neutral-300">
-          {faqs.map((item, index) => {
-            const isOpen = openIndex === index;
-
-            return (
-              <div key={item.question}>
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-4 py-5 text-left"
-                  aria-expanded={isOpen}
-                >
-                  <span className="text-base font-extrabold uppercase tracking-wide text-black sm:text-lg">
-                    {item.question}
-                  </span>
-                  <ChevronDown
-                    className={`h-5 w-5 shrink-0 text-black transition-transform ${isOpen ? "rotate-180" : ""}`}
-                    aria-hidden
-                  />
-                </button>
-                {isOpen ? (
-                  <p className="pb-5 text-sm leading-7 text-black/75 sm:text-base">
-                    {item.answer}
-                  </p>
-                ) : null}
-              </div>
-            );
-          })}
-        </div>
+      <div className="mt-8 sm:mt-10 space-y-3 sm:space-y-4">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+          
+          return (
+            <div key={index} className="rounded-md border border-gray-200 bg-white transition hover:border-gray-300">
+              <button
+                onClick={() => toggleFaq(index)}
+                className="flex w-full items-center justify-between px-4 sm:px-6 lg:px-7 py-2 sm:py-3 text-left transition"
+              >
+                <span className="text-sm sm:text-base font-semibold pr-4">
+                  {faq.question}
+                </span>
+                <div className="text-xl sm:text-2xl font-bold flex-shrink-0">
+                  {isOpen ? (
+                    <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6 text-red-600" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
+                  )}
+                </div>
+              </button>
+              
+              {/* Answer - Expandable */}
+              {isOpen && (
+                <div className="px-4 sm:px-6 lg:px-7 pb-4 sm:pb-5">
+                  <div className="pt-2 border-t border-gray-100">
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 }

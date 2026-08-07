@@ -1,497 +1,756 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
 import {
   ArrowRight,
-  Bell,
   Camera,
-  CheckCircle,
   ChevronRight,
   MonitorPlay,
   PhoneCall,
   ShieldCheck,
-  Smartphone,
   Truck,
+  Shield,
+  Phone,
+  Warehouse,
+  Building2,
+  ShoppingCart,
+  Factory,
+  Hammer,
+  School,
+  Church,
+  Building,
+  Wrench,
+  Smartphone,
   Wifi,
-  type LucideIcon,
+  BadgeCheck,
+  Clock3,
+  ChevronDown,
 } from "lucide-react";
 
-import Banner from "./../../assets/alarm/alarm.png";
-import MobileTrailer from "./../../assets/mobile/Mobiletrailer.png";
-import Solar from "./../../assets/mobile/Solar.png";
-import Battery from "./../../assets/mobile/Battery.png";
-import Cellular from "./../../assets/mobile/clean_Cellular.png";
+import Banner from "./../../assets/alarm/banner.png";
+import Card1 from "./../../assets/alarm/card1.png";
+import Card2 from "./../../assets/alarm/card2.png";
+import Card3 from "./../../assets/alarm/card3.png";
+import banner2 from "./../../assets/alarm/banner2.png";
+import Mobile from "./../../assets/alarm/mobile.png";
 
+import CameraImg from "./../../assets/alarm/camera.png";
+import Access from "./../../assets/alarm/access.png";
+import MobileImg from "./../../assets/alarm/security.png";
+import Video from "./../../assets/alarm/video.png";
+import Wiring from "./../../assets/alarm/wiring.png";
+import Mantenance from "./../../assets/alarm/mantenance.png";
+import { FaqSection } from "./FaqAccordion";
+
+const services = [
+  {
+    title: "SECURITY CAMERAS",
+    image: CameraImg,
+  },
+  {
+    title: "ACCESS CONTROL",
+    image: Access,
+  },
+  {
+    title: "MOBILE SECURITY TRAILERS",
+    image: MobileImg,
+  },
+  {
+    title: "VIDEO MONITORING",
+    image: Video,
+  },
+  {
+    title: "STRUCTURED WIRING",
+    image: Wiring,
+  },
+  {
+    title: "PREVENTIVE MAINTENANCE",
+    image: Mantenance,
+  },
+];
 const accent = "#b52322";
-
-function SectionHeading({ children }: { children: ReactNode }) {
-  return (
-    <h2 className="font-display text-center text-2xl font-extrabold uppercase leading-tight tracking-wide text-black sm:text-3xl lg:text-4xl">
-      {children}
-    </h2>
-  );
-}
-
-function CardShell({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`rounded-2xl border border-neutral-200 bg-[#f2f2f2] shadow-[0_1px_0_rgba(255,255,255,0.75),0_18px_32px_rgba(0,0,0,0.04)] ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
-function DetectionIcon({ variant }: { variant: "door" | "motion" | "glass" }) {
-  const strokeProps = {
-    fill: "none",
-    stroke: "#111111",
-    strokeWidth: 3,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-
-  if (variant === "door") {
-    return (
-      <svg viewBox="0 0 160 120" className="h-20 w-20" aria-hidden>
-        <path d="M38 20h56v84H38z" {...strokeProps} />
-        <path d="M94 30h22v74H94" {...strokeProps} />
-        <path d="M54 46h16v18H54z" {...strokeProps} />
-        <path d="M116 58c9 5 14 11 14 22" {...strokeProps} />
-        <path d="M120 47c16 9 24 20 24 33" {...strokeProps} />
-      </svg>
-    );
-  }
-
-  if (variant === "motion") {
-    return (
-      <svg viewBox="0 0 160 120" className="h-20 w-20" aria-hidden>
-        <circle cx="82" cy="22" r="10" {...strokeProps} />
-        <path d="M80 34 72 48l-12 6" {...strokeProps} />
-        <path d="M82 36 96 50l10 18" {...strokeProps} />
-        <path d="M72 48 60 66l-8 24" {...strokeProps} />
-        <path d="M93 51l-2 16 12 18" {...strokeProps} />
-        <path d="M54 100c8-9 18-14 32-14 13 0 24 4 34 12" {...strokeProps} />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 160 120" className="h-20 w-20" aria-hidden>
-      <rect x="38" y="18" width="84" height="84" {...strokeProps} />
-      <path d="m52 30 18 18-8 8 18 18-8 8" {...strokeProps} />
-      <path d="m100 30-18 18 8 8-18 18 8 8" {...strokeProps} />
-      <path d="M80 22v76" {...strokeProps} />
-      <path d="M42 64h76" {...strokeProps} />
-    </svg>
-  );
-}
-
-function SectionCard({
-  children,
-  className = "",
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return <CardShell className={`p-5 sm:p-6 ${className}`}>{children}</CardShell>;
-}
-
-function RiskCard({
-  title,
-  body,
-  variant,
-}: {
-  title: string;
-  body: string;
-  variant: "door" | "motion" | "glass";
-}) {
-  return (
-    <SectionCard className="min-h-[250px] text-center">
-      <div className="flex flex-col items-center">
-        <DetectionIcon variant={variant} />
-        <h3 className="mt-4 text-xl font-extrabold uppercase leading-tight text-black">
-          {title}
-        </h3>
-        <p className="mt-3 max-w-[20rem] text-sm leading-6 text-black/80">{body}</p>
-      </div>
-    </SectionCard>
-  );
-}
-
-function OptionCard({ title, body }: { title: string; body: string }) {
-  return (
-    <SectionCard className="min-h-[102px] text-center">
-      <h3 className="text-lg font-extrabold uppercase leading-tight text-black">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-black/80">{body}</p>
-    </SectionCard>
-  );
-}
-
-function RelatedCard({
-  icon: Icon,
-  label,
-  href,
-  showArrow = true,
-}: {
-  icon?: LucideIcon;
-  label: string;
-  href?: string;
-  showArrow?: boolean;
-}) {
-  const content = (
-    <CardShell className="flex min-h-[140px] flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
-      {Icon ? (
-        <Icon className="h-12 w-12" style={{ color: accent }} strokeWidth={1.7} />
-      ) : (
-        <span className="text-4xl leading-none text-black" aria-hidden>
-          •••
-        </span>
-      )}
-      <p className="mt-4 flex items-center gap-1 text-base font-extrabold leading-tight text-black">
-        <span>{label}</span>
-        {showArrow ? <ChevronRight className="h-4 w-4" aria-hidden /> : null}
-      </p>
-    </CardShell>
-  );
-
-  if (!href) return content;
-
-  return <Link href={href}>{content}</Link>;
-}
-
-function AppMockup({
-  title,
-  body,
-  accentLabel = "",
-}: {
-  title: string;
-  body: string;
-  accentLabel?: string;
-}) {
-  return (
-    <div className="rounded-[1.8rem] border border-black/10 bg-white p-3 shadow-[0_18px_40px_rgba(0,0,0,0.16)]">
-      <div className="rounded-[1.5rem] bg-[linear-gradient(180deg,#ffffff_0%,#f4f4f4_100%)] px-4 py-5 text-center">
-        <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-full bg-[#e7f7e9] text-[#13823e]">
-          <CheckCircle className="h-8 w-8" strokeWidth={1.8} />
-        </div>
-        <p className="text-sm font-bold uppercase tracking-wide text-black/55">{accentLabel}</p>
-        <h4 className="mt-1 text-xl font-extrabold uppercase tracking-tight text-black">{title}</h4>
-        <p className="mt-3 text-xs leading-5 text-black/70">{body}</p>
-      </div>
-    </div>
-  );
-}
-
-function SouthernCaliforniaMap() {
-  return (
-    <div className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-[#eef3f5] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.08)]">
-      <svg viewBox="0 0 600 380" className="h-full w-full" aria-hidden>
-        <defs>
-          <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#a8d8f0" />
-            <stop offset="100%" stopColor="#82c5e8" />
-          </linearGradient>
-        </defs>
-        <rect width="600" height="380" rx="24" fill="#f7f8f8" />
-        <path
-          d="M18 252c60-28 88-59 116-79 29-22 53-39 98-49 24-5 53-7 75-15 28-10 47-30 68-48 28-24 67-31 117-24 37 5 64 17 92 34v261H18z"
-          fill="url(#water)"
-        />
-        <path
-          d="M32 34h194M244 34h104M378 34h190M33 98h170M224 102h110M365 102h202M34 171h178M235 173h96M360 170h204M28 245h181M228 245h94M364 245h204M32 318h166M220 318h106M360 318h205"
-          stroke="#d8dee2"
-          strokeWidth="2"
-          opacity="0.8"
-        />
-        <path
-          d="M94 86h27l17 11 19-3 21 13 18-6 25 10 24-5 27 18 18-5 26 6 27-2 11 12"
-          fill="none"
-          stroke="#afc3cb"
-          strokeWidth="2"
-        />
-        <path
-          d="M26 194c22 2 42 6 58 14 22 11 48 21 80 30 25 8 54 15 76 28 28 16 67 28 111 35 38 7 85 10 121 23 30 11 59 20 86 26"
-          fill="none"
-          stroke="#afc3cb"
-          strokeWidth="2"
-        />
-        <circle cx="200" cy="154" r="14" fill="#ffffff" stroke="#b9cbd2" />
-        <circle cx="132" cy="208" r="13" fill="#ffffff" stroke="#b9cbd2" />
-        <circle cx="340" cy="214" r="13" fill="#ffffff" stroke="#b9cbd2" />
-        <text x="82" y="83" fontSize="20" fontWeight="700" fill="#1a2a32">
-          Los Angeles
-        </text>
-        <text x="196" y="165" fontSize="18" fontWeight="700" fill="#1a2a32">
-          Orange
-        </text>
-        <text x="430" y="67" fontSize="20" fontWeight="700" fill="#1a2a32">
-          Riverside
-        </text>
-        <text x="396" y="169" fontSize="20" fontWeight="700" fill="#1a2a32">
-          Riverside
-        </text>
-        <circle cx="172" cy="225" r="10" fill="#f4b942" opacity="0.85" />
-        <circle cx="321" cy="250" r="10" fill="#f4b942" opacity="0.85" />
-      </svg>
-    </div>
-  );
-}
-
-const detectionCards = [
+const industries = [
+  { icon: Warehouse, title: "Warehouses" },
+  { icon: Building2, title: "Offices" },
+  { icon: ShoppingCart, title: "Retail Stores" },
+  { icon: Factory, title: "Manufacturing\nFacilities" },
+  { icon: Hammer, title: "Construction\nOffices" },
+  { icon: Building, title: "Apartment\nProperties" },
+  { icon: Church, title: "Schools /\nChurches" },
+  { icon: Building2, title: "Commercial\nBuildings" },
+];
+const features = [
   {
-    variant: "door" as const,
-    title: "Door Sensor",
-    body: "Customized Detection Zones: door/window contacts, motion detectors, and glass-break sensors.",
+    icon: Wrench,
+    title: "Professional Installation",
+    desc: "Clean, code-compliant installations by experienced technicians.",
   },
   {
-    variant: "motion" as const,
-    title: "Motion Sensor",
-    body: "Smart Threat Identification: reduced false alarms while keeping real threats visible.",
+    icon: Wifi,
+    title: "Wireless & Hardwired Expertise",
+    desc: "We design the right solution for your property and risks.",
   },
   {
-    variant: "glass" as const,
-    title: "Glass-break Sensors",
-    body: "Optimized routines: zone documentation for stay/away routines and employee understanding.",
+    icon: Clock3,
+    title: "24/7 Monitoring Options",
+    desc: "Choose the monitoring level that fits your business needs.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile App Control",
+    desc: "Control your system from anywhere, anytime.",
+  },
+  {
+    icon: Camera,
+    title: "Camera & Access Control Integration",
+    desc: "Seamlessly integrate with cameras and access control systems.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Local Service & Support",
+    desc: "Fast local response and ongoing support when you need it.",
   },
 ];
-
-const systemOptions = [
-  {
-    title: "Wireless Convenience",
-    body: "Fast, cost-effective retrofits with clean installation paths.",
-  },
-  {
-    title: "Hardwired Reliability",
-    body: "Ideal for new builds and remodels. Core perimeter points are stable.",
-  },
-  {
-    title: "Hybrid Coverage",
-    body: "Use wireless where flexibility matters and hardwired where permanence matters.",
-  },
+const faqs = [
+  "Can I control my alarm system from my phone?",
+  "Do you install both wired and wireless alarm systems?",
+  "Can my alarm system integrate with cameras and access control?",
+  "Do you offer 24/7 monitoring?",
+  "What happens if the internet goes down?",
+  "Can you take over my existing alarm system?",
+  "Can different employees have their own codes?",
 ];
-
-const relatedServices = [
-  { label: "Security Cameras", icon: Camera, href: "/services/security-cameras" },
-  { label: "Video Monitoring", icon: MonitorPlay, href: "/services/video-monitoring" },
-  { label: "Mobile Security Trailers", icon: Truck, href: "/services/mobile-security-trailers" },
-  { label: "Access Control", icon: ShieldCheck, href: "/services/access-control" },
-  { label: "View all services", icon: Smartphone, href: "/services" },
-  { label: "View all services", href: "/services" },
-];
-
 export function AlarmSystemPage() {
   return (
     <main className="bg-white text-black">
-      <section className="relative overflow-hidden bg-[#17243b]">
+      {/* Hero Section - Matches first screenshot */}
+
+      <section className="relative overflow-hidden bg-black">
+        {/* Background */}
         <div className="absolute inset-0">
           <Image
             src={Banner}
-            alt="Office building at dusk"
+            alt=""
             fill
-            priority
-            className="object-cover object-center opacity-70"
-            sizes="100vw"
+            className="object-contain opacity-100"
           />
+          {/* <div className="absolute inset-0 bg-linear-to-r from-black via-black/90 to-black/40" /> */}
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_50%),linear-gradient(180deg,rgba(8,12,19,0.14),rgba(8,12,19,0.76))]" />
 
-        <div className="container relative mx-auto px-6 py-20 sm:px-8 sm:py-24 lg:py-28">
-          <div className="mx-auto max-w-5xl text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.4em] text-white/70">
-              Alarm System Services
+        <div className="relative container z-10 mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
+          {/* LEFT CONTENT */}
+          <div className="max-w-full lg:max-w-2xl xl:max-w-3xl text-center lg:text-left">
+            <p className="mb-3 sm:mb-4 lg:mb-5 text-xs sm:text-sm font-semibold uppercase tracking-[0.12em] sm:tracking-[0.15em] lg:tracking-[0.18em] text-white/70">
+              INTRUSION DETECTION • 24/7 PROTECTION
             </p>
-            <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-extrabold uppercase leading-[0.98] text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.65)] sm:text-5xl lg:text-6xl">
-              Alarm System: smart alarms with wireless and hardwired options for 24/7 threat
-              detection.
+
+            <h1 className="leading-[0.95] font-black uppercase">
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[70px] text-white">
+                COMMERCIAL
+              </span>
+
+              <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[70px] text-white">
+                ALARM SYSTEMS
+              </span>
+
+              <span className="mt-1 sm:mt-2 block text-3xl sm:text-4xl md:text-5xl lg:text-[58px] text-[#e31d1c]">
+                IN ORANGE COUNTY
+              </span>
             </h1>
-            <div className="mx-auto mt-7 flex max-w-2xl flex-col items-center justify-center gap-4 sm:flex-row">
+
+            <p className="mt-4 sm:mt-6 lg:mt-8 max-w-full lg:max-w-[560px] text-base sm:text-lg lg:text-[20px] leading-7 sm:leading-8 lg:leading-9 text-white/75">
+              Protect your business with professionally installed intrusion
+              detection, door and window sensors, motion detection, glass-break
+              protection, panic buttons, and 24/7 monitoring options.
+            </p>
+
+            {/* Buttons */}
+            <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 lg:gap-5">
               <Link
                 href="/request-quote"
-                className="inline-flex items-center justify-center rounded-xl border border-[#7c1a1a] bg-[#c12f2c] px-6 py-3 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(193,47,44,0.28)] transition hover:brightness-105 sm:px-8 sm:text-base"
+                className="rounded-xl bg-[#e31d1c] px-6 sm:px-8 lg:px-9 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-xl transition hover:bg-[#c31615]"
               >
-                Get a Free Site Survey
+                REQUEST A FREE SITE SURVEY
               </Link>
+
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-xl border border-white/35 bg-white/5 px-6 py-3 text-sm font-extrabold text-white backdrop-blur-sm transition hover:bg-white/10 sm:px-8 sm:text-base"
+                className="flex items-center gap-2 sm:gap-3 rounded-xl border border-white/30 bg-white/5 px-6 sm:px-8 lg:px-9 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white backdrop-blur-md transition hover:bg-white/10"
               >
-                Talk to a Specialist
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-8">
-        <div className="container mx-auto">
-          <SectionHeading>Detection TUNED to your risks</SectionHeading>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {detectionCards.map((card) => (
-              <RiskCard
-                key={card.title}
-                variant={card.variant}
-                title={card.title}
-                body={card.body}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-4 pb-16 sm:px-8">
-        <div className="container mx-auto">
-          <SectionHeading>Flexible System Options</SectionHeading>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {systemOptions.map((item) => (
-              <OptionCard key={item.title} title={item.title} body={item.body} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-4 py-4 sm:px-8">
-        <div className="container mx-auto">
-          <SectionHeading>Related Services</SectionHeading>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {relatedServices.map((item, index) => (
-              <RelatedCard
-                key={`${item.label}-${index}`}
-                icon={item.icon}
-                label={item.label}
-                href={item.href}
-                showArrow={item.label !== "View all services"}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-8">
-        <div className="container mx-auto">
-          <SectionHeading>Monitoring and Mobile Control</SectionHeading>
-          <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div className="space-y-4">
-              <CardShell className="overflow-hidden p-0">
-                <div className="grid gap-4 p-4 sm:grid-cols-12">
-                  <div className="relative col-span-12 overflow-hidden rounded-2xl bg-[#10151f]">
-                    <Image
-                      src={Banner}
-                      alt="Alarm monitoring office"
-                      className="h-full w-full object-cover opacity-60"
-                      width={1200}
-                      height={900}
-                    />
-                   
-                    
-                  </div>
-                </div>
-              </CardShell>
-            </div>
-
-            <div className="space-y-5">
-              <p className="text-3xl font-extrabold uppercase leading-none tracking-tight text-black sm:text-4xl">
-                Professional Monitoring
-              </p>
-              <p className="text-base leading-7 text-black/75 sm:text-lg">
-                Signal routing for fast central station dispatch on all events, including burglary,
-                panic, and environmental conditions.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <span
-                    className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full text-white"
-                    style={{ backgroundColor: accent }}
-                  >
-                    <PhoneCall className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <p className="text-base font-extrabold uppercase">Mobile control & visibility</p>
-                    <p className="mt-1 text-sm leading-6 text-black/70">
-                      User-level permissions for arming, disarming, push history, and reminders.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span
-                    className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full text-white"
-                    style={{ backgroundColor: accent }}
-                  >
-                    <Wifi className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <p className="text-base font-extrabold uppercase">Always-connected alerts</p>
-                    <p className="mt-1 text-sm leading-6 text-black/70">
-                      Redundant monitoring keeps your site visible even when network conditions
-                      change.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-4 py-2 sm:px-8">
-        <div className="container mx-auto">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-            <SouthernCaliforniaMap />
-            <div className="space-y-4">
-              <SectionHeading>Serving Southern California</SectionHeading>
-              <p className="mx-auto max-w-xl text-base leading-7 text-black/75 sm:text-lg">
-                Request a walkthrough and we’ll recommend equipment, placement, and monitoring
-                options aligned with your goals.
-              </p>
-              <div className="flex justify-center">
-                <Link
-                  href="/request-quote"
-                  className="inline-flex items-center justify-center rounded-xl border border-[#7c1a1a] bg-[#c12f2c] px-7 py-3 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(193,47,44,0.28)] transition hover:brightness-105 sm:text-base"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 sm:h-5 sm:w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
                 >
-                  Request Quote
-                </Link>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 5a2 2 0 012-2h2.28a2 2 0 011.97 1.66l.35 2.09a2 2 0 01-.57 1.74L7.91 9.61a16 16 0 006.48 6.48l1.12-1.12a2 2 0 011.74-.57l2.09.35A2 2 0 0121 16.72V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z"
+                  />
+                </svg>
+                TALK TO A SPECIALIST
+              </Link>
+            </div>
+
+            {/* Bottom Features */}
+            <div className="mt-8 sm:mt-10 lg:mt-14 flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8 lg:gap-12">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="rounded-full border border-red-500 p-1.5 sm:p-2 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl">
+                  🛡️
+                </div>
+                <span className="font-bold uppercase text-white text-sm sm:text-base">
+                  Detect
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="rounded-full border border-red-500 p-1.5 sm:p-2 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl">
+                  🔔
+                </div>
+                <span className="font-bold uppercase text-white text-sm sm:text-base">
+                  Deter
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="rounded-full text-white border border-red-500 p-1.5 sm:p-2 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl">
+                  ✓
+                </div>
+                <span className="font-bold uppercase text-white text-sm sm:text-base">
+                  Protect 24/7
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT IMAGE */}
+          <div className="relative hidden lg:block w-full max-w-[400px] xl:max-w-[700px] h-[400px] xl:h-[620px]">
+            {/* <Image
+              src="/images/dsc-products.png"
+              alt="Commercial Alarm System"
+              fill
+              priority
+              className="object-contain object-bottom"
+            /> */}
+          </div>
+        </div>
+      </section>
+
+      {/* Detection Section - Matches second screenshot */}
+      <section className="bg-white py-12 sm:py-16">
+        <div className="mx-auto container px-4 lg:px-6">
+          {/* Heading */}
+          <div className="mb-8 sm:mb-10 text-center">
+            <h2 className="font-display text-center text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold uppercase leading-tight tracking-wide text-black">
+              DETECTION TUNED TO YOUR RISKS
+            </h2>
+            <div className="mx-auto mt-3 sm:mt-4 h-1 w-16 sm:w-20 rounded-full bg-red-600" />
+          </div>
+
+          <div className="grid gap-4 sm:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+            {/* CARD */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 lg:p-7 text-center shadow-sm transition hover:shadow-lg">
+              <div className="mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                <svg
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="#E11D24"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="16" y="10" width="18" height="42" rx="2" />
+                  <rect x="36" y="8" width="10" height="46" rx="2" />
+                  <circle cx="27" cy="31" r="1.5" fill="#E11D24" />
+                  <path d="M46 46h8l3 5" />
+                </svg>
+              </div>
+
+              <h3 className="text-sm sm:text-base lg:text-[18px] font-extrabold uppercase leading-tight">
+                DOOR & WINDOW
+                <br />
+                SENSORS
+              </h3>
+
+              <p className="mt-3 sm:mt-4 lg:mt-5 text-sm sm:text-base lg:text-[18px] leading-6 sm:leading-7 lg:leading-8 text-gray-600">
+                Detect unauthorized openings at doors, windows, and other entry
+                points.
+              </p>
+            </div>
+
+            {/* Motion */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 lg:p-7 text-center shadow-sm transition hover:shadow-lg">
+              <div className="mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                <svg
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="#E11D24"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="32" cy="10" r="4" />
+                  <path d="M32 14l-4 12-8 4" />
+                  <path d="M32 18l10 8 4 12" />
+                  <path d="M28 26l-6 12" />
+                  <path d="M40 28l8 12" />
+                </svg>
+              </div>
+
+              <h3 className="text-sm sm:text-base lg:text-[18px] font-extrabold uppercase leading-tight">
+                MOTION
+                <br />
+                DETECTORS
+              </h3>
+
+              <p className="mt-3 sm:mt-4 lg:mt-5 text-sm sm:text-base lg:text-[18px] leading-6 sm:leading-7 lg:leading-8 text-gray-600">
+                Detect movement inside protected areas after the system is
+                armed.
+              </p>
+            </div>
+
+            {/* Glass */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 lg:p-7 text-center shadow-sm transition hover:shadow-lg">
+              <div className="mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                <svg
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="#E11D24"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="12" y="12" width="40" height="40" />
+                  <path d="M32 12V52" />
+                  <path d="M12 32H52" />
+                  <path d="M22 18l5 8-5 8" />
+                  <path d="M42 18l-5 8 5 8" />
+                </svg>
+              </div>
+
+              <h3 className="text-sm sm:text-base lg:text-[18px] font-extrabold uppercase leading-tight">
+                GLASS-BREAK
+                <br />
+                DETECTORS
+              </h3>
+
+              <p className="mt-3 sm:mt-4 lg:mt-5 text-sm sm:text-base lg:text-[18px] leading-6 sm:leading-7 lg:leading-8 text-gray-600">
+                Acoustic detection designed to identify breaking glass.
+              </p>
+            </div>
+
+            {/* Panic */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 lg:p-7 text-center shadow-sm transition hover:shadow-lg">
+              <div className="mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                <svg
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="#E11D24"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M32 10l16 6v12c0 11-7 20-16 26-9-6-16-15-16-26V16z" />
+                  <path d="M26 31l5 5 8-10" />
+                </svg>
+              </div>
+
+              <h3 className="text-sm sm:text-base lg:text-[18px] font-extrabold uppercase leading-tight">
+                PANIC
+                <br />
+                BUTTONS
+              </h3>
+
+              <p className="mt-3 sm:mt-4 lg:mt-5 text-sm sm:text-base lg:text-[18px] leading-6 sm:leading-7 lg:leading-8 text-gray-600">
+                Discreet emergency notification options for employees and
+                high-risk areas.
+              </p>
+            </div>
+
+            {/* Siren */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 lg:p-7 text-center shadow-sm transition hover:shadow-lg">
+              <div className="mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                <svg
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="#E11D24"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M24 44h16V30a8 8 0 10-16 0z" />
+                  <path d="M20 50h24" />
+                  <path d="M18 18l-4-4" />
+                  <path d="M46 18l4-4" />
+                  <path d="M32 10V4" />
+                </svg>
+              </div>
+
+              <h3 className="text-sm sm:text-base lg:text-[18px] font-extrabold uppercase leading-tight">
+                SIRENS &
+                <br />
+                STROBES
+              </h3>
+
+              <p className="mt-3 sm:mt-4 lg:mt-5 text-sm sm:text-base lg:text-[18px] leading-6 sm:leading-7 lg:leading-8 text-gray-600">
+                Audible and visual notification devices for immediate on-site
+                deterrence.
+              </p>
+            </div>
+
+            {/* Panel */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 lg:p-7 text-center shadow-sm transition hover:shadow-lg">
+              <div className="mb-4 sm:mb-5 lg:mb-6 flex justify-center">
+                <svg
+                  className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="#E11D24"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="14" y="10" width="36" height="44" rx="2" />
+                  <path d="M22 18h2M30 18h2M38 18h2" />
+                  <path d="M22 28h2M30 28h2M38 28h2" />
+                  <path d="M22 38h2M30 38h2M38 38h2" />
+                  <path d="M22 48h20" />
+                </svg>
+              </div>
+
+              <h3 className="text-sm sm:text-base lg:text-[18px] font-extrabold uppercase leading-tight">
+                ALARM CONTROL
+                <br />
+                PANELS
+              </h3>
+
+              <p className="mt-3 sm:mt-4 lg:mt-5 text-sm sm:text-base lg:text-[18px] leading-6 sm:leading-7 lg:leading-8 text-gray-600">
+                Centralized control for sensors, users, partitions, schedules,
+                and monitoring.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Flexible System Options - Matches third screenshot */}
+      <section className="bg-white pb-12 sm:pb-16">
+        <div className="mx-auto container px-4 lg:px-6">
+          {/* Heading */}
+          <div className="mb-8 sm:mb-10 text-center">
+            <h2 className="font-display text-center text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold uppercase leading-tight tracking-wide text-black">
+              FLEXIBLE SYSTEM OPTIONS
+            </h2>
+            <div className="mx-auto mt-3 sm:mt-4 h-1 w-16 sm:w-20 rounded-full bg-red-600" />
+          </div>
+
+          <div className="grid gap-5 sm:gap-6 md:grid-cols-3">
+            {/* Wireless */}
+            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+              <div className="h-48 sm:h-56 lg:h-60 bg-[#ececec]">
+                <Image
+                  src={Card1}
+                  alt="Wireless System"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="px-4 sm:px-6 lg:px-8 py-5 sm:py-6 lg:py-7 text-center">
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-black">
+                  WIRELESS SYSTEMS
+                </h3>
+                <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
+                  Fast installation with minimal disruption to finished
+                  commercial spaces.
+                </p>
+              </div>
+            </div>
+
+            {/* Hardwired */}
+            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+              <div className="h-48 sm:h-56 lg:h-60 bg-[#ececec]">
+                <Image
+                  src={Card2}
+                  alt="Hardwired System"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="px-4 sm:px-6 lg:px-8 py-5 sm:py-6 lg:py-7 text-center">
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-black">
+                  HARDWIRED SYSTEMS
+                </h3>
+                <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
+                  Reliable infrastructure ideal for new construction, remodels,
+                  and permanent installations.
+                </p>
+              </div>
+            </div>
+
+            {/* Hybrid */}
+            <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+              <div className="h-48 sm:h-56 lg:h-60 bg-[#ececec]">
+                <Image
+                  src={Card3}
+                  alt="Hybrid System"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="px-4 sm:px-6 lg:px-8 py-5 sm:py-6 lg:py-7 text-center">
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-black">
+                  HYBRID SYSTEMS
+                </h3>
+                <p className="mt-3 sm:mt-4 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
+                  Combine wired reliability with wireless flexibility for
+                  expansions and upgrades.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-8">
-        <div className="container mx-auto max-w-5xl">
-          <div className="overflow-hidden rounded-2xl border border-neutral-700 bg-[#1f242b] p-6 text-center text-white shadow-[0_18px_32px_rgba(0,0,0,0.14)] sm:p-8">
-            <p className="text-2xl font-extrabold uppercase tracking-wide sm:text-3xl">
-              Get Protected Today
-            </p>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
-              Don’t wait until something happens — secure your business now.
-            </p>
-            <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
-              <Link
-                href="/request-quote"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#7c1a1a] bg-[#c12f2c] px-6 py-3 text-sm font-extrabold text-white transition hover:brightness-105"
-              >
-                <span className="grid h-5 w-5 place-items-center rounded bg-white/15">
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-                Get a Free Quote
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-extrabold text-white transition hover:bg-white/10"
-              >
-                <PhoneCall className="h-4 w-4" />
-                Call or Text (800) 299-5964
-              </Link>
+      <section className="relative overflow-hidden rounded-2xl">
+        {/* Background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${banner2.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/75" />
+
+        <div className="relative mx-auto container px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="grid items-center gap-8 lg:grid-cols-[1fr_380px_1fr]">
+            {/* LEFT */}
+            <div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase leading-tight text-white">
+                24/7 PROFESSIONAL
+                <br />
+                ALARM MONITORING
+              </h2>
+
+              <div className="mt-3 sm:mt-4 h-1 w-16 sm:w-20 rounded-full bg-red-600" />
+
+              <p className="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl leading-8 sm:leading-9 text-white/85">
+                Our monitoring partners respond to alarms immediately and
+                dispatch the appropriate authorities to your location.
+              </p>
+
+              <ul className="mt-8 sm:mt-10 space-y-4 sm:space-y-5">
+                {[
+                  "Burglary & Intrusion Monitoring",
+                  "Panic & Emergency Monitoring",
+                  "Alarm Verification & Notification",
+                  "Mobile Alerts & System Notifications",
+                  "UL-Listed Central Station Monitoring",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 sm:gap-4 text-base sm:text-lg lg:text-xl font-medium text-white"
+                  >
+                    <div className="mt-1 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-red-600 text-sm sm:text-base">
+                      ✓
+                    </div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* CENTER */}
+            <div className="relative flex justify-center">
+              <Image
+                src={Mobile}
+                alt="mobile"
+                className="relative z-20 w-48 sm:w-56 md:w-64 lg:w-72 rounded-[30px] sm:rounded-[40px] border-4 border-white object-cover shadow-2xl"
+              />
+            </div>
+
+            {/* RIGHT */}
+            <div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase leading-tight text-white">
+                SMART ALARM CONTROL
+                <br />
+                FROM ANYWHERE
+              </h2>
+
+              <div className="mt-3 sm:mt-4 h-1 w-16 sm:w-20 rounded-full bg-red-600" />
+
+              <div className="mt-8 sm:mt-10 space-y-6 sm:space-y-8">
+                {[
+                  {
+                    title: "Arm & Disarm Remotely",
+                    desc: "Manage your system from your smartphone.",
+                  },
+                  {
+                    title: "Real-Time Alerts",
+                    desc: "Get instant notifications of alarms and events.",
+                  },
+                  {
+                    title: "User Management",
+                    desc: "Add or remove users and set permissions.",
+                  },
+                  {
+                    title: "Activity History",
+                    desc: "Review system events and activity logs.",
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-3 sm:gap-4">
+                    <div className="mt-1 flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-red-600 text-white text-sm sm:text-base">
+                      ✓
+                    </div>
+                    <div>
+                      <h4 className="text-xl sm:text-2xl font-extrabold text-white">
+                        {item.title}
+                      </h4>
+                      <p className="mt-1 text-base sm:text-lg leading-7 sm:leading-8 text-white/80">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose AVSS - Matches fifth screenshot */}
+      <section className="bg-white px-4 sm:px-6 pt-12 sm:pt-16 pb-8 sm:pb-12">
+        <div className="container mx-auto">
+          <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-black">
+            COMMERCIAL ALARM SYSTEMS FOR
+          </h2>
+          <div className="mb-8 sm:mb-12 text-center">
+            <div className="mx-auto mt-3 sm:mt-4 h-1 w-16 sm:w-20 rounded bg-red-600"></div>
+
+            <div className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-6 sm:gap-8">
+              {industries.map((item, i) => {
+                const Icon = item.icon;
+
+                return (
+                  <div key={i} className="text-center">
+                    <Icon
+                      size={40}
+                      strokeWidth={1.8}
+                      className="mx-auto text-red-600"
+                    />
+                    <p className="mt-2 sm:mt-3 whitespace-pre-line text-base sm:text-lg font-bold">
+                      {item.title}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 lg:grid-cols-2">
+            <div className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 lg:p-10 shadow-sm">
+              <h3 className="text-center text-2xl sm:text-3xl font-black uppercase">
+                WHY CHOOSE AVSS
+              </h3>
+              <div className="mx-auto mt-3 sm:mt-4 h-1 w-12 sm:w-16 rounded bg-red-600"></div>
+
+              <div className="mt-8 sm:mt-10 grid gap-x-2 gap-y-8 sm:gap-y-10 md:grid-cols-2 xl:grid-cols-3">
+                {features.map((item, i) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div key={i} className="flex gap-3 sm:gap-4">
+                      <Icon
+                        size={36}
+                        strokeWidth={1.8}
+                        className="mt-1 shrink-0 text-red-600"
+                      />
+                      <div>
+                        <h4 className="text-xs sm:text-sm font-black uppercase leading-snug">
+                          {item.title}
+                        </h4>
+                        <p className="mt-1 sm:mt-2 text-sm sm:text-base leading-6 sm:leading-7 text-gray-600">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+           <FaqSection />
+            </div>
+          </div>
+        
+      </section>
+
+      {/* Related Services - Matches sixth screenshot */}
+      <section className="bg-white py-12 sm:pb-16">
+        <div className="mx-auto container px-4 sm:px-6">
+          {/* Heading */}
+          <div className="mb-8 sm:mb-10 text-center">
+            <h2 className="font-display text-center text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold uppercase leading-tight tracking-wide text-black">
+              RELATED SERVICES
+            </h2>
+            <div className="mx-auto mt-3 sm:mt-4 h-1 w-12 sm:w-16 rounded bg-red-600" />
+          </div>
+
+          {/* Cards */}
+          <div className="grid gap-4 sm:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="relative h-32 sm:h-36 lg:h-40 w-full bg-gray-100">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-3 sm:p-4 lg:p-5 text-center">
+                  <h3 className="min-h-[40px] text-xs sm:text-sm lg:text-[15px] font-black uppercase leading-5 text-black">
+                    {service.title}
+                  </h3>
+                  <Link
+                    href="#"
+                    className="mt-3 sm:mt-4 inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-red-600 transition hover:text-red-700"
+                  >
+                    View Service
+                    <ChevronRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
     </main>
+  );
+}
+
+function WifiIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M5 12.5a8 8 0 0 1 14 0" />
+      <path d="M8 16.5a5 5 0 0 1 8 0" />
+      <path d="M12 20.5v.01" />
+    </svg>
   );
 }
