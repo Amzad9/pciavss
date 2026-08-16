@@ -72,7 +72,7 @@ const features = [
 
 // Re-adding Sun icon that was missing
 function Sun(props: any) {
-  return <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>;
+  return <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg>;
 }
 
 const cameraTypes = [
@@ -143,12 +143,17 @@ const idealFor = [
 ];
 
 const projectPhotos = [
-  { src: "/images/IMG_1597.jpeg", alt: "Security camera closeup installation", category: "Camera Closeup" },
+  { src: "/images/image (46).png", alt: "Commercial security camera installation", category: "Camera Installation" },
   { src: "/images/IMG_6951.jpeg", alt: "Rack installation with organized wiring", category: "Rack Installation" },
   { src: "/images/IMG_7032.jpeg", alt: "NVR setup in server room", category: "NVR Setup" },
   { src: "/images/IMG_7342.jpeg", alt: "Professional conduit work", category: "Conduit Work" },
   { src: "/images/IMG_8136.jpeg", alt: "Warehouse security installation", category: "Warehouse" },
-  { src: "/images/IMG_8160.jpeg", alt: "Nighttime camera footage", category: "Night Vision" },
+  { src: "/images/image (48).png", alt: "Commercial surveillance system setup", category: "System Setup" },
+  { src: "/images/image (47).png", alt: "Enterprise camera system prewire", category: "Camera Prewire" },
+  { src: "/images/image (49).png", alt: "Commercial security camera mounting", category: "Camera Mounting" },
+  { src: "/images/image (50).png", alt: "Server rack wiring and cable management", category: "Cable Management" },
+  { src: "/images/image.png", alt: "Commercial property camera coverage", category: "Commercial Coverage" },
+  { src: "/camera installation.jpg", alt: "Outdoor commercial camera installation", category: "Outdoor Security" },
 ];
 
 export function SecurityCamerasPage() {
@@ -165,33 +170,32 @@ export function SecurityCamerasPage() {
           sizes="100vw"
         /> */}
         <div className="absolute inset-0 bg-black/60" />
-        
+
         <div className="container relative z-10 mx-auto px-6 py-20 text-center">
           <h1 className="mx-auto max-w-4xl text-3xl font-extrabold uppercase leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            Commercial Security Camera Systems
+            Commercial Security Camera Installation in Orange County
+
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90 sm:text-xl">
-            Professional surveillance solutions for businesses across Southern California
-          </p>
+            Professional commercial security camera and video surveillance systems designed and installed for businesses throughout Orange County and Southern California.          </p>
           <Link
             href="/contact"
             className="mt-8 inline-flex items-center justify-center rounded-md px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 sm:text-lg"
             style={{ backgroundColor: primaryRed }}
           >
-            Request a Commercial Security Assessment
-          </Link>
+            Request a Commercial Security Assessment          </Link>
           <p className="mt-4 text-sm text-white/80">
             We'll evaluate your property, recommend coverage areas, and provide a customized camera system proposal.
           </p>
         </div>
       </section>
 
-   
+
 
       {/* Commercial Camera System Features Section */}
       <section className="px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Commercial Camera System Features</SectionHeading>
+          <SectionHeading>Commercial Security Camera System Features</SectionHeading>
           <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
             Enterprise-grade security features designed for commercial applications
           </p>
@@ -212,10 +216,10 @@ export function SecurityCamerasPage() {
           </div>
         </div>
       </section>
-   {/* Camera Types We Install Section */}
-   <section className="px-4 py-16 bg-gray-50 sm:px-8">
+      {/* Camera Types We Install Section */}
+      <section className="px-4 py-16 bg-gray-50 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Camera Types We Install</SectionHeading>
+          <SectionHeading>Commercial Security Cameras We Install</SectionHeading>
           <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
             Professional-grade cameras for every commercial application
           </p>
@@ -245,73 +249,109 @@ export function SecurityCamerasPage() {
           </div>
         </div>
       </section>
-       {/* Ideal For Section */}
-       <section className="bg-neutral-0 px-4 py-16 sm:px-8">
+      {/* Ideal For Section */}
+      <section className="bg-neutral-0 px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Ideal For</SectionHeading>
+          <SectionHeading>Security Camera Systems for Commercial Properties</SectionHeading>
           <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
             Commercial camera systems tailored to your industry needs
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-5">
-  {idealFor.map((item) => (
-    <div key={item.label} className="flex flex-col items-center justify-center bg-gray-100 rounded-xl p-8 text-center shadow-md transition-transform hover:scale-105 w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(25%-1.25rem)]">
-      <item.icon className="h-12 w-12" style={{ color: primaryRed }} strokeWidth={1.5} />
-      <p className="mt-4 text-base font-extrabold" style={{ color: darkCharcoal }}>{item.label}</p>
-    </div>
-  ))}
-</div>
+            {idealFor.map((item) => (
+              <div key={item.label} className="flex flex-col items-center justify-center bg-gray-100 rounded-xl p-8 text-center shadow-md transition-transform hover:scale-105 w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(25%-1.25rem)]">
+                <item.icon className="h-12 w-12" style={{ color: primaryRed }} strokeWidth={1.5} />
+                <p className="mt-4 text-base font-extrabold" style={{ color: darkCharcoal }}>{item.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-        {/* Why Businesses Choose AVSS Strip */}
+      {/* Commercial Security Camera Installation Throughout Orange County Section */}
+      <section className="px-4 py-16 bg-white sm:px-8 border-t border-b border-neutral-200">
+        <div className="container mx-auto max-w-5xl text-center">
+          <SectionHeading>
+            Commercial Security Camera Installation Throughout Orange County
+          </SectionHeading>
+          <p className="mt-4 text-center text-gray-600 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
+            We serve businesses in Anaheim, Orange, Tustin, Irvine, Santa Ana, Fullerton, Garden Grove, Yorba Linda, Costa Mesa, Huntington Beach, Stanton, Cypress and surrounding areas.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+            {[
+              "Anaheim",
+              "Orange",
+              "Tustin",
+              "Irvine",
+              "Santa Ana",
+              "Fullerton",
+              "Garden Grove",
+              "Yorba Linda",
+              "Costa Mesa",
+              "Huntington Beach",
+              "Stanton",
+              "Cypress",
+            ].map((city) => (
+              <span
+                key={city}
+                className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-gray-50 px-4 py-2 text-sm font-bold text-gray-800 shadow-2xs transition hover:bg-gray-100"
+              >
+                <MapPin className="h-4 w-4 shrink-0" style={{ color: primaryRed }} />
+                {city}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Businesses Choose AVSS Strip */}
       <section className="px-4 py-16 bg-gray-50 sm:px-8">
         <div className="container mx-auto max-w-7xl">
           <SectionHeading>Why Businesses Choose AVSS</SectionHeading>
           <div className="mt-12 flex flex-wrap justify-center gap-4">
-  {whyChoose.map((item) => (
-    <div key={item.text} className="flex items-center justify-center gap-3 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] hover:shadow-xl">
-      <item.icon className="h-6 w-6 shrink-0" style={{ color: primaryRed }} strokeWidth={1.75} />
-      <span className="font-semibold" style={{ color: darkCharcoal }}>{item.text}</span>
-    </div>
-  ))}
-</div>
+            {whyChoose.map((item) => (
+              <div key={item.text} className="flex items-center justify-center gap-3 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)] hover:shadow-xl">
+                <item.icon className="h-6 w-6 shrink-0" style={{ color: primaryRed }} strokeWidth={1.75} />
+                <span className="font-semibold" style={{ color: darkCharcoal }}>{item.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       {/* Real Project Photos Gallery */}
       <section className="bg-white px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Our Recent Installations</SectionHeading>
+          <SectionHeading>Recent Commercial Security Camera Installations</SectionHeading>
           <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
             See the quality of our commercial camera system installations across Southern California
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-6">
-  {projectPhotos.map((photo, idx) => (
-    <div key={idx} className="group relative overflow-hidden rounded-xl bg-white shadow-md w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)]">
-      <div className="relative aspect-4/3">
-        <Image
-          src={photo.src}
-          alt={photo.alt}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-        />
-      </div>
-      {/* <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-3">
+            {projectPhotos.map((photo, idx) => (
+              <div key={idx} className="group relative overflow-hidden rounded-xl bg-white shadow-md w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)]">
+                <div className="relative aspect-4/3">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+                {/* <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-3">
         <p className="text-lg font-medium text-white">{photo.category}</p>
         <p className="text-sm text-white/90">{photo.alt}</p>
       </div> */}
-    </div>
-  ))}
-</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-   
+
 
       {/* Our Installation Process Section */}
       <section className="bg-neutral-50 px-4 py-16 sm:px-8">
         <div className="container mx-auto">
-          <SectionHeading>Our Installation Process</SectionHeading>
+          <SectionHeading>Our Commercial Security Camera Installation Process</SectionHeading>
           <p className="mt-4 text-center text-gray-600 max-w-2xl mx-auto">
             A streamlined approach from consultation to ongoing support
           </p>
@@ -335,48 +375,48 @@ export function SecurityCamerasPage() {
         </div>
       </section>
 
-     {/* Final CTA Section */}
-<section className="relative overflow-hidden py-20">
-  {/* Background Image */}
-  <div className="absolute inset-0 z-0">
-    <img
-      src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1920&h=800&fit=crop"
-      alt="Commercial security camera installation"
-      className="h-full w-full object-cover"
-    />
-    <div className="absolute inset-0 bg-black/70" /> {/* Dark overlay for text readability */}
-  </div>
-  
-  <div className="relative z-10 container mx-auto px-6 text-center">
-    <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
-      Request a Commercial Security Assessment
-    </h2>
-    <p className="mt-4 mx-auto max-w-2xl text-lg text-gray-200">
-      We'll evaluate your property, recommend coverage areas, and provide a customized camera system proposal.
-    </p>
-    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <Link
-        href="/contact"
-        className="inline-flex items-center justify-center rounded-md px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 sm:text-lg"
-        style={{ backgroundColor: primaryRed }}
-      >
-        Get Your Free Assessment
-      </Link>
-      <Link
-        href="/contact"
-        className="inline-flex items-center justify-center rounded-md border-2 border-white px-8 py-4 text-base font-bold text-white transition-all hover:bg-white hover:text-black"
-      >
-        Contact Our Team
-      </Link>
-    </div>
-    <p className="mt-6 text-sm text-gray-300">
-      Serving Orange County, Los Angeles County, San Diego County, and all of Southern California
-    </p>
-  </div>
-</section>
+      {/* Final CTA Section */}
+      <section className="relative overflow-hidden py-20">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1920&h=800&fit=crop"
+            alt="Commercial security camera installation"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/70" /> {/* Dark overlay for text readability */}
+        </div>
 
-     
-   {/* Trust Elements Strip */}
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
+            Request a Commercial Security Assessment
+          </h2>
+          <p className="mt-4 mx-auto max-w-2xl text-lg text-gray-200">
+            We'll evaluate your property, recommend coverage areas, and provide a customized camera system proposal.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-md px-8 py-4 text-base font-bold text-white transition-all hover:brightness-110 sm:text-lg"
+              style={{ backgroundColor: primaryRed }}
+            >
+              Get Your Free Assessment
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-md border-2 border-white px-8 py-4 text-base font-bold text-white transition-all hover:bg-white hover:text-black"
+            >
+              Contact Our Team
+            </Link>
+          </div>
+          <p className="mt-6 text-sm text-gray-300">
+            Serving Orange County, Los Angeles County, San Diego County, and all of Southern California
+          </p>
+        </div>
+      </section>
+
+
+      {/* Trust Elements Strip */}
       <section className="border-b border-neutral-200 bg-white py-6">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
@@ -440,7 +480,7 @@ export function SecurityCamerasPage() {
       {/* FAQ Section for SEO */}
       <section className="px-4 py-4 sm:px-8">
         <div className="container mx-auto max-w-4xl">
-          <SectionHeading>Frequently Asked Questions</SectionHeading>
+          <SectionHeading>Commercial Security Camera FAQs</SectionHeading>
           <p className="mt-4 text-center text-gray-600">
             Common questions about our commercial camera systems
           </p>
@@ -450,7 +490,7 @@ export function SecurityCamerasPage() {
         </div>
       </section>
 
-     
+
     </main>
   );
 }
