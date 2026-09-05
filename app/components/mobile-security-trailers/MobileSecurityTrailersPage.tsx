@@ -140,7 +140,7 @@ const trailerUseCases = [
   },
   {
     title: "Parking Lots",
-    body: "Cover vacant land, yards, and locations where fixed infrastructure is limited.",
+    body: "Monitor entrances, parking areas, vehicles, and after-hours activity across large commercial lots.",
     icon: Home,
   },
   {
@@ -150,35 +150,35 @@ const trailerUseCases = [
   },
   {
     title: "Festivals",
-    body: "Add temporary visibility during renovations, tenant improvements, or transitions.",
-    icon: Building,
+    body: "Provide temporary surveillance around entrances, parking areas, equipment zones, vendor areas, and high-traffic locations during festivals and special events.",
+    icon: Users,
   },
   {
     title: "Remote Sites",
-    body: "Add temporary visibility during renovations, tenant improvements, or transitions.",
-    icon: Building,
+    body: "Monitor remote properties, equipment, and job sites where permanent power, internet, or fixed security infrastructure may not be available.",
+    icon: Cloud,
   },
 ];
 
 const trailerConfigurations = [
   {
     title: "Mobile Trailer (Mast Up)",
-    body: "Best for off-grid sites where battery backup and solar charging are the priority.",
+    body: "Elevated camera positioning provides greater visibility and broader surveillance coverage across large properties and job sites.",
     image: MobileTrailer,
   },
   {
     title: "Trailer (Mast Down)",
-    body: "Combines solar, battery, and shore power so the trailer can adapt to changing conditions.",
+    body: "The lowered mast configuration makes the trailer easier to transport, position, and relocate between job sites.",
     image: Trailer,
   },
   {
     title: "Solar Panel Close-up",
-    body: "Configured for response workflows, alerts, and live verification when events occur.",
+    body: "Solar-assisted charging helps keep the trailer operating at remote locations where permanent power may not be available.",
     image: Solar,
   },
   {
     title: "Battery Rack",
-    body: "A practical option when you need coverage fast during a project or transition.",
+    body: "Integrated battery storage provides backup power and supports continued trailer operation when solar or external power is limited.",
     image: Battery,
   },
 ];
@@ -195,12 +195,12 @@ const hardwareConfigurations = [
   },
   {
     title: "Cellular Modem/Router",
-    body: "Configured for response workflows, alerts, and live verification when events occur.",
+    body: "Provides cellular connectivity for remote camera viewing, alerts, system communication, and monitoring when wired internet is unavailable.",
     image: Celluler,
   },
   {
     title: "Visible Deterrence kit (Mast Light, Sign)",
-    body: "A practical option when you need coverage fast during a project or transition.",
+    body: "High-visibility mast lighting and security signage help deter theft, trespassing, vandalism, and after-hours activity.",
     image: Deterrence,
   },
 ];
@@ -218,7 +218,7 @@ const deploymentSteps = [
   },
   {
     icon: Wrench,
-    title: "Rapid Depleyment",
+    title: "Rapid Deployment",
     body: "We configure the unit for your site and verify everything is working before handoff.",
   },
   {
@@ -256,37 +256,37 @@ const whyChoose = [
 ];
 
 
-  const serviceCards = [
-    {
-      id: 1,
-      title: "Equipment Assessment",
-      description: "State-of-the-art security equipment tailored to your site",
-      image: Card1,
-      icon: "🔧"
-    },
-    {
-      id: 2,
-      title: "Site Survey",
-      description: "Comprehensive evaluation of your temporary location",
-      image: Card2,
-      icon: "📋"
-    },
-    {
-      id: 1,
-      title: "Equipment Assessment",
-      description: "State-of-the-art security equipment tailored to your site",
-      image: Card3,
-      icon: "🔧"
-    },
-    {
-      id: 2,
-      title: "Site Survey",
-      description: "Comprehensive evaluation of your temporary location",
-      image: Card4,
-      icon: "📋"
-    }
-    
-  ];
+const serviceCards = [
+  {
+    id: 1,
+    title: "Equipment Assessment",
+    description: "State-of-the-art security equipment tailored to your site",
+    image: Card1,
+    icon: "🔧"
+  },
+  {
+    id: 2,
+    title: "Site Survey",
+    description: "Comprehensive evaluation of your temporary location",
+    image: Card2,
+    icon: "📋"
+  },
+  {
+    id: 1,
+    title: "Equipment Assessment",
+    description: "State-of-the-art security equipment tailored to your site",
+    image: Card3,
+    icon: "🔧"
+  },
+  {
+    id: 2,
+    title: "Site Survey",
+    description: "Comprehensive evaluation of your temporary location",
+    image: Card4,
+    icon: "📋"
+  }
+
+];
 
 const relatedServices = [
   { label: "Security Cameras", icon: Camera, href: "/services/security-cameras" },
@@ -392,51 +392,51 @@ function RelatedTile({
 export function MobileSecurityTrailersPage() {
   return (
     <main className="bg-white text-black">
-     <section className="relative flex min-h-200 items-center overflow-hidden bg-black">
-  <div className="container relative mx-auto min-h-200">
-    <div className="grid grid-cols-1 min-h-200 lg:grid-cols-2 gap-12 items-center">
-      {/* Content - Left Side */}
-      <div className="order-2 lg:order-1">
-        <h1 className="font-display mt-5 max-w-2xl text-4xl font-bold uppercase leading-[0.92] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-5xl lg:text-6xl">
-        Commercial Mobile Security Trailer Rentals in Orange County
-        </h1>
-        <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
-          Protect construction sites, commercial properties, equipment yards, and remote job sites with rapid-deployment
-        </p>
-        <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
-          surveillance trailers featuring solar power, remote monitoring, and visible deterrence.
-        </p>
+      <section className="relative flex min-h-200 items-center overflow-hidden bg-black">
+        <div className="container relative mx-auto min-h-200">
+          <div className="grid grid-cols-1 min-h-200 lg:grid-cols-2 gap-12 items-center">
+            {/* Content - Left Side */}
+            <div className="order-2 lg:order-1">
+              <h1 className="font-display mt-5 max-w-2xl text-4xl font-bold uppercase leading-[0.92] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-5xl lg:text-6xl">
+                Commercial Mobile Security Trailer Rentals in Orange County
+              </h1>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+                Protect construction sites, commercial properties, equipment yards, and remote job sites with rapid-deployment
+              </p>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
+                surveillance trailers featuring solar power, remote monitoring, and visible deterrence.
+              </p>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/request-quote"
-            className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
-          >
-            Request Quote
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:px-8 sm:text-base"
-          >
-            Talk to a Specialist
-          </Link>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/request-quote"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
+                >
+                  Request Quote
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:px-8 sm:text-base"
+                >
+                  Talk to a Specialist
+                </Link>
+              </div>
+            </div>
+
+            {/* Image - Right Side */}
+            <div className="relative order-1 lg:order-2 aspect-video lg:aspect-auto lg:h-full">
+              <Image
+                src={Banner}
+                alt="Mobile security trailer deployment"
+                fill
+                priority
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Image - Right Side */}
-      <div className="relative order-1 lg:order-2 aspect-video lg:aspect-auto lg:h-full">
-        <Image
-          src={Banner}
-          alt="Mobile security trailer deployment"
-          fill
-          priority
-          className="object-contain"
-          sizes="(max-width: 1024px) 100vw, 50vw"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <section className="border-b border-neutral-200 bg-white py-8">
         <div className="container mx-auto grid grid-cols-2 gap-6 px-6 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
@@ -459,7 +459,7 @@ export function MobileSecurityTrailersPage() {
               ★★★★★
             </span>
             <p className="mt-2 text-sm font-extrabold text-black">
-              4.9 ★★★★★ 4.99
+              5.0 Google Rating
             </p>
           </div>
 
@@ -640,86 +640,86 @@ export function MobileSecurityTrailersPage() {
       </section>
 
       <section className="bg-white px-4 py-16 sm:px-8">
-  <div className="container mx-auto">
-    <SectionHeading>WHY BUSINESSES CHOOSE AVSS TRAILERS</SectionHeading>
-    <div className="mt-12 flex flex-wrap gap-4 justify-center">
-      {whyChoose.map((item) => (
-        <CardShell key={item.title} className="p-5 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.5rem)] max-w-sm">
-          <div className="flex items-start gap-3">
-            <span
-              className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full text-white"
-              style={{ backgroundColor: accent }}
-              aria-hidden
-            >
-              <CheckCircle className="h-4 w-4" strokeWidth={2.5} />
-            </span>
-            <div>
-              <h3 className="text-lg font-extrabold uppercase leading-tight text-black sm:text-xl">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-6 text-black/75 sm:text-[15px]">
-                {item.body}
-              </p>
-            </div>
-          </div>
-        </CardShell>
-      ))}
-    </div>
-  </div>
-</section>
-      <section className="bg-brand-ink-900 w-full py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
-      {/* Background decorative elements — matches site footer vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_40%,rgba(220,38,38,0.12)_0%,rgba(0,0,0,0)_52%)]"></div>
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/40 via-transparent to-black/40"></div>
-      
-      <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left Column - Text Content */}
-          <div className="space-y-6 lg:sticky lg:top-20">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Ready to Secure Your{" "}
-              <span className="text-[#F4B942]">temporary Business Site?</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-white/90 font-medium">
-              Request a Mobile Trailer Site Survey Assessment.
-            </p>
-            
-            <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-xl">
-              Request a walkthrough and we'll recommend equipment, placement, 
-              and mentoring options aligned with your goals.
-            </p>
-            
-            <button className="mt-4 bg-[#F4B942] hover:bg-[#E5A832] text-black font-semibold text-lg px-10 py-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-[#F4B942]/30 transform hover:scale-105">
-              Request Quote
-            </button>
-          </div>
-
-          {/* Right Column - 4 Image Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-            {serviceCards.map((card) => (
-              <div 
-                key={card.id}
-                className="group relative bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden hover:border-[#F4B942]/40 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40"
-              >
-                {/* Image */}
-                <div className="relative h-56 overflow-hidden">
-                  <Image 
-                    src={card.image} 
-                    alt={card.title}
-                    fill
-                    className="w-full h-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                 
+        <div className="container mx-auto">
+          <SectionHeading>WHY BUSINESSES CHOOSE AVSS TRAILERS</SectionHeading>
+          <div className="mt-12 flex flex-wrap gap-4 justify-center">
+            {whyChoose.map((item) => (
+              <CardShell key={item.title} className="p-5 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.5rem)] max-w-sm">
+                <div className="flex items-start gap-3">
+                  <span
+                    className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full text-white"
+                    style={{ backgroundColor: accent }}
+                    aria-hidden
+                  >
+                    <CheckCircle className="h-4 w-4" strokeWidth={2.5} />
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-extrabold uppercase leading-tight text-black sm:text-xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-black/75 sm:text-[15px]">
+                      {item.body}
+                    </p>
+                  </div>
                 </div>
-
-               
-              </div>
+              </CardShell>
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="bg-brand-ink-900 w-full py-20 px-4 md:px-8 lg:px-16 relative overflow-hidden">
+        {/* Background decorative elements — matches site footer vignette */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_40%,rgba(220,38,38,0.12)_0%,rgba(0,0,0,0)_52%)]"></div>
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/40 via-transparent to-black/40"></div>
+
+        <div className="container mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left Column - Text Content */}
+            <div className="space-y-6 lg:sticky lg:top-20">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                Ready to Secure Your{" "}
+                <span className="text-[#F4B942]">Site?</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-white/90 font-medium">
+                Request a Mobile Trailer Site Survey Assessment.
+              </p>
+
+              <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-xl">
+                Request a walkthrough and we'll recommend equipment, placement,
+                and monitoring options aligned with your security needs.
+              </p>
+
+              <button className="mt-4 bg-[#F4B942] hover:bg-[#E5A832] text-black font-semibold text-lg px-10 py-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-[#F4B942]/30 transform hover:scale-105">
+                Request Quote
+              </button>
+            </div>
+
+            {/* Right Column - 4 Image Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+              {serviceCards.map((card) => (
+                <div
+                  key={card.id}
+                  className="group relative bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden hover:border-[#F4B942]/40 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40"
+                >
+                  {/* Image */}
+                  <div className="relative h-56 overflow-hidden">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="w-full h-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+
+                  </div>
+
+
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="bg-gray-100 px-4 py-16 sm:px-8">
         <div className="container mx-auto">
           <SectionHeading>Ideal For</SectionHeading>
@@ -728,7 +728,7 @@ export function MobileSecurityTrailersPage() {
           </SectionIntro>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trailerUseCases.slice(0, 4).map((item) => (
-              <UseCaseCard className="bg-white"  key={item.title} icon={item.icon} title={item.title} body={item.body} />
+              <UseCaseCard className="bg-white" key={item.title} icon={item.icon} title={item.title} body={item.body} />
             ))}
           </div>
           <div className="mx-auto mt-4 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">

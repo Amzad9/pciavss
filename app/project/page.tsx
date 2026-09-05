@@ -5,9 +5,9 @@ import { siteContact } from "../components/siteConfig";
 import { portfolioGallerySlides } from "../lib/portfolioGallery";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Projects",
   description:
-    "Explore PCI AVSS gallery examples for security and surveillance solutions, installs, and deployments.",
+    "Explore PCI AVSS project examples for security and surveillance solutions, installs, and deployments.",
   alternates: { canonical: "/portfolio" },
 };
 
@@ -40,12 +40,12 @@ export default function PortfolioPage() {
         <div className="container mx-auto">
           <div className="relative z-10 max-w-4xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-steel-300 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:text-sm">
-              Visual Portfolio
+              Visual Projects
             </p>
             <h1 className="font-display mt-5 text-5xl font-bold uppercase leading-[0.9] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-6xl lg:text-7xl">
               Security Install
               <br />
-              Gallery
+              Projects
             </h1>
             <p className="mt-5 max-w-[44rem] text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
               Explore visuals that showcase system design, camera coverage, and
@@ -79,4 +79,3 @@ export default function PortfolioPage() {
     </main>
   );
 }
-

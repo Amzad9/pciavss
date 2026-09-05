@@ -11,7 +11,7 @@ export type BlogPost = {
   }>;
 };
 
-// Content is adapted from the client’s existing site (pciavss.com) and rewritten for this UI.
+// Content is adapted from the client’s existing site (avssoc.com) and rewritten for this UI.
 export const blogPosts: BlogPost[] = [
   {
     slug: "mobile-surveillance-trailers",

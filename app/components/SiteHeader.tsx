@@ -12,7 +12,7 @@ const nav = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Blogs", href: "/blog" },
-  { label: "Gallery", href: "/portfolio" },
+  { label: "Projects", href: "/project" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -22,8 +22,6 @@ const servicesNav = [
   { label: "Mobile Security Trailers", href: "/services/mobile-security-trailers" },
   { label: "Alarm Systems", href: "/services/alarm-system" },
   { label: "Structured Wiring & Prewire", href: "/services/structured-wiring-and-prewire" },
-  { label: "Remote Monitoring", href: "/services/remote-monitoring" },
-  { label: "Preventive Maintenance", href: "/services/preventive-maintenance" },
 ] as const;
 
 export function SiteHeader() {
@@ -140,11 +138,10 @@ export function SiteHeader() {
                 <div key={item.label} className="contents">
                   <Link
                     href={item.href}
-                    className={`relative px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${
-                      isActive
-                        ? "text-brand-gold-600 dark:text-brand-gold-500"
-                        : ""
-                    }`}
+                    className={`relative px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${isActive
+                      ? "text-brand-gold-600 dark:text-brand-gold-500"
+                      : ""
+                      }`}
                   >
                     <span
                       className={
@@ -159,11 +156,10 @@ export function SiteHeader() {
                     <div className="group relative">
                       <Link
                         href="/services"
-                        className={`relative inline-flex items-center gap-1 px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${
-                          pathname.startsWith("/services")
-                            ? "text-brand-gold-600 dark:text-brand-gold-500"
-                            : ""
-                        }`}
+                        className={`relative inline-flex items-center gap-1 px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${pathname.startsWith("/services")
+                          ? "text-brand-gold-600 dark:text-brand-gold-500"
+                          : ""
+                          }`}
                       >
                         <span>Services</span>
                         <span className="-translate-y-px text-[12px]">
@@ -188,14 +184,14 @@ export function SiteHeader() {
             })}
           </nav>
 
-        <div className="hidden lg:block">
+          <div className="hidden lg:block">
             <PrimaryButton
               href="/request-quote"
               className="h-11 px-7 text-[12px] rounded-[14px] shadow-[0_10px_22px_rgba(0,0,0,0.22)]"
             >
               REQUEST QUOTE
             </PrimaryButton>
-        </div>
+          </div>
 
           {/* Mobile menu button */}
           <button
@@ -207,19 +203,16 @@ export function SiteHeader() {
             <span className="mr-2 text-xs">Menu</span>
             <span className="relative block h-[14px] w-4">
               <span
-                className={`absolute left-0 h-[2px] w-full rounded bg-current transition-transform duration-200 ${
-                  isOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
-                }`}
+                className={`absolute left-0 h-[2px] w-full rounded bg-current transition-transform duration-200 ${isOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                  }`}
               />
               <span
-                className={`absolute left-0 h-[2px] w-full rounded bg-current transition-opacity duration-150 ${
-                  isOpen ? "top-1/2 opacity-0" : "top-1/2 -translate-y-1/2"
-                }`}
+                className={`absolute left-0 h-[2px] w-full rounded bg-current transition-opacity duration-150 ${isOpen ? "top-1/2 opacity-0" : "top-1/2 -translate-y-1/2"
+                  }`}
               />
               <span
-                className={`absolute left-0 h-[2px] w-full rounded bg-current transition-transform duration-200 ${
-                  isOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0"
-                }`}
+                className={`absolute left-0 h-[2px] w-full rounded bg-current transition-transform duration-200 ${isOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0"
+                  }`}
               />
             </span>
           </button>
@@ -237,94 +230,92 @@ export function SiteHeader() {
 
           {/* Mobile / tablet slide-in menu (right-side drawer, above overlay) */}
           <div className="fixed top-0 right-0 bottom-0 z-70 flex h-screen w-[85%] max-w-none flex-col overflow-y-auto bg-white shadow-2xl dark:bg-brand-ink-900 lg:hidden sm:w-[75%] md:w-[60%]">
-          <div className="flex items-center justify-between border-b border-border px-5 py-4">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="flex items-center dark:rounded-md dark:bg-white dark:px-2 dark:py-1 dark:ring-1 dark:ring-white/15"
-            >
-              <Image
-                src="/logo_AVSS.png"
-                alt="AVSS audio-video security solutions logo"
-                width={3180}
-                height={1344}
-                className="h-7 w-auto max-w-[160px] object-contain"
-                sizes="160px"
-              />
-            </Link>
-            <button
-              type="button"
-              onClick={closeMenu}
-              className="rounded-md p-1 text-sm font-semibold uppercase tracking-[0.12em] text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
-              aria-label="Close navigation menu"
-            >
-              ✕
-            </button>
-          </div>
+            <div className="flex items-center justify-between border-b border-border px-5 py-4">
+              <Link
+                href="/"
+                onClick={closeMenu}
+                className="flex items-center dark:rounded-md dark:bg-white dark:px-2 dark:py-1 dark:ring-1 dark:ring-white/15"
+              >
+                <Image
+                  src="/logo_AVSS.png"
+                  alt="AVSS audio-video security solutions logo"
+                  width={3180}
+                  height={1344}
+                  className="h-7 w-auto max-w-[160px] object-contain"
+                  sizes="160px"
+                />
+              </Link>
+              <button
+                type="button"
+                onClick={closeMenu}
+                className="rounded-md p-1 text-sm font-semibold uppercase tracking-[0.12em] text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
+                aria-label="Close navigation menu"
+              >
+                ✕
+              </button>
+            </div>
 
-          <nav className="flex flex-1 flex-col gap-1 px-5 py-4">
-            {nav.map((item) => {
-              const isActive =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+            <nav className="flex flex-1 flex-col gap-1 px-5 py-4">
+              {nav.map((item) => {
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
 
-              return (
-                <div key={item.label}>
-                  <Link
-                    href={item.href}
-                    onClick={closeMenu}
-                    className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${
-                      isActive
+                return (
+                  <div key={item.label}>
+                    <Link
+                      href={item.href}
+                      onClick={closeMenu}
+                      className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${isActive
                         ? "bg-brand-gold-500 text-black"
                         : "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                  </Link>
+                        }`}
+                    >
+                      <span>{item.label}</span>
+                    </Link>
 
-                  {item.label === "About Us" ? (
-                    <div className="mb-2">
-                      <Link
-                        href="/services"
-                        onClick={closeMenu}
-                        className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${
-                          pathname.startsWith("/services")
+                    {item.label === "About Us" ? (
+                      <div className="mb-2">
+                        <Link
+                          href="/services"
+                          onClick={closeMenu}
+                          className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${pathname.startsWith("/services")
                             ? "bg-brand-gold-500 text-black"
                             : "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
-                        }`}
-                      >
-                        <span>Services</span>
-                        <span className="text-xs">▼</span>
-                      </Link>
-                      <div className="mt-1 grid gap-1 pl-2">
-                        {servicesNav.map((serviceItem) => (
-                          <Link
-                            key={serviceItem.href}
-                            href={serviceItem.href}
-                            onClick={closeMenu}
-                            className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold tracking-[0.08em] text-black/85 hover:bg-black/5 dark:text-white/90 dark:hover:bg-white/10"
-                          >
-                            <span>{serviceItem.label}</span>
-                          </Link>
-                        ))}
+                            }`}
+                        >
+                          <span>Services</span>
+                          <span className="text-xs">▼</span>
+                        </Link>
+                        <div className="mt-1 grid gap-1 pl-2">
+                          {servicesNav.map((serviceItem) => (
+                            <Link
+                              key={serviceItem.href}
+                              href={serviceItem.href}
+                              onClick={closeMenu}
+                              className="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold tracking-[0.08em] text-black/85 hover:bg-black/5 dark:text-white/90 dark:hover:bg-white/10"
+                            >
+                              <span>{serviceItem.label}</span>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
-          </nav>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </nav>
 
-          <div className="border-t border-border px-5 py-4">
-            <PrimaryButton
-              href="/request-quote"
-              className="h-11 w-full justify-center text-[12px]"
-              onClick={closeMenu}
-            >
-              REQUEST QUOTE
-            </PrimaryButton>
-          </div>
+            <div className="border-t border-border px-5 py-4">
+              <PrimaryButton
+                href="/request-quote"
+                className="h-11 w-full justify-center text-[12px]"
+                onClick={closeMenu}
+              >
+                REQUEST QUOTE
+              </PrimaryButton>
+            </div>
           </div>
         </>
       ) : null}

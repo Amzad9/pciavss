@@ -6,7 +6,7 @@ import { PreFooterCta } from "./components/PreFooterCta";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://pciavss.com",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.avssoc.com",
   ),
   title: {
     default: "PCI AVSS | Audio-Video Security Solutions",
@@ -47,13 +47,14 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               name: "AVSS",
-              url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pciavss.com",
+              url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.avssoc.com",
               telephone: "+1-800-299-5964",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "1090 N Tustin",
+                streetAddress: "1090 North Tustin Ave",
                 addressLocality: "Anaheim",
                 addressRegion: "CA",
+                postalCode: "92807",
                 addressCountry: "US",
               },
               areaServed: "Southern California",

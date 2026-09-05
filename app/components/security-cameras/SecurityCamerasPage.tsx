@@ -88,12 +88,12 @@ const cameraTypes = [
   },
   {
     title: "Vandal Dome",
-    description: "Pan, tilt, and zoom for large commercial properties.",
+    description: "Tamper-resistant cameras designed for entrances, offices, retail spaces, warehouses, and other high-traffic areas.",
     image: "/images/image (5).png",
   },
   {
-    title: "PTZ",
-    description: "Capture vehicle activity at entrances and exits.",
+    title: "PTZ Cameras",
+    description: "Motorized pan, tilt, and optical zoom for monitoring large commercial properties, parking lots, yards, and open areas.",
     image: "/images/image (3).png",
   },
 ];
@@ -143,14 +143,14 @@ const idealFor = [
 ];
 
 const projectPhotos = [
-  { src: "/images/image (46).png", alt: "Commercial security camera installation", category: "Camera Installation" },
+  { src: "/image (53).png", alt: "Commercial security camera installation", category: "Camera Installation" },
   { src: "/images/IMG_6951.jpeg", alt: "Rack installation with organized wiring", category: "Rack Installation" },
   { src: "/images/IMG_7032.jpeg", alt: "NVR setup in server room", category: "NVR Setup" },
   { src: "/images/IMG_7342.jpeg", alt: "Professional conduit work", category: "Conduit Work" },
   { src: "/images/IMG_8136.jpeg", alt: "Warehouse security installation", category: "Warehouse" },
   { src: "/images/image (48).png", alt: "Commercial surveillance system setup", category: "System Setup" },
   { src: "/images/image (47).png", alt: "Enterprise camera system prewire", category: "Camera Prewire" },
-  { src: "/images/image (49).png", alt: "Commercial security camera mounting", category: "Camera Mounting" },
+  { src: "/image (54).png", alt: "Commercial security camera mounting", category: "Camera Mounting" },
   { src: "/images/image (50).png", alt: "Server rack wiring and cable management", category: "Cable Management" },
   { src: "/images/image.png", alt: "Commercial property camera coverage", category: "Commercial Coverage" },
   { src: "/camera installation.jpg", alt: "Outdoor commercial camera installation", category: "Outdoor Security" },
@@ -440,7 +440,7 @@ export function SecurityCamerasPage() {
             </div>
             <div className="flex items-center gap-2">
               <Award className="h-5 w-5" style={{ color: primaryRed }} />
-              <span className="font-medium">20+ Years Experience</span>
+              <span className="font-medium">20+ Years of Experience</span>
             </div>
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-5 w-5" style={{ color: primaryRed }} />

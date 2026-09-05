@@ -118,7 +118,7 @@ export default function AboutPage() {
               <span className="h-2.5 w-2.5 rounded-full bg-brand-gold-500" aria-hidden="true" />
               <div className="text-left">
                 <div className="text-[22px] font-extrabold leading-none text-white">
-                  21+ Years Of Experience
+                  20+ Years of Experience
                 </div>
                 <div className="mt-1 text-[14px] font-semibold text-white/75">
                   Trusted since 2003
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 href="/portfolio"
                 className="w-full rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10 sm:w-auto sm:px-8 sm:text-base"
               >
-                View Gallery
+                View Projects
               </Link>
             </div>
           </div>
@@ -334,7 +334,7 @@ export default function AboutPage() {
                 </p>
                 <p className="mt-2 text-lg font-black text-white">AVSS</p>
                 <p className="mt-2 text-base leading-7 text-white/70">
-                  1090 N Tustin, Anaheim, CA
+                  1090 North Tustin Ave, Anaheim, CA 92807
                 </p>
                 <p className="mt-4 text-base leading-7 text-white/70">
                   (800) 299-5964

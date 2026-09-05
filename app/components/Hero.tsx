@@ -98,11 +98,11 @@ export function Hero() {
               },
               {
                 title: "PROFESSIONAL INSTALLATION",
-                subtitle: "Clean, Reliable installation Done Right",
+                subtitle: "Clean, Reliable Installation Done Right",
                 icon: Drill,
                 image: homeUnsplash.serviceCards.installation,
                 imageAlt:
-                  "Our team handles everythings from wiring to setup system works perfectly.",
+                  "Professional security camera installation by AVSS in Orange County",
                 bullets: ["Organized, clean wiring", "Full hardware installation", "Testing and user training"],
               },
               {

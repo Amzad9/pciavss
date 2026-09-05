@@ -10,54 +10,89 @@ type FaqItem = {
 
 const faqs: FaqItem[] = [
   {
-    question: "Are units battery-backed?",
+    question: "Are the mobile security trailers battery-backed?",
     answer:
-      "Many trailer deployments can be scheduled quickly once the site survey is complete. Timing depends on access, power needs, and whether the site needs solar, cellular, or both.",
+      "Yes. Our mobile security trailers can be configured with battery backup and solar-assisted charging to help maintain operation when permanent power is unavailable. Power configurations are selected based on the site, equipment load, and expected operating conditions.",
   },
   {
-    question: "How long can trailers run without charging?",
+    question: "How long can a security trailer operate without external power?",
     answer:
-      "Yes. We can configure solar-assisted and battery-backed options for off-grid sites, with cellular connectivity when hardline internet is not available.",
+      "Runtime depends on the trailer configuration, battery capacity, camera load, available sunlight, and site conditions. Solar-assisted charging can extend operating time at remote locations. AVSS evaluates the site and recommends the appropriate power configuration before deployment.",
   },
   {
-    question: "Do you provide solar power?",
+    question: "Do your mobile security trailers use solar power?",
     answer:
-      "Yes. Mobile trailers are designed for relocatable coverage, so they can move as your project phases or site priorities change.",
+      "Yes. Solar-assisted power is available for locations where electrical service is limited or unavailable. Depending on the application, trailers can also incorporate battery backup, generator support, or shore power.",
   },
   {
-    question: "Do you provide move support between sites?",
+    question: "How quickly can a mobile security trailer be deployed?",
     answer:
-      "Yes. Trailer systems can be paired with live remote monitoring, alert workflows, and two-way audio responses where needed.",
+      "Many trailers can be deployed quickly after the site requirements have been confirmed. Timing depends on trailer availability, site access, power requirements, cellular connectivity, and the security coverage needed.",
   },
   {
-    question: "How quickly can a trailer be deployed?",
+    question: "Is internet service required?",
     answer:
-      "Deployment timelines vary based on site conditions and equipment needs, but most trailers can be on-site and operational within a few days of completing the site survey.",
+      "Not necessarily. Mobile security trailers can use cellular connectivity for remote viewing, alerts, and monitoring when a reliable cellular signal is available. We evaluate connectivity during the site assessment to determine the best solution.",
   },
   {
-    question: "Is internet included?",
+    question: "Can I view the cameras remotely?",
     answer:
-      "Yes. We offer integrated cellular connectivity options so trailers can operate independently without relying on on-site internet infrastructure.",
+      "Yes. Compatible trailer systems can provide authorized users with remote access to live and recorded video from a smartphone, tablet, or computer, depending on the system configuration and connectivity.",
   },
   {
-    question: "Do trailers require external power?",
+    question: "Can the trailers be monitored 24/7?",
     answer:
-      "Not necessarily. Trailers can run on internal battery banks with solar recharging, but we also offer shore-power connections when external power is available for extended runtime.",
+      "Yes. Depending on your security requirements, mobile security trailers can be configured for remote monitoring, event notifications, and live video verification. Monitoring options and any associated recurring costs are reviewed before deployment.",
   },
   {
-    question: "Can trailers be monitored 24/7?",
+    question: "Can a security trailer be moved to another job site?",
     answer:
-      "Absolutely. Our systems support continuous remote monitoring with real-time alerts, live video feeds, and two-way communication capabilities.",
+      "Yes. One of the main advantages of a mobile surveillance trailer is flexibility. The trailer can be relocated as a construction project progresses or moved to another property when security needs change. AVSS can assist with relocation, positioning, and system verification.",
   },
   {
-    question: "Can trailers be moved between job sites?",
+    question: "What types of properties are mobile security trailers designed for?",
     answer:
-      "Yes. Trailers are built for mobility and can be relocated as project needs evolve, with our team handling the logistics and setup at each new location.",
+      "Mobile security trailers are well suited for construction sites, equipment yards, parking lots, commercial properties, temporary storage areas, special events, vacant properties, and remote locations where permanent security infrastructure may not be practical.",
   },
   {
-    question: "Are trailers available for long-term rental?",
+    question: "How many cameras are installed on each trailer?",
     answer:
-      "Yes. We offer flexible long-term rental agreements for projects lasting months or even years, with ongoing support and maintenance included.",
+      "Camera quantity and configuration depend on the trailer and the coverage requirements of the property. AVSS evaluates the site, potential risk areas, entrances, equipment locations, and viewing distances to recommend the appropriate camera configuration.",
+  },
+  {
+    question: "Do the trailers record video?",
+    answer:
+      "Yes. Trailer systems can be configured to record surveillance video for later review. Recording capacity and retention time depend on the equipment, storage configuration, camera settings, and project requirements.",
+  },
+  {
+    question: "Do the trailers have lights or other visible deterrents?",
+    answer:
+      "Available configurations can include elevated camera masts, lighting, signage, and other visible security components designed to make surveillance clearly noticeable and help discourage unauthorized activity.",
+  },
+  {
+    question: "Can I rent a security trailer for a short-term project?",
+    answer:
+      "Yes. AVSS offers flexible rental options for short-term and longer-term projects. Availability and pricing depend on the rental duration, trailer configuration, connectivity, monitoring requirements, and location.",
+  },
+  {
+    question: "Are long-term mobile security trailer rentals available?",
+    answer:
+      "Yes. Long-term rental options are available for construction projects, commercial properties, equipment yards, and other locations requiring extended temporary surveillance. Contact AVSS for pricing based on the length and requirements of your project.",
+  },
+  {
+    question: "Do you offer mobile security trailer rentals throughout Orange County?",
+    answer:
+      "Yes. AVSS provides mobile security trailer solutions for businesses, construction sites, commercial properties, and temporary locations throughout Orange County and surrounding Southern California areas. Contact us to confirm availability for your location.",
+  },
+  {
+    question: "How do I know where the trailer should be positioned?",
+    answer:
+      "AVSS can perform a site assessment to evaluate entrances, equipment areas, blind spots, traffic patterns, lighting, and other security concerns. We then recommend trailer placement and camera positioning designed to provide effective coverage.",
+  },
+  {
+    question: "How do I get a quote for a mobile security trailer?",
+    answer:
+      "Contact AVSS at (800) 299-5964 or request a site survey through our website. Tell us the property location, type of site, approximate rental period, and security concerns, and we'll recommend an appropriate trailer configuration.",
   },
 ];
 

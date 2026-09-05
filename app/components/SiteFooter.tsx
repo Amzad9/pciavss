@@ -22,7 +22,7 @@ export function SiteFooter() {
         className="block rounded-lg shadow-soft ring-1 ring-black/10"
       >
         <Image
-          src="/new-logo.jpg"
+          src="/footer_logo.png"
           alt="AVSS audio-video security solutions logo"
           width={240}
           height={120}
@@ -44,7 +44,7 @@ export function SiteFooter() {
           { label: "About Us", href: "/about" },
           { label: "Services", href: "/services" },
           { label: "Blogs", href: "/blog" },
-          { label: "Gallery", href: "/portfolio" },
+          { label: "Projects", href: "/projects" },
           { label: "Contact", href: "/contact" },
         ].map((item) => (
           <Link

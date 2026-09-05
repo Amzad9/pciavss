@@ -25,12 +25,12 @@ import { PreFooterCta } from "../PreFooterCta";
 import Banner from './../../assets/structured/banner.png';
 import CardLeft from './../../assets/structured/cardleft.png';
 import CardRight from './../../assets/structured/cardright.png';
-import EquipmentImg from './../../assets/structured/equipment.png';
-import PatchImg from './../../assets/structured/patch.png';
-import CatImg from './../../assets/structured/cat.png';
-import InstallationImg from './../../assets/structured/installation.png';
-import CameraImg from './../../assets/structured/camera.png';
-import AccessImg from './../../assets/structured/access.png';
+import EquipmentImg from './../../assets/structured/Equipment Rack.png';
+import PatchImg from './../../assets/structured/PATCH PANEL.png';
+import CatImg from './../../assets/structured/cat-ethernet.png';
+import UnifiImg from './../../assets/structured/UniFi Home Network.png';
+import CameraImg from './../../assets/structured/Security-Camera.png';
+import StructuredCablingImg from './../../assets/structured/Structured-Cabling.png';
 
 const services = [
   {
@@ -163,16 +163,16 @@ const realInstallations = [
     image: CatImg,
   },
   {
-    title: "CONDUIT INSTALLATION",
-    image: InstallationImg,
+    title: "UNIFI HOME NETWORK",
+    image: UnifiImg,
   },
   {
     title: "CAMERA PREWIRE",
     image: CameraImg,
   },
   {
-    title: "ACCESS CONTROL WIRING",
-    image: AccessImg,
+    title: "COMMERCIAL STRUCTURED CABLING",
+    image: StructuredCablingImg,
   },
 ];
 

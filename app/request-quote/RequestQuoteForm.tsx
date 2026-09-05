@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { siteContact } from "../components/siteConfig";
 
 type FormState = {
@@ -55,9 +56,11 @@ export function RequestQuoteForm() {
     return Boolean(form.fullName.trim() && form.email.trim());
   }, [form.fullName, form.email]);
 
-  function onSubmit(e: React.FormEvent) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!canSubmit) return;
+    if (!canSubmit || isSubmitting) return;
     if (form.website.trim()) {
       setStatus("success");
       setForm(defaultState);
@@ -65,34 +68,40 @@ export function RequestQuoteForm() {
     }
 
     setError("");
-
-    const lines = [
-      `Name: ${form.fullName.trim()}`,
-      `Email: ${form.email.trim()}`,
-      form.phone.trim() ? `Phone: ${form.phone.trim()}` : null,
-      form.company.trim() ? `Company: ${form.company.trim()}` : null,
-      `Service: ${form.service}`,
-      form.city.trim() ? `City: ${form.city.trim()}` : null,
-      form.message.trim() ? `\nMessage:\n${form.message.trim()}` : null,
-    ].filter(Boolean) as string[];
-
-    const subject = encodeURIComponent(
-      `Quote request — ${form.fullName.trim()}`,
-    );
-    const body = encodeURIComponent(lines.join("\n"));
-    const to = siteContact.emailShowroom;
-    const href = `mailto:${to}?subject=${subject}&body=${body}`;
+    setIsSubmitting(true);
 
     try {
-      window.location.href = href;
-    } catch {
-      setStatus("error");
-      setError("Could not open email. Please call us instead.");
-      return;
-    }
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_uv0u256";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_QUOTE_TEMPLATE_ID || "template_hjut3pm";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "eidU4pIY44tKGyFwl";
 
-    setStatus("success");
-    setForm(defaultState);
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: form.fullName.trim(),
+          email: form.email.trim(),
+          from_email: form.email.trim(),
+          reply_to: form.email.trim(),
+          phone: form.phone.trim() || "N/A",
+          company: form.company.trim() || "N/A",
+          service: form.service,
+          city: form.city.trim() || "N/A",
+          message: form.message,
+        },
+        publicKey
+      );
+
+      setStatus("success");
+      setForm(defaultState);
+    } catch (err: unknown) {
+      console.error("Quote submission error:", err);
+      const msg = err instanceof Error ? err.message : "Could not submit quote request.";
+      setError(msg);
+      setStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -205,9 +214,8 @@ export function RequestQuoteForm() {
         </button>
 
         {status === "success" ? (
-          <p className="text-sm font-semibold text-white/75">
-            Thanks! Your email app should open with a draft to us—send it when
-            you&apos;re ready. We&apos;ll reply within 1 business day.
+          <p className="text-sm font-semibold text-green-400">
+            Thank you! Your quote request has been sent successfully. We&apos;ll reply within 1 business day.
           </p>
         ) : status === "error" ? (
           <p className="text-sm font-semibold text-red-300">

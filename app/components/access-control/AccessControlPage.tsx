@@ -182,18 +182,18 @@ const featureCards = [
 
 const hardwareCards = [
   {
-    title: "RFID card reade",
+    title: "RFID Card Readers",
     body: "Proximity, smart, and PIN readers for controlled entry points.",
     icon: Reader,
   },
   {
-    title: "Unifi Gate Access",
-    body: "Unifi Gate Access that release cleanly for everyday access.",
+    title: "UniFi Gate Access",
+    body: "Cloud-managed gate access with secure credential management, remote control, and event activity tracking.",
     icon: Strikes,
   },
   {
     title: "Schlage Wireless Locks",
-    body: "Magnetic locks for glass storefronts and specialty openings.",
+    body: "Electronic wireless locks that provide controlled access without requiring traditional access-control wiring at every opening.",
     icon: Maglocks,
   },
   {
@@ -295,7 +295,7 @@ const processSteps = [
 const whyChoose = [
   {
     title: "Professional Installation",
-    body: "Pre-screened for reliability, mounting, and complete setup.",
+    body: "Professional installation, configuration, testing, and complete system setup.",
   },
   {
     title: "Clean Wiring",
@@ -420,9 +420,8 @@ function RelatedTile({
 }) {
   const content = (
     <CardShell
-      className={`flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition ${
-        active ? "bg-neutral-100" : "hover:bg-neutral-100"
-      }`}
+      className={`flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition ${active ? "bg-neutral-100" : "hover:bg-neutral-100"
+        }`}
     >
       <Icon className="h-10 w-10" style={{ color: accent }} strokeWidth={1.8} />
       <p className="mt-3 text-base font-extrabold leading-tight text-black">
@@ -481,10 +480,10 @@ export function AccessControlPage() {
               Commercial access control systems
             </p>
             <h1 className="font-display mt-5 max-w-2xl text-4xl font-bold uppercase leading-[0.92] text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.72)] sm:text-5xl lg:text-6xl">
-            Commercial Access Control Installation in Orange County
+              Commercial Access Control Installation in Orange County
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg">
-            Secure your business with professionally installed keyless entry, card access, mobile credentials, and cloud-managed access control systems.
+              Secure your business with professionally installed keyless entry, card access, mobile credentials, and cloud-managed access control systems.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -542,14 +541,14 @@ export function AccessControlPage() {
               ★★★★★
             </span>
             <p className="mt-2 text-sm font-extrabold text-black">
-              4.9 ★★★★★ 4.99
+              5.0 Google Rating
             </p>
           </div>
 
           <div className="flex flex-col items-center text-center">
             <Wrench className="h-8 w-8" style={{ color: accent }} aria-hidden />
             <p className="mt-2 text-sm font-extrabold text-black">
-              15 Years of Experience
+              20+ Years of Experience
             </p>
           </div>
 
@@ -573,10 +572,6 @@ export function AccessControlPage() {
       <section className="px-4 py-16 sm:px-8">
         <div className="container mx-auto">
           <SectionHeading>Commercial Access Control Features</SectionHeading>
-          <SectionIntro>
-            The same page structure and typography as our security-camera
-            layouts, tuned for access control.
-          </SectionIntro>
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {featureCards.map((card) => (
@@ -592,7 +587,7 @@ export function AccessControlPage() {
           <SectionHeading>Professional Access Control Hardware for Every Door
           </SectionHeading>
           <SectionIntro>
-          We install commercial-grade readers, electric strikes, magnetic locks, controllers, and mobile credentials designed for offices, warehouses, retail spaces, apartment communities, and industrial facilities.
+            We install commercial-grade readers, electric strikes, magnetic locks, controllers, and mobile credentials designed for offices, warehouses, retail spaces, apartment communities, and industrial facilities.
           </SectionIntro>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -634,7 +629,7 @@ export function AccessControlPage() {
         <div className="container mx-auto">
           <SectionHeading>Every Opening Requires the Right Hardware</SectionHeading>
           <SectionIntro>
-          Every door is different. We evaluate your existing doors, traffic flow, fire code requirements, and security objectives before selecting the appropriate hardware.
+            Every door is different. We evaluate your existing doors, traffic flow, fire code requirements, and security objectives before selecting the appropriate hardware.
           </SectionIntro>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -665,7 +660,7 @@ export function AccessControlPage() {
                   <div className="mx-auto bg-white flex h-16 w-16 relative z-10 items-center justify-center rounded-full border-2 border-[#7c1a1a] ">
                     <step.icon className="h-8 w-8 " style={{ color: accent }} strokeWidth={1.8} />
                   </div>
-                 
+
                   <h3 className="mt-5 text-lg font-extrabold uppercase leading-tight text-black">
                     {step.title}
                   </h3>
@@ -676,7 +671,7 @@ export function AccessControlPage() {
               ))}
             </div>
 
-          
+
           </div>
         </div>
       </section>
@@ -770,18 +765,16 @@ export function AccessControlPage() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={`Visit ${brand.name}`}
-                  className={`w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)] ${
-                    isLast ? "xl:mx-auto" : ""
-                  }`}
+                  className={`w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)] ${isLast ? "xl:mx-auto" : ""
+                    }`}
                 >
                   {tile}
                 </a>
               ) : (
                 <div
                   key={brand.name}
-                  className={`w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)] ${
-                    isLast ? "xl:mx-auto" : ""
-                  }`}
+                  className={`w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] xl:w-[calc(25%-0.75rem)] ${isLast ? "xl:mx-auto" : ""
+                    }`}
                 >
                   {tile}
                 </div>

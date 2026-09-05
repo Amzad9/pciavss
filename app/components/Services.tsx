@@ -19,8 +19,8 @@ export function Services() {
               {[
                 "Security Cameras",
                 "Access Control",
-                "Remote Monitoring",
-                "Preventive Maintenance",
+                "Mobile Security Trailers",
+                "Alarm Systems",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                  <span className="mt-[8px] inline-flex h-2 w-2 items-center justify-center rounded-full bg-brand-gold-600 text-brand-gold-600 ring-1 ring-brand-gold-500/25">

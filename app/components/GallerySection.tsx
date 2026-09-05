@@ -4,48 +4,33 @@ import Link from "next/link";
 const images = [
   {
     src: "/assets/services-left.svg",
-    alt: "Mobile Billboard Truck in City Traffic",
-    title: "Mobile Billboard Truck in City Traffic",
+    alt: "Commercial Security Camera Installation",
+    title: "Commercial Security Camera Installation",
   },
   {
     src: "/assets/truck-hero.svg",
-    alt: "Night LED Mobile Billboard Campaign",
-    title: "Night LED Mobile Billboard Campaign",
+    alt: "Mobile Surveillance Trailer Deployment",
+    title: "Mobile Surveillance Trailer Deployment",
   },
   {
     src: "/assets/hero-bg.svg",
-    alt: "Brand Awareness Visualization",
-    title: "Brand Awareness Visualization",
+    alt: "Access Control System Layout",
+    title: "Access Control System Layout",
   },
   {
     src: "/assets/services-left.svg",
-    alt: "Advertising Impact Infographic Scene",
-    title: "Advertising Impact Infographic Scene",
+    alt: "Structured Cabling & Prewire Setup",
+    title: "Structured Cabling & Prewire Setup",
   },
   {
     src: "/assets/truck-hero.svg",
-    alt: "Event Promotion with Mobile Billboard",
-    title: "Event Promotion with Mobile Billboard",
+    alt: "Remote Video Monitoring Center",
+    title: "Remote Video Monitoring Center",
   },
   {
     src: "/assets/services-left.svg",
-    alt: "Digital Marketing + Billboard Integration",
-    title: "Digital Marketing + Billboard Integration",
-  },
-  {
-    src: "/assets/truck-hero.svg",
-    alt: "Route Targeting Marketing Concept",
-    title: "Route Targeting Marketing Concept",
-  },
-  {
-    src: "/assets/hero-bg.svg",
-    alt: "Vehicle Wrap Advertising",
-    title: "Vehicle Wrap Advertising",
-  },
-  {
-    src: "/assets/services-left.svg",
-    alt: "High Traffic Highway Billboard Truck",
-    title: "High Traffic Highway Billboard Truck",
+    alt: "Alarm System Threat Detection",
+    title: "Alarm System Threat Detection",
   },
 ];
 
