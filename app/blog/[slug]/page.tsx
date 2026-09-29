@@ -121,7 +121,7 @@ export default async function BlogPostPage({ params }: Props) {
                 href="/contact"
                 className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_14px_rgba(220,38,38,0.28)] transition hover:brightness-105"
               >
-                Request Quote
+                Contact Us
               </Link>
               <Link
                 href="/services"

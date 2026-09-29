@@ -43,7 +43,7 @@ export function PreFooterCta() {
 
         {/* CENTER BUTTON */}
         <Link
-          href="/request-quote"
+          href="/contact"
           className="rounded-full bg-red-600 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 text-sm sm:text-base lg:text-lg font-black uppercase text-white transition hover:bg-red-700 whitespace-nowrap"
         >
           REQUEST A FREE SITE SURVEY

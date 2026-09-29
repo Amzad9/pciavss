@@ -131,7 +131,7 @@ export default function AboutPage() {
                 href="/contact"
                 className="w-full rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:w-auto sm:px-8 sm:text-base"
               >
-                Request Quote
+                Contact Us
               </Link>
               <Link
                 href="/portfolio"

@@ -289,10 +289,11 @@ const serviceCards = [
 ];
 
 const relatedServices = [
-  { label: "Security Cameras", icon: Camera, href: "/services/security-cameras" },
-  { label: "Video Monitoring", icon: MonitorPlay, href: "/services/video-monitoring" },
-  { label: "Access Control", icon: ShieldCheck, href: "/services/access-control" },
-  { label: "Alarm System", icon: ShieldCheck, href: "/services/alarm-system" },
+  { label: "Security Cameras", img: "/related-services/security-camera.png", href: "/services/security-cameras" },
+  { label: "Access Control", img: "/related-services/access-control.png", href: "/services/access-control" },
+  { label: "Alarm Systems", img: "/related-services/video-monitoring.png", href: "/services/alarm-system" },
+  { label: "Mobile Security Trailers", img: "/related-services/mobile-security-trailer.png", href: "/services/mobile-security-trailers" },
+  { label: "Structured Wiring", img: "/related-services/structured-wiring.png", href: "/services/structured-wiring-and-prewire" },
 ];
 
 function FeatureCard({
@@ -369,22 +370,29 @@ function SystemTile({
 }
 
 function RelatedTile({
-  icon: Icon,
+  img,
   label,
   href,
 }: {
-  icon: LucideIcon;
+  img: string;
   label: string;
   href: string;
 }) {
   return (
     <Link href={href}>
-      <CardShell className="flex min-h-31.5 flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
-        <Icon className="h-10 w-10" style={{ color: accent }} strokeWidth={1.8} />
-        <p className="mt-3 text-base font-extrabold leading-tight text-black">
+      <div className="group relative overflow-hidden rounded-2xl shadow-md min-h-[160px] flex flex-col justify-end transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <Image
+          src={img}
+          alt={label}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <p className="relative z-10 px-3 pb-4 text-sm font-extrabold uppercase leading-tight text-white drop-shadow">
           {label}
         </p>
-      </CardShell>
+      </div>
     </Link>
   );
 }
@@ -409,10 +417,10 @@ export function MobileSecurityTrailersPage() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/request-quote"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-full border border-brand-gold-500 bg-linear-to-b from-brand-gold-500 to-brand-gold-600 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-black shadow-[0_0_16px_rgba(220,38,38,0.30)] transition hover:brightness-105 sm:px-8 sm:text-base"
                 >
-                  Request Quote
+                  Contact Us
                 </Link>
                 <Link
                   href="/contact"
@@ -459,7 +467,7 @@ export function MobileSecurityTrailersPage() {
               ★★★★★
             </span>
             <p className="mt-2 text-sm font-extrabold text-black">
-              5.0 Google Rating
+              4.9 Google Rating (150+ reviews)
             </p>
           </div>
 
@@ -691,7 +699,7 @@ export function MobileSecurityTrailersPage() {
               </p>
 
               <button className="mt-4 bg-[#F4B942] hover:bg-[#E5A832] text-black font-semibold text-lg px-10 py-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-[#F4B942]/30 transform hover:scale-105">
-                Request Quote
+                Contact Us
               </button>
             </div>
 
@@ -741,6 +749,7 @@ export function MobileSecurityTrailersPage() {
 
       <FaqAccordion />
 
+      {/* Related services */}
       <section className="bg-white px-4 py-16 sm:px-8">
         <div className="container mx-auto">
           <SectionHeading>Related Services</SectionHeading>
@@ -748,21 +757,12 @@ export function MobileSecurityTrailersPage() {
             {relatedServices.map((item) => (
               <RelatedTile
                 key={item.label}
-                icon={item.icon}
+                img={item.img}
                 label={item.label}
                 href={item.href}
               />
             ))}
-            <Link href="/services" className="sm:col-span-2 lg:col-span-1">
-              <CardShell className="flex min-h-[126px] flex-col items-center justify-center px-4 py-5 text-center transition hover:bg-neutral-100">
-                <span className="text-4xl leading-none text-[#7c1a1a]" aria-hidden>
-                  •••
-                </span>
-                <p className="mt-3 text-base font-extrabold leading-tight text-black">
-                  View all services
-                </p>
-              </CardShell>
-            </Link>
+
           </div>
         </div>
       </section>

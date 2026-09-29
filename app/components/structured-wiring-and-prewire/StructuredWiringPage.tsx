@@ -1,3 +1,4 @@
+import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -31,6 +32,15 @@ import CatImg from './../../assets/structured/cat-ethernet.png';
 import UnifiImg from './../../assets/structured/UniFi Home Network.png';
 import CameraImg from './../../assets/structured/Security-Camera.png';
 import StructuredCablingImg from './../../assets/structured/Structured-Cabling.png';
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-display text-center text-2xl font-extrabold uppercase leading-tight tracking-wide text-black sm:text-3xl lg:text-4xl">
+      {children}
+    </h2>
+  );
+}
+
 
 const services = [
   {
@@ -175,6 +185,41 @@ const realInstallations = [
     image: StructuredCablingImg,
   },
 ];
+const relatedServices = [
+  { label: "Security Cameras", img: "/related-services/security-camera.png", href: "/services/security-cameras" },
+  { label: "Access Control", img: "/related-services/access-control.png", href: "/services/access-control" },
+  { label: "Alarm Systems", img: "/related-services/video-monitoring.png", href: "/services/alarm-system" },
+  { label: "Mobile Security Trailers", img: "/related-services/mobile-security-trailer.png", href: "/services/mobile-security-trailers" },
+  { label: "Structured Wiring", img: "/related-services/structured-wiring.png", href: "/services/structured-wiring-and-prewire" },
+];
+
+function RelatedTile({
+  img,
+  label,
+  href,
+}: {
+  img: string;
+  label: string;
+  href: string;
+}) {
+  return (
+    <Link href={href}>
+      <div className="group relative overflow-hidden rounded-2xl shadow-md min-h-[160px] flex flex-col justify-end transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <Image
+          src={img}
+          alt={label}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <p className="relative z-10 px-3 pb-4 text-sm font-extrabold uppercase leading-tight text-white drop-shadow">
+          {label}
+        </p>
+      </div>
+    </Link>
+  );
+}
 
 export function StructuredWiringPage() {
   return (
@@ -227,7 +272,7 @@ export function StructuredWiringPage() {
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="/request-quote"
+                href="/contact"
                 className="rounded-lg bg-red-600 px-6 py-3.5 text-sm sm:text-base font-extrabold uppercase tracking-wide text-white transition hover:bg-red-700 shadow-lg shadow-red-600/30"
               >
                 REQUEST A SITE WALKTHROUGH
@@ -343,7 +388,7 @@ export function StructuredWiringPage() {
 
               <div className="relative z-10 mt-8">
                 <Link
-                  href="/request-quote"
+                  href="/contact"
                   className="inline-block rounded-lg bg-red-600 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-red-700"
                 >
                   LEARN MORE
@@ -412,7 +457,7 @@ export function StructuredWiringPage() {
 
               <div className="relative z-10 mt-8">
                 <Link
-                  href="/request-quote"
+                  href="/contact"
                   className="inline-block rounded-lg bg-red-600 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-red-700"
                 >
                   LEARN MORE
@@ -544,9 +589,23 @@ export function StructuredWiringPage() {
         </div>
       </section>
 
-      {/* FAQ SECTION */}
-      {/* <FaqAccordion /> */}
+      {/* Related services */}
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Related Services</SectionHeading>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {relatedServices.map((item) => (
+              <RelatedTile
+                key={item.label}
+                img={item.img}
+                label={item.label}
+                href={item.href}
+              />
+            ))}
 
+          </div>
+        </div>
+      </section>
 
     </main>
   );

@@ -42,9 +42,8 @@ export function SiteFooter() {
         {[
           { label: "Home", href: "/" },
           { label: "About Us", href: "/about" },
-          { label: "Services", href: "/services" },
-          { label: "Blogs", href: "/blog" },
-          { label: "Projects", href: "/projects" },
+          { label: "Blog", href: "/blog" },
+          { label: "Projects", href: "/project" },
           { label: "Contact", href: "/contact" },
         ].map((item) => (
           <Link

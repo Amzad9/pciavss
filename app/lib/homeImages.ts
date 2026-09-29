@@ -7,7 +7,7 @@ export const homeUnsplash = {
     designConsult:
       "/service/design.png",
     installation:
-      "/camera installation.jpg",
+      "/camera-installation.jpg",
     monitoring:
       "/REMOTE.png",
   },

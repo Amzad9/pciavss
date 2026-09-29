@@ -42,13 +42,6 @@ import PTZ from './../../assets/images/a97948ae-0a66-4904-af14-a9407920577c.png'
 const primaryRed = "#C1121F";
 const darkCharcoal = "#1A1A1A";
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-center text-2xl font-extrabold uppercase tracking-wide sm:text-3xl mt-8" style={{ color: darkCharcoal }}>
-      {children}
-    </h2>
-  );
-}
 
 function RedBulletItem({ children }: { children: React.ReactNode }) {
   return (
@@ -155,7 +148,51 @@ const projectPhotos = [
   { src: "/images/image.png", alt: "Commercial property camera coverage", category: "Commercial Coverage" },
   { src: "/camera installation.jpg", alt: "Outdoor commercial camera installation", category: "Outdoor Security" },
 ];
+const relatedServices = [
+  { label: "Security Cameras", img: "/related-services/security-camera.png", href: "/services/security-cameras" },
+  { label: "Access Control", img: "/related-services/access-control.png", href: "/services/access-control" },
+  { label: "Alarm Systems", img: "/related-services/video-monitoring.png", href: "/services/alarm-system" },
+  { label: "Mobile Security Trailers", img: "/related-services/mobile-security-trailer.png", href: "/services/mobile-security-trailers" },
+  { label: "Structured Wiring", img: "/related-services/structured-wiring.png", href: "/services/structured-wiring-and-prewire" },
+];
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-display text-center text-2xl font-extrabold uppercase leading-tight tracking-wide text-black sm:text-3xl lg:text-4xl">
+      {children}
+    </h2>
+  );
+}
+function RelatedTile({
+  img,
+  label,
+  href,
+  active = false,
+}: {
+  img: string;
+  label: string;
+  href: string;
+  active?: boolean;
+}) {
+  const content = (
+    <div
+      className={`group relative overflow-hidden rounded-2xl shadow-md min-h-[160px] flex flex-col justify-end transition-transform duration-300 ${active ? "" : "hover:-translate-y-1 hover:shadow-xl"}`}
+    >
+      <Image
+        src={img}
+        alt={label}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+      <p className="relative z-10 px-3 pb-4 text-sm font-extrabold uppercase leading-tight text-white drop-shadow">
+        {label}
+      </p>
+    </div>
+  );
 
+  return active ? content : <Link href={href}>{content}</Link>;
+}
 export function SecurityCamerasPage() {
   return (
     <main className="bg-white" style={{ color: darkCharcoal }}>
@@ -432,7 +469,7 @@ export function SecurityCamerasPage() {
               <div className="flex text-yellow-500">
                 <span>★★★★★</span>
               </div>
-              <span className="font-bold">4.9 (150+ reviews)</span>
+              <span className="font-bold">4.9 Google Rating (150+ reviews)</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-5 w-5" style={{ color: primaryRed }} />
@@ -477,6 +514,7 @@ export function SecurityCamerasPage() {
           </div>
         </div>
       </section>
+
       {/* FAQ Section for SEO */}
       <section className="px-4 py-4 sm:px-8">
         <div className="container mx-auto max-w-4xl">
@@ -489,7 +527,23 @@ export function SecurityCamerasPage() {
           </div>
         </div>
       </section>
+      {/* Related services */}
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Related Services</SectionHeading>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {relatedServices.map((item) => (
+              <RelatedTile
+                key={item.label}
+                img={item.img}
+                label={item.label}
+                href={item.href}
+              />
+            ))}
 
+          </div>
+        </div>
+      </section>
 
     </main>
   );

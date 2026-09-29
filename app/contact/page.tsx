@@ -27,6 +27,7 @@ export default function ContactPage() {
     emailAddress: "",
     service: "Security Cameras",
     message: "",
+    city: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -55,11 +56,19 @@ export default function ContactPage() {
           company: formData.companyName || "N/A",
           service: formData.service || "General Inquiry",
           message: formData.message,
+          city: formData.city,
         };
         await emailjs.send(serviceId, templateId, templateParams, publicKey);
       }
 
       setSubmitted(true);
+
+      // Fire Google Ads conversion event after successful submission
+      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-18437293351/4RuaCPKS_PACEKeKy9aE",
+        });
+      }
     } catch (err: unknown) {
       console.error("EmailJS submission error:", err);
       const msg = err instanceof Error ? err.message : "Failed to send message. Please try again.";
@@ -76,7 +85,7 @@ export default function ContactPage() {
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/camera installation.jpg"
+            src="/camera-installation.jpg"
             alt="Security camera surveillance"
             fill
             priority
@@ -186,6 +195,7 @@ export default function ContactPage() {
                         emailAddress: "",
                         service: "Security Cameras",
                         message: "",
+                        city: "",
                       });
                     }}
                     className="mt-5 inline-flex items-center justify-center rounded-lg bg-green-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-green-700 cursor-pointer"
@@ -255,22 +265,35 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Row 3: Service Selection */}
-                  <div>
-                    <select
-                      name="service"
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-700 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-600/20"
-                    >
-                      <option value="I'm interested in...">I'm interested in...</option>
-                      <option value="Security Cameras">Security Cameras</option>
-                      <option value="Access Control">Access Control</option>
-                      <option value="Mobile Security Trailers">Mobile Security Trailers</option>
-                      <option value="Alarm Systems">Alarm Systems</option>
-                      <option value="Structured Wiring & Prewire">Structured Wiring &amp; Prewire</option>
-                      <option value="General Inquiry">General Inquiry</option>
-                    </select>
+                  {/* Row 3: City & Service Selection */}
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <input
+                        type="text"
+                        name="city"
+                        required
+                        placeholder="City *"
+                        value={formData.city}
+                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                        className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-600/20"
+                      />
+                    </div>
+                    <div>
+                      <select
+                        name="service"
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-700 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-600/20"
+                      >
+                        <option value="I'm interested in...">I'm interested in...</option>
+                        <option value="Security Cameras">Security Cameras</option>
+                        <option value="Access Control">Access Control</option>
+                        <option value="Mobile Security Trailers">Mobile Security Trailers</option>
+                        <option value="Alarm Systems">Alarm Systems</option>
+                        <option value="Structured Wiring & Prewire">Structured Wiring &amp; Prewire</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                      </select>
+                    </div>
                   </div>
 
                   {/* Row 4: Message */}

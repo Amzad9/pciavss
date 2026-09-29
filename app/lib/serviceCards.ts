@@ -170,34 +170,6 @@ export const serviceCards: ServiceCard[] = [
     ],
   },
   {
-    title: "Commercial Audio",
-    body: "Audio solutions designed for business environments with clean wiring and setup.",
-    image: "/service/image-50.png",
-    sections: [
-      {
-        heading: "Background and foreground audio",
-        paragraphs: [
-          "Paging, background music, and conference reinforcement each need different speaker density, delay alignment, and zoning—especially in open ceilings and mixed retail/office footprints.",
-          "We map zones to how teams actually use the space so volume and source selection stay intuitive day to day.",
-        ],
-      },
-      {
-        heading: "Clean installs that age well",
-        paragraphs: [
-          "Labeling, service loops, and accessible racks make future changes less disruptive when tenants or layouts evolve.",
-          "Amplifier headroom and speaker tap plans are sized for growth so you are not ripping ceiling tiles again in two years.",
-        ],
-      },
-      {
-        heading: "Integration with security workflows",
-        paragraphs: [
-          "Some deployments benefit from tying paging to monitored events or front-desk routines so announcements reach the right areas without manual patching.",
-          "We coordinate with network teams when audio transports over IP or shares VLAN policies with other building systems.",
-        ],
-      },
-    ],
-  },
-  {
     title: "Structured Wiring & Prewire",
     body: "Future-proof cabling and prewire planning for new builds, remodels, and tenant improvements.",
     image: "/service/design.png",

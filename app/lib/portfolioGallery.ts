@@ -13,6 +13,6 @@ export const portfolioGallerySlides = [
   },
   {
     src: "/portfolio/brocure.webp",
-    title: "PCI AVSS brochure & capabilities",
+    title: "AJAX Intrusion Protection ",
   },
 ] as const;

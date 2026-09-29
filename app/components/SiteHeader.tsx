@@ -11,7 +11,7 @@ import { siteContact } from "./siteConfig";
 const nav = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Blogs", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Projects", href: "/project" },
   { label: "Contact", href: "/contact" },
 ];
@@ -154,18 +154,15 @@ export function SiteHeader() {
 
                   {item.label === "About Us" ? (
                     <div className="group relative">
-                      <Link
-                        href="/services"
-                        className={`relative inline-flex items-center gap-1 px-4 py-2 text-[13px] uppercase hover:text-brand-gold-600 dark:hover:text-brand-gold-500 ${pathname.startsWith("/services")
+                      <span
+                        className={`relative inline-flex cursor-default items-center gap-1 px-4 py-2 text-[13px] uppercase ${pathname.startsWith("/services")
                           ? "text-brand-gold-600 dark:text-brand-gold-500"
-                          : ""
+                          : "text-black dark:text-white"
                           }`}
                       >
                         <span>Services</span>
-                        <span className="-translate-y-px text-[12px]">
-                          ▼
-                        </span>
-                      </Link>
+                        <span className="-translate-y-px text-[12px]">▼</span>
+                      </span>
                       <div className="invisible absolute left-0 top-full z-50  w-[300px] rounded-2xl border border-black/10 bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 dark:border-white/10 dark:bg-brand-ink-950">
                         {servicesNav.map((serviceItem) => (
                           <Link
@@ -186,10 +183,10 @@ export function SiteHeader() {
 
           <div className="hidden lg:block">
             <PrimaryButton
-              href="/request-quote"
+              href="/contact"
               className="h-11 px-7 text-[12px] rounded-[14px] shadow-[0_10px_22px_rgba(0,0,0,0.22)]"
             >
-              REQUEST QUOTE
+              CONTACT US
             </PrimaryButton>
           </div>
 
@@ -277,17 +274,15 @@ export function SiteHeader() {
 
                     {item.label === "About Us" ? (
                       <div className="mb-2">
-                        <Link
-                          href="/services"
-                          onClick={closeMenu}
-                          className={`flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${pathname.startsWith("/services")
+                        <span
+                          className={`flex cursor-default items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.12em] ${pathname.startsWith("/services")
                             ? "bg-brand-gold-500 text-black"
-                            : "text-black hover:bg-black/5 dark:text-white dark:hover:bg-white/10"
+                            : "text-black dark:text-white"
                             }`}
                         >
                           <span>Services</span>
                           <span className="text-xs">▼</span>
-                        </Link>
+                        </span>
                         <div className="mt-1 grid gap-1 pl-2">
                           {servicesNav.map((serviceItem) => (
                             <Link
@@ -309,11 +304,11 @@ export function SiteHeader() {
 
             <div className="border-t border-border px-5 py-4">
               <PrimaryButton
-                href="/request-quote"
+                href="/contact"
                 className="h-11 w-full justify-center text-[12px]"
                 onClick={closeMenu}
               >
-                REQUEST QUOTE
+                CONTACT US
               </PrimaryButton>
             </div>
           </div>

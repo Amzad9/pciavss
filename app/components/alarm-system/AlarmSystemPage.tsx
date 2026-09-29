@@ -40,31 +40,38 @@ import Video from "./../../assets/alarm/video.png";
 import Wiring from "./../../assets/alarm/wiring.png";
 import Mantenance from "./../../assets/alarm/mantenance.png";
 import { FaqSection } from "./FaqAccordion";
+import { ReactNode } from "react";
 
 const services = [
   {
     title: "SECURITY CAMERAS",
     image: CameraImg,
+    href: "/services/security-cameras",
   },
   {
     title: "ACCESS CONTROL",
     image: Access,
+    href: "/services/access-control",
   },
   {
     title: "MOBILE SECURITY TRAILERS",
     image: MobileImg,
+    href: "/services/mobile-security-trailers",
   },
   {
     title: "VIDEO MONITORING",
     image: Video,
+    href: "/services/video-monitoring",
   },
   {
     title: "STRUCTURED WIRING",
     image: Wiring,
+    href: "/services/structured-wiring-and-prewire",
   },
   {
     title: "PREVENTIVE MAINTENANCE",
     image: Mantenance,
+    href: "/services/maintenance",
   },
 ];
 const accent = "#b52322";
@@ -119,6 +126,51 @@ const faqs = [
   "Can you take over my existing alarm system?",
   "Can different employees have their own codes?",
 ];
+const relatedServices = [
+  { label: "Security Cameras", img: "/related-services/security-camera.png", href: "/services/security-cameras" },
+  { label: "Access Control", img: "/related-services/access-control.png", href: "/services/access-control" },
+  { label: "Alarm Systems", img: "/related-services/video-monitoring.png", href: "/services/alarm-system" },
+  { label: "Mobile Security Trailers", img: "/related-services/mobile-security-trailer.png", href: "/services/mobile-security-trailers" },
+  { label: "Structured Wiring", img: "/related-services/structured-wiring.png", href: "/services/structured-wiring-and-prewire" },
+];
+function SectionHeading({ children }: { children: ReactNode }) {
+  return (
+    <h2 className="font-display text-center text-2xl font-extrabold uppercase leading-tight tracking-wide text-black sm:text-3xl lg:text-4xl">
+      {children}
+    </h2>
+  );
+}
+function RelatedTile({
+  img,
+  label,
+  href,
+  active = false,
+}: {
+  img: string;
+  label: string;
+  href: string;
+  active?: boolean;
+}) {
+  const content = (
+    <div
+      className={`group relative overflow-hidden rounded-2xl shadow-md min-h-[160px] flex flex-col justify-end transition-transform duration-300 ${active ? "" : "hover:-translate-y-1 hover:shadow-xl"}`}
+    >
+      <Image
+        src={img}
+        alt={label}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+      <p className="relative z-10 px-3 pb-4 text-sm font-extrabold uppercase leading-tight text-white drop-shadow">
+        {label}
+      </p>
+    </div>
+  );
+
+  return active ? content : <Link href={href}>{content}</Link>;
+}
 export function AlarmSystemPage() {
   return (
     <main className="bg-white text-black">
@@ -158,15 +210,12 @@ export function AlarmSystemPage() {
             </h1>
 
             <p className="mt-4 sm:mt-6 lg:mt-8 max-w-full lg:max-w-[560px] text-base sm:text-lg lg:text-[20px] leading-7 sm:leading-8 lg:leading-9 text-white/75">
-              Protect your business with professionally installed intrusion
-              detection, door and window sensors, motion detection, glass-break
-              protection, panic buttons, and 24/7 monitoring options.
-            </p>
+              Our professional monitoring partners respond to alarm events 24/7, follow established verification procedures, and coordinate emergency dispatch when appropriate.                 </p>
 
             {/* Buttons */}
             <div className="mt-6 sm:mt-8 lg:mt-10 flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 lg:gap-5">
               <Link
-                href="/request-quote"
+                href="/contact"
                 className="rounded-xl bg-[#e31d1c] px-6 sm:px-8 lg:px-9 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-xl transition hover:bg-[#c31615]"
               >
                 REQUEST A FREE SITE SURVEY
@@ -686,52 +735,26 @@ export function AlarmSystemPage() {
               </div>
             </div>
 
-           <FaqSection />
-            </div>
+            <FaqSection />
           </div>
-        
+        </div>
+
       </section>
 
-      {/* Related Services - Matches sixth screenshot */}
-      <section className="bg-white py-12 sm:pb-16">
-        <div className="mx-auto container px-4 sm:px-6">
-          {/* Heading */}
-          <div className="mb-8 sm:mb-10 text-center">
-            <h2 className="font-display text-center text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold uppercase leading-tight tracking-wide text-black">
-              RELATED SERVICES
-            </h2>
-            <div className="mx-auto mt-3 sm:mt-4 h-1 w-12 sm:w-16 rounded bg-red-600" />
-          </div>
-
-          {/* Cards */}
-          <div className="grid gap-4 sm:gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="relative h-32 sm:h-36 lg:h-40 w-full bg-gray-100">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-3 sm:p-4 lg:p-5 text-center">
-                  <h3 className="min-h-[40px] text-xs sm:text-sm lg:text-[15px] font-black uppercase leading-5 text-black">
-                    {service.title}
-                  </h3>
-                  <Link
-                    href="#"
-                    className="mt-3 sm:mt-4 inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-red-600 transition hover:text-red-700"
-                  >
-                    View Service
-                    <ChevronRight size={16} />
-                  </Link>
-                </div>
-              </div>
+      {/* Related services */}
+      <section className="bg-white px-4 py-16 sm:px-8">
+        <div className="container mx-auto">
+          <SectionHeading>Related Services</SectionHeading>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {relatedServices.map((item) => (
+              <RelatedTile
+                key={item.label}
+                img={item.img}
+                label={item.label}
+                href={item.href}
+              />
             ))}
+
           </div>
         </div>
       </section>

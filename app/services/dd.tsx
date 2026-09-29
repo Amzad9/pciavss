@@ -3,11 +3,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-/**
- * /services/ redirects to homepage.
- * next.config uses output:"export" so server-side redirects are unavailable.
- * This client component performs an immediate JS redirect with a meta-refresh fallback.
- */
 export default function ServicesRedirectPage() {
   const router = useRouter();
 

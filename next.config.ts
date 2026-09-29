@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
   },
 
   trailingSlash: true,
+  async redirects() {
+    return [
+      {
+        source: '/request-quote',
+        destination: '/contact',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;
