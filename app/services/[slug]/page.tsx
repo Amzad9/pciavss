@@ -47,10 +47,10 @@ export default async function ServiceDetailPage({ params }: Props) {
         <section className="container mx-auto px-6 py-16">
           <p className="text-white/70">Service not found.</p>
           <Link
-            href="/services"
+            href="/"
             className="mt-6 inline-flex rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-black uppercase tracking-wide text-white transition hover:bg-white/10"
           >
-            Back to Services
+            Back to Home
           </Link>
         </section>
       </main>
@@ -67,13 +67,6 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="container mx-auto">
           <div className="relative z-10 grid gap-8 lg:grid-cols-12 lg:items-start">
             <div className="lg:col-span-7">
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-white/70 hover:text-white"
-              >
-                ← All Services
-              </Link>
-
               <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-steel-300 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:text-sm">
                 AVSS Service
               </p>
@@ -158,12 +151,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                     </li>
                   ))}
               </ul>
-              <Link
-                href="/services"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10"
-              >
-                View all services
-              </Link>
             </div>
 
             <div className="mt-5 rounded-[24px] border border-white/10 bg-brand-ink-950 p-6 shadow-inner">

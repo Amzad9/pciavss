@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-
   images: {
     remotePatterns: [
       {
@@ -19,7 +17,12 @@ const nextConfig: NextConfig = {
       {
         source: '/request-quote',
         destination: '/contact',
-        permanent: true,
+        statusCode: 301,
+      },
+      {
+        source: '/services',
+        destination: '/',
+        statusCode: 301,
       },
     ]
   },

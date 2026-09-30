@@ -591,8 +591,9 @@ export function AlarmSystemPage() {
               <div className="mt-3 sm:mt-4 h-1 w-16 sm:w-20 rounded-full bg-red-600" />
 
               <p className="mt-6 sm:mt-8 text-base sm:text-lg lg:text-xl leading-8 sm:leading-9 text-white/85">
-                Our monitoring partners respond to alarms immediately and
-                dispatch the appropriate authorities to your location.
+                Our professional monitoring partners respond to alarm events 24/7,
+                follow established verification procedures, and coordinate emergency
+                dispatch when appropriate.
               </p>
 
               <ul className="mt-8 sm:mt-10 space-y-4 sm:space-y-5">

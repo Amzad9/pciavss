@@ -186,7 +186,7 @@ export function SiteHeader() {
               href="/contact"
               className="h-11 px-7 text-[12px] rounded-[14px] shadow-[0_10px_22px_rgba(0,0,0,0.22)]"
             >
-              CONTACT US
+              REQUEST QUOTE
             </PrimaryButton>
           </div>
 
@@ -308,7 +308,7 @@ export function SiteHeader() {
                 className="h-11 w-full justify-center text-[12px]"
                 onClick={closeMenu}
               >
-                CONTACT US
+                REQUEST QUOTE
               </PrimaryButton>
             </div>
           </div>

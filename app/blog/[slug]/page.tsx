@@ -124,10 +124,10 @@ export default async function BlogPostPage({ params }: Props) {
                 Contact Us
               </Link>
               <Link
-                href="/services"
+                href="/contact"
                 className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center text-sm font-black uppercase tracking-wide text-white shadow-[0_0_0_1px_rgba(255,255,255,0.06)] transition hover:bg-white/10"
               >
-                View Services
+                Contact Us
               </Link>
             </div>
           </aside>
