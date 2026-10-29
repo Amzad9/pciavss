@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, FormEvent } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import emailjs from "@emailjs/browser";
 import {
   Phone,
@@ -18,6 +19,11 @@ import {
 } from "lucide-react";
 import { siteContact } from "../components/siteConfig";
 
+const RECAPTCHA_SITE_KEY = "6Ldrce4tAAAAAC5udJVSQeucUfRcVY214LEmMiuV";
+const RATE_LIMIT_STORAGE_KEY = "avss_contact_submissions";
+const SUBMISSION_COOLDOWN_SECONDS = 45; // Minimum 45s between submissions
+const MAX_SUBMISSIONS_PER_HOUR = 4; // Max 4 submissions per 60 minutes
+
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
@@ -30,14 +36,189 @@ export default function ContactPage() {
     city: "",
   });
 
+  // Lead Source Attribution Tracking State
+  const [trackingData, setTrackingData] = useState({
+    gclid: "",
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    landing_page: "",
+    referring_page: "",
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentPath = window.location.pathname + window.location.search;
+      const currentReferrer = document.referrer || "Direct";
+
+      const gclid = urlParams.get("gclid") || sessionStorage.getItem("avss_gclid") || "";
+      const utm_source = urlParams.get("utm_source") || sessionStorage.getItem("avss_utm_source") || "";
+      const utm_medium = urlParams.get("utm_medium") || sessionStorage.getItem("avss_utm_medium") || "";
+      const utm_campaign = urlParams.get("utm_campaign") || sessionStorage.getItem("avss_utm_campaign") || "";
+      const landing_page = sessionStorage.getItem("avss_landing_page") || currentPath;
+      const referring_page = sessionStorage.getItem("avss_referring_page") || currentReferrer;
+
+      // Update sessionStorage with active URL parameters
+      if (gclid) sessionStorage.setItem("avss_gclid", gclid);
+      if (utm_source) sessionStorage.setItem("avss_utm_source", utm_source);
+      if (utm_medium) sessionStorage.setItem("avss_utm_medium", utm_medium);
+      if (utm_campaign) sessionStorage.setItem("avss_utm_campaign", utm_campaign);
+      if (!sessionStorage.getItem("avss_landing_page")) sessionStorage.setItem("avss_landing_page", landing_page);
+      if (!sessionStorage.getItem("avss_referring_page")) sessionStorage.setItem("avss_referring_page", referring_page);
+
+      setTrackingData({
+        gclid,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        landing_page,
+        referring_page,
+      });
+    } catch {
+      // Ignore sessionStorage issues
+    }
+  }, []);
+
+  // Anti-spam states
+  const [honeypot, setHoneypot] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<{ [key: string]: string }>({});
+
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // Rate Limiting check
+  function checkRateLimit(): { allowed: boolean; message?: string } {
+    if (typeof window === "undefined") return { allowed: true };
+    try {
+      const raw = localStorage.getItem(RATE_LIMIT_STORAGE_KEY);
+      const history: number[] = raw ? JSON.parse(raw) : [];
+      const now = Date.now();
+
+      // Keep only submissions within the last 60 minutes
+      const recent = history.filter((timestamp) => now - timestamp < 3600 * 1000);
+
+      // 1. Cooldown check
+      if (recent.length > 0) {
+        const lastSubmission = recent[recent.length - 1];
+        const elapsedSeconds = Math.floor((now - lastSubmission) / 1000);
+        if (elapsedSeconds < SUBMISSION_COOLDOWN_SECONDS) {
+          const remaining = SUBMISSION_COOLDOWN_SECONDS - elapsedSeconds;
+          return {
+            allowed: false,
+            message: `Please wait ${remaining} second${remaining > 1 ? "s" : ""} before submitting another inquiry.`,
+          };
+        }
+      }
+
+      // 2. Max hourly frequency check
+      if (recent.length >= MAX_SUBMISSIONS_PER_HOUR) {
+        return {
+          allowed: false,
+          message:
+            "You have submitted multiple requests recently. Please wait a short while or call us directly at (800) 299-5964.",
+        };
+      }
+
+      return { allowed: true };
+    } catch {
+      return { allowed: true };
+    }
+  }
+
+  function recordSubmission() {
+    if (typeof window === "undefined") return;
+    try {
+      const raw = localStorage.getItem(RATE_LIMIT_STORAGE_KEY);
+      const history: number[] = raw ? JSON.parse(raw) : [];
+      const now = Date.now();
+      const recent = history.filter((timestamp) => now - timestamp < 3600 * 1000);
+      recent.push(now);
+      localStorage.setItem(RATE_LIMIT_STORAGE_KEY, JSON.stringify(recent));
+    } catch {
+      // Storage unavailable or disabled
+    }
+  }
+
+  // Strict Form Validation
+  function validateForm(): boolean {
+    const errors: { [key: string]: string } = {};
+
+    const trimmedName = formData.fullName.trim();
+    if (!trimmedName) {
+      errors.fullName = "Full name is required.";
+    } else if (trimmedName.length < 2) {
+      errors.fullName = "Please enter at least 2 characters for your name.";
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const trimmedEmail = formData.emailAddress.trim();
+    if (!trimmedEmail) {
+      errors.emailAddress = "Email address is required.";
+    } else if (!emailRegex.test(trimmedEmail)) {
+      errors.emailAddress = "Please enter a valid email address (e.g. name@company.com).";
+    }
+
+    const phoneDigits = formData.phoneNumber.replace(/\D/g, "");
+    if (!formData.phoneNumber.trim()) {
+      errors.phoneNumber = "Phone number is required.";
+    } else if (phoneDigits.length < 10) {
+      errors.phoneNumber = "Please enter a valid 10-digit phone number.";
+    }
+
+    const trimmedCity = formData.city.trim();
+    if (!trimmedCity) {
+      errors.city = "City is required.";
+    } else if (trimmedCity.length < 2) {
+      errors.city = "Please enter a valid city.";
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  }
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage(null);
+
+    // 1. Honeypot check (Automated bots fill hidden fields)
+    if (honeypot) {
+      console.warn("Spam detected via honeypot trap.");
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+      }, 700);
+      return;
+    }
+
+    // 2. Strict client-side field validation
+    if (!validateForm()) {
+      setErrorMessage("Please correct the highlighted fields before submitting.");
+      return;
+    }
+
+    // 3. Rate limiting check
+    const rateLimit = checkRateLimit();
+    if (!rateLimit.allowed) {
+      setErrorMessage(rateLimit.message || "Too many submissions. Please wait a moment.");
+      return;
+    }
+
+    // 4. Google reCAPTCHA Verification
+    const recaptchaToken =
+      typeof window !== "undefined" && (window as any).grecaptcha
+        ? (window as any).grecaptcha.getResponse()
+        : "";
+
+    if (!recaptchaToken) {
+      setErrorMessage("Please complete the 'I'm not a robot' reCAPTCHA verification below.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_uv0u256";
@@ -57,20 +238,45 @@ export default function ContactPage() {
           service: formData.service || "General Inquiry",
           message: formData.message,
           city: formData.city,
+          "g-recaptcha-response": recaptchaToken,
+          gclid: trackingData.gclid || "",
+          utm_source: trackingData.utm_source || "",
+          utm_medium: trackingData.utm_medium || "",
+          utm_campaign: trackingData.utm_campaign || "",
+          landing_page: trackingData.landing_page || "",
+          referring_page: trackingData.referring_page || "",
         };
         await emailjs.send(serviceId, templateId, templateParams, publicKey);
       }
 
+      // Record successful submission for rate limiting
+      recordSubmission();
       setSubmitted(true);
 
-      // Fire Google Ads conversion event after successful submission
-      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "conversion", {
-          send_to: "AW-18437293351/4RuaCPKS_PACEKeKy9aE",
-        });
+      // Fire Google Ads conversion event only after successful submission and EmailJS response
+      if (typeof window !== "undefined") {
+        const conversionData = {
+          send_to: "AW-18437293351/4RuaCPKS_PAcEKeKy9dE",
+          value: 1.0,
+          currency: "USD",
+        };
+
+        if (typeof (window as any).gtag === "function") {
+          (window as any).gtag("event", "conversion", conversionData);
+        } else if (Array.isArray((window as any).dataLayer)) {
+          (window as any).dataLayer.push(["event", "conversion", conversionData]);
+        }
       }
     } catch (err: unknown) {
       console.error("EmailJS submission error:", err);
+      // Reset reCAPTCHA so the user can re-try
+      if (typeof window !== "undefined" && (window as any).grecaptcha) {
+        try {
+          (window as any).grecaptcha.reset();
+        } catch {
+          // ignore
+        }
+      }
       const msg = err instanceof Error ? err.message : "Failed to send message. Please try again.";
       setErrorMessage(msg);
     } finally {
@@ -80,6 +286,11 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
+      {/* Load Google reCAPTCHA v2 Script */}
+      <Script
+        src="https://www.google.com/recaptcha/api.js"
+        strategy="afterInteractive"
+      />
       {/* 1. HERO SECTION WITH CAMERA BACKGROUND */}
       <section className="relative overflow-hidden bg-[#0c0c0c] py-20 sm:py-28 text-white">
         {/* Background Image & Overlay */}
@@ -188,6 +399,8 @@ export default function ContactPage() {
                     onClick={() => {
                       setSubmitted(false);
                       setErrorMessage(null);
+                      setFieldErrors({});
+                      setHoneypot("");
                       setFormData({
                         fullName: "",
                         companyName: "",
@@ -197,6 +410,13 @@ export default function ContactPage() {
                         message: "",
                         city: "",
                       });
+                      if (typeof window !== "undefined" && (window as any).grecaptcha) {
+                        try {
+                          (window as any).grecaptcha.reset();
+                        } catch {
+                          // ignore
+                        }
+                      }
                     }}
                     className="mt-5 inline-flex items-center justify-center rounded-lg bg-green-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-green-700 cursor-pointer"
                   >
@@ -205,15 +425,41 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-4">
+                  {/* Honeypot hidden input to trap automated spam bots */}
+                  <div
+                    aria-hidden="true"
+                    style={{ display: "none", position: "absolute", left: "-9999px" }}
+                  >
+                    <label htmlFor="company_fax">Do not fill this field</label>
+                    <input
+                      type="text"
+                      id="company_fax"
+                      name="company_fax"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
+                  {/* Lead Source Attribution Tracking Hidden Fields */}
+                  <input type="hidden" name="gclid" value={trackingData.gclid} />
+                  <input type="hidden" name="utm_source" value={trackingData.utm_source} />
+                  <input type="hidden" name="utm_medium" value={trackingData.utm_medium} />
+                  <input type="hidden" name="utm_campaign" value={trackingData.utm_campaign} />
+                  <input type="hidden" name="landing_page" value={trackingData.landing_page} />
+                  <input type="hidden" name="referring_page" value={trackingData.referring_page} />
+
                   {errorMessage && (
                     <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
                       <AlertCircle className="h-5 w-5 shrink-0 text-red-600 mt-0.5" />
                       <div>
-                        <p className="font-semibold">Failed to send message</p>
+                        <p className="font-semibold">Notice</p>
                         <p className="mt-0.5 text-xs text-red-600">{errorMessage}</p>
                       </div>
                     </div>
                   )}
+
                   {/* Row 1: Name & Company */}
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
@@ -223,9 +469,19 @@ export default function ContactPage() {
                         required
                         placeholder="Full Name *"
                         value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-600/20"
+                        onChange={(e) => {
+                          setFormData({ ...formData, fullName: e.target.value });
+                          if (fieldErrors.fullName) setFieldErrors({ ...fieldErrors, fullName: "" });
+                        }}
+                        className={`h-12 w-full rounded-lg border bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:ring-2 ${
+                          fieldErrors.fullName
+                            ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
+                            : "border-gray-300 focus:border-red-600 focus:ring-red-600/20"
+                        }`}
                       />
+                      {fieldErrors.fullName && (
+                        <p className="mt-1 text-xs text-red-600">{fieldErrors.fullName}</p>
+                      )}
                     </div>
                     <div>
                       <input
@@ -248,9 +504,19 @@ export default function ContactPage() {
                         required
                         placeholder="Phone Number *"
                         value={formData.phoneNumber}
-                        onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                        className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-600/20"
+                        onChange={(e) => {
+                          setFormData({ ...formData, phoneNumber: e.target.value });
+                          if (fieldErrors.phoneNumber) setFieldErrors({ ...fieldErrors, phoneNumber: "" });
+                        }}
+                        className={`h-12 w-full rounded-lg border bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:ring-2 ${
+                          fieldErrors.phoneNumber
+                            ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
+                            : "border-gray-300 focus:border-red-600 focus:ring-red-600/20"
+                        }`}
                       />
+                      {fieldErrors.phoneNumber && (
+                        <p className="mt-1 text-xs text-red-600">{fieldErrors.phoneNumber}</p>
+                      )}
                     </div>
                     <div>
                       <input
@@ -259,9 +525,19 @@ export default function ContactPage() {
                         required
                         placeholder="Email Address *"
                         value={formData.emailAddress}
-                        onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
-                        className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-600/20"
+                        onChange={(e) => {
+                          setFormData({ ...formData, emailAddress: e.target.value });
+                          if (fieldErrors.emailAddress) setFieldErrors({ ...fieldErrors, emailAddress: "" });
+                        }}
+                        className={`h-12 w-full rounded-lg border bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:ring-2 ${
+                          fieldErrors.emailAddress
+                            ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
+                            : "border-gray-300 focus:border-red-600 focus:ring-red-600/20"
+                        }`}
                       />
+                      {fieldErrors.emailAddress && (
+                        <p className="mt-1 text-xs text-red-600">{fieldErrors.emailAddress}</p>
+                      )}
                     </div>
                   </div>
 
@@ -274,9 +550,19 @@ export default function ContactPage() {
                         required
                         placeholder="City *"
                         value={formData.city}
-                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-600/20"
+                        onChange={(e) => {
+                          setFormData({ ...formData, city: e.target.value });
+                          if (fieldErrors.city) setFieldErrors({ ...fieldErrors, city: "" });
+                        }}
+                        className={`h-12 w-full rounded-lg border bg-white px-4 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:ring-2 ${
+                          fieldErrors.city
+                            ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
+                            : "border-gray-300 focus:border-red-600 focus:ring-red-600/20"
+                        }`}
                       />
+                      {fieldErrors.city && (
+                        <p className="mt-1 text-xs text-red-600">{fieldErrors.city}</p>
+                      )}
                     </div>
                     <div>
                       <select
@@ -308,12 +594,19 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {/* Google reCAPTCHA v2 Box */}
+                  <div className="pt-1">
+                    <div
+                      className="g-recaptcha"
+                      data-sitekey={RECAPTCHA_SITE_KEY}
+                    />
+                  </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex h-13 w-full items-center justify-center gap-2 rounded-lg bg-red-600 px-6 text-sm font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600/50"
+                    className="flex h-13 w-full items-center justify-center gap-2 rounded-lg bg-red-600 px-6 text-sm font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600/50 cursor-pointer disabled:opacity-60"
                   >
                     <Send className="h-4 w-4" />
                     {isSubmitting ? "Sending..." : "SEND MESSAGE"}
@@ -322,7 +615,7 @@ export default function ContactPage() {
                   {/* Security Note */}
                   <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-gray-500">
                     <Lock className="h-3.5 w-3.5 text-gray-400" />
-                    Your information is secure and will never be shared.
+                    Protected by Google reCAPTCHA. Your information is secure.
                   </p>
                 </form>
               )}

@@ -60,11 +60,42 @@ export default function RootLayout({
         <Script id="google-tags" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){window.dataLayer.push(arguments);}
+            window.gtag = gtag;
             gtag('js', new Date());
 
             gtag('config', 'G-8NGYQPGMD7');
             gtag('config', 'AW-18437293351');
+          `}
+        </Script>
+        {/* Lead Source Attribution Tracking (GCLID, UTMs, Landing & Referrer) */}
+        <Script id="lead-source-tracker" strategy="afterInteractive">
+          {`
+            (function() {
+              try {
+                if (typeof window === 'undefined' || !window.sessionStorage) return;
+                var search = window.location.search;
+                if (search) {
+                  var params = new URLSearchParams(search);
+                  var gclid = params.get('gclid');
+                  var utm_source = params.get('utm_source');
+                  var utm_medium = params.get('utm_medium');
+                  var utm_campaign = params.get('utm_campaign');
+
+                  if (gclid) sessionStorage.setItem('avss_gclid', gclid);
+                  if (utm_source) sessionStorage.setItem('avss_utm_source', utm_source);
+                  if (utm_medium) sessionStorage.setItem('avss_utm_medium', utm_medium);
+                  if (utm_campaign) sessionStorage.setItem('avss_utm_campaign', utm_campaign);
+                }
+
+                if (!sessionStorage.getItem('avss_landing_page')) {
+                  sessionStorage.setItem('avss_landing_page', window.location.pathname + window.location.search);
+                }
+                if (!sessionStorage.getItem('avss_referring_page')) {
+                  sessionStorage.setItem('avss_referring_page', document.referrer || 'Direct');
+                }
+              } catch (e) {}
+            })();
           `}
         </Script>
       </head>
